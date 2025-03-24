@@ -1,0 +1,14 @@
+using dbo.food
+using person.ID = 1
+
+foreach person.food.parameter {
+  include parameter into generation
+}
+
+while (parameters != done) {
+  generate food.recipe schedule update
+}
+
+for (meals) {
+  output meal.recipe.link
+}

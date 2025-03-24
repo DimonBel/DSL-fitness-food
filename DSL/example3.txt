@@ -1,0 +1,18 @@
+using dbo.sport
+using dbo.food
+using person.ID = 1
+
+generate training (
+  time(avg),
+  amount(avg_not_specified),
+  type(w_gear_not_specified),
+  goal(fit),
+  Person(person)
+)
+
+output training as description table
+
+while (time.max != done) {
+  output rep.time
+  output rest.time
+}
