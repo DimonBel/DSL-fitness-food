@@ -4,24 +4,24 @@ import { useState } from "react";
 // эту херь из жсона возьмем
 const Editor = ({ onRun }) => {
   const [code, setCode] = useState(
-`
-using dbo.food
-using person.ID = 1
+    `
+  using dbo.food
+  using person.ID = 1
 
-foreach person.food.parameter {
-    include parameter into generation
-}
+  foreach person.food.parameter {
+      include parameter into generation
+  }
 
-while (parameters != done)
-{
-    generate food. recipe schedule update
-}
+  while (parameters != done)
+  {
+      generate food. recipe schedule update
+  }
 
-for (meals) {
-    output meal.recipe.link
-}
-`
-);
+  for (meals) {
+      output meal.recipe.link
+  }
+  `
+  );
 
   return (
     <div className="editor-container">
@@ -30,8 +30,8 @@ for (meals) {
 
         {/* TODO: че то нормальное сделать тут */}
         <button className="button" onClick={() => {
-            onRun(code);
-            alert("Пошло говно по трубам");
+          onRun(code);
+          alert("Пошло говно по трубам");
         }}>Run</button>
 
       </div>

@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    build: 
+      context: ./backend-dsl
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod # Если нужно, укажите профиль
+#    volumes: #  Раскомментируйте, если нужно монтировать volume
+#      - ./:/app # Пример монтирования текущей директории в /app внутри контейнера.  Будьте осторожны с target директорией!
+
+  frontend:
+    build: 
+      context: ./front
+    volumes:
+      - .:/app  # Mount the current directory to the container
+      - /app/node_modules  # Avoid mounting node_modules to prevent conflicts
+    environment:
+      - NODE_ENV=production
+      - ./frontend/:/app/
+    ports:
+      - "3000:3000"
+
