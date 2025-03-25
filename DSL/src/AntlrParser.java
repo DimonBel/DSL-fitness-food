@@ -9,8 +9,8 @@ public class AntlrParser {
         public static void main(String[] args) throws IOException {
                 String[] files = {
                         "example.txt",
-                        "example2.txt",
-                        "example3.txt"
+//                        "example2.txt",
+//                        "example3.txt"
                 };
 
                 JSONObject output = new JSONObject();

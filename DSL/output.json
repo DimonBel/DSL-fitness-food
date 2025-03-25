@@ -1,41 +1,14 @@
-{
-    "example.txt": {
-        "outputs": ["outputmeal.recipe.link"],
-        "generated": ["generatefood.recipescheduleupdate"],
-        "created": [],
-        "loops": [
-            "foreach",
-            "while",
-            "for"
-        ],
-        "used": [
-            "usingdbo.food",
-            "usingperson.ID=1"
-        ]
-    },
-    "example2.txt": {
-        "outputs": [],
-        "generated": [],
-        "created": [{
-            "name": "person",
-            "type": "Person"
-        }],
-        "loops": [],
-        "used": ["usingdbo.food"]
-    },
-    "example3.txt": {
-        "outputs": [
-            "outputtrainingasdescriptiontable",
-            "outputrep.time",
-            "outputrest.time"
-        ],
-        "generated": ["generatetraining(time(avg),amount(avg_not_specified),type(w_gear_not_specified),goal(fit),Person(person))"],
-        "created": [],
-        "loops": ["while"],
-        "used": [
-            "usingdbo.sport",
-            "usingdbo.food",
-            "usingperson.ID=1"
-        ]
-    }
-}
+{"example.txt": {
+    "outputs": ["outputmeal.recipe.link"],
+    "generated": ["generatefood.recipescheduleupdate"],
+    "created": [],
+    "loops": [
+        "foreach",
+        "while",
+        "for"
+    ],
+    "used": [
+        "usingdbo.food",
+        "usingperson.ID=1"
+    ]
+}}
