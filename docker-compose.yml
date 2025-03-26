@@ -1,15 +1,39 @@
 version: "3.8"
 
 services:
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123123
+      POSTGRES_DB: fitness_db
+    ports:
+      - "5432:5432"  # Открыт порт для внешнего доступа к PostgreSQL (убрать, если не нужно)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   backend:
     build: 
       context: ./backend-dsl
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=prod # Если нужно, укажите профиль
-#    volumes: #  Раскомментируйте, если нужно монтировать volume
-#      - ./:/app # Пример монтирования текущей директории в /app внутри контейнера.  Будьте осторожны с target директорией!
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fitness_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend-dsl:/app  # Для горячей перезагрузки кода (убрать при деплое)
 
   frontend:
     build: 
@@ -21,5 +45,7 @@ services:
       - NODE_ENV=production
       - ./frontend/:/app/
     ports:
-      - "3000:3000"
+      - "5173:5173"
 
+volumes:
+  postgres_data:
