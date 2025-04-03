@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: 123123
       POSTGRES_DB: fitness_db
     ports:
-      - "5432:5432"  # Открыт порт для внешнего доступа к PostgreSQL (убрать, если не нужно)
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -29,21 +29,23 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123123
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      CSHARP_EXE_PATH: /app/interpreter/Program
+      OUTPUT_FILE_PATH: /app/interpreter/output_test.json # Correct environment variable placement
     depends_on:
       postgres:
         condition: service_healthy
     volumes:
-      - ./backend-dsl:/app  # Для горячей перезагрузки кода (убрать при деплое)
+      - ./backend-dsl:/app
+      - ./interpreter/bin/Release/net8.0/linux-x64/publish:/app/interpreter
 
   frontend:
     build: 
       context: ./front
     volumes:
-      - .:/app  # Mount the current directory to the container
-      - /app/node_modules  # Avoid mounting node_modules to prevent conflicts
+      - ./front:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=production
-      - ./frontend/:/app/
     ports:
       - "5173:5173"
 

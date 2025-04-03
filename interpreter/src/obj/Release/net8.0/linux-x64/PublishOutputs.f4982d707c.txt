@@ -1,0 +1,2 @@
+C:\Users\Duma\OneDrive\Рабочий стол\DSL\DSL-fitness-food\interpreter\src\bin\Release\net8.0\linux-x64\publish\Program.pdb
+C:\Users\Duma\OneDrive\Рабочий стол\DSL\DSL-fitness-food\interpreter\src\bin\Release\net8.0\linux-x64\publish\Program

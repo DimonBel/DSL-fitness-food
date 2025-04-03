@@ -1,4 +1,4 @@
-// Generated from grammar/FitnessNutrition.g4 by ANTLR 4.9.3
+// Generated from C:\Users\Duma\OneDrive\������� ����\DSL\DSL-fitness-food\DSL\grammar\FitnessNutrition.g4 by ANTLR 4.9.3
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -26,6 +26,36 @@ public interface FitnessNutritionListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatement(FitnessNutritionParser.StatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exercisesStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exercisesStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exerciseEntry}.
+	 * @param ctx the parse tree
+	 */
+	void enterExerciseEntry(FitnessNutritionParser.ExerciseEntryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exerciseEntry}.
+	 * @param ctx the parse tree
+	 */
+	void exitExerciseEntry(FitnessNutritionParser.ExerciseEntryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exerciseParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterExerciseParams(FitnessNutritionParser.ExerciseParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exerciseParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitExerciseParams(FitnessNutritionParser.ExerciseParamsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FitnessNutritionParser#createStmt}.
 	 * @param ctx the parse tree

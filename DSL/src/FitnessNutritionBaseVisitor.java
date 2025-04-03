@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public class FitnessNutritionBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements FitnessNutritionVisitor<T> {
+public abstract class FitnessNutritionBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements FitnessNutritionVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
@@ -220,4 +220,6 @@ public class FitnessNutritionBaseVisitor<T> extends AbstractParseTreeVisitor<T> 
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitLiteral(FitnessNutritionParser.LiteralContext ctx) { return visitChildren(ctx); }
+
+	public abstract Void visitExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx);
 }

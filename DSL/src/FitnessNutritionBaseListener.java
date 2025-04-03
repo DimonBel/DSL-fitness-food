@@ -1,4 +1,4 @@
-// Generated from grammar/FitnessNutrition.g4 by ANTLR 4.9.3
+// Generated from C:\Users\Duma\OneDrive\������� ����\DSL\DSL-fitness-food\DSL\grammar\FitnessNutrition.g4 by ANTLR 4.9.3
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -34,6 +34,42 @@ public class FitnessNutritionBaseListener implements FitnessNutritionListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStatement(FitnessNutritionParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExerciseEntry(FitnessNutritionParser.ExerciseEntryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExerciseEntry(FitnessNutritionParser.ExerciseEntryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExerciseParams(FitnessNutritionParser.ExerciseParamsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExerciseParams(FitnessNutritionParser.ExerciseParamsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

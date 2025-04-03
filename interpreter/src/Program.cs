@@ -6,8 +6,22 @@ class Program
 {
     static void Main()
     {
-        string inputPath = "C:\\Users\\user\\Documents\\MyCSharpProjects\\DSL (ELSD)\\interpreter\\input_test.json";
-        string outputPath = "C:\\Users\\user\\Documents\\MyCSharpProjects\\DSL (ELSD)\\interpreter\\output_test.json";
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../../../.."));
+        string projectRootInput = Path.GetFullPath(Path.Combine(baseDirectory, "../../../../.."));
+
+        //\DSL\DSL-fitness-food\DSL\output.json
+        //\DSL\DSL-fitness-food\interpreter\input_test.json
+
+
+        string inputPath = Path.Combine(projectRootInput, "DSL\\output.json");
+        string outputPath = Path.Combine(projectRoot, "output_test.json");
+
+        Console.WriteLine($"Reading from: {inputPath}");
+        Console.WriteLine($"Writing to: {outputPath}");
+
+
+
         string json = File.ReadAllText(inputPath);
         using JsonDocument doc = JsonDocument.Parse(json);
         JsonElement root = doc.RootElement;

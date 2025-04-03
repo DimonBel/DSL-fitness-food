@@ -9,11 +9,10 @@ public class AntlrParser {
         public static void main(String[] args) throws IOException {
                 String[] files = {
                         "example.txt",
-//                        "example2.txt",
-//                        "example3.txt"
                 };
 
-                JSONObject output = new JSONObject();
+                // We'll now store the final JSON object directly
+                JSONObject finalOutput = null;
 
                 for (String file : files) {
                         System.out.println("\n📄 Parsing file: " + file + "\n");
@@ -31,13 +30,23 @@ public class AntlrParser {
                         // 💡 Visit the tree and build JSON
                         FitnessNutritionVisitorImpl visitor = new FitnessNutritionVisitorImpl();
                         visitor.visit(tree);
-                        output.put(file, visitor.getJson());
+
+                        // Get the inner JSON structure directly
+                        finalOutput = visitor.getJson();
+
+                        // If you're processing multiple files, you might want to break after first one
+                        // or handle them differently
+                        break;
                 }
 
-                // 💾 Save final combined JSON
-                try (FileWriter fw = new FileWriter("output.json")) {
-                        fw.write(output.toString(4));
-                        System.out.println("\n✅ Saved output.json");
+                // 💾 Save final JSON (without file wrapper)
+                if (finalOutput != null) {
+                        try (FileWriter fw = new FileWriter("output.json")) {
+                                fw.write(finalOutput.toString(4));
+                                System.out.println("\n✅ Saved output.json");
+                        }
+                } else {
+                        System.out.println("\n❌ No output generated");
                 }
         }
 }

@@ -13,6 +13,21 @@ statement
     | outputStmt
     | loopStmt
     | includeStmt
+    | exercisesStmt
+    ;
+
+exercisesStmt
+    : 'Exercises' '=' '{' exerciseEntry+ '}'
+    ;
+
+exerciseEntry
+    : IDENTIFIER '{' exerciseParams '}'
+    ;
+
+exerciseParams
+    : ('Weight' '=' NUMBER)?
+      (',' 'Sets' '=' NUMBER)?
+      (',' 'Reps' '=' NUMBER)?
     ;
 
 createStmt
@@ -136,9 +151,9 @@ array
     ;
 
 timeRange
-    : TIME '-' TIME
+    : TIME_RANGE
+    | TIME 'to' TIME
     ;
-
 object
     : '(' value ')'
     | '{' attributeList '}'
@@ -184,6 +199,8 @@ KEYWORD
     | 'all'
     ;
 
+TIME_RANGE : TIME '-' TIME;
+
 IDENTIFIER
     : [a-zA-Z_][a-zA-Z0-9_]*
     ;
@@ -194,7 +211,7 @@ STRING
     ;
 
 NUMBER
-    : [0-9]+ ('.' [0-9]+)?
+    : '-'? [0-9]+ ('.' [0-9]+)?
     ;
 
 TIME
