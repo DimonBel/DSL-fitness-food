@@ -1,5 +1,9 @@
 @use './variables' as *;
 
+.dashboard {
+    margin: $output-dashboard-margin;
+}
+
 // мне лень переделывать это гавно вручную
 // потом разберемся если не лень будет
 /* =============================================================== */
@@ -8,7 +12,7 @@
 .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 /* Profile Card */
@@ -25,7 +29,6 @@
 
 .profile-header h3 {
     margin: 0;
-    color: #343a40;
     display: flex;
     align-items: center;
     gap: 0.5rem;

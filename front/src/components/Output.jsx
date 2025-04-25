@@ -65,10 +65,8 @@ const Output = ({ outputData, isLoading }) => {
   return (
     <div className="output-container">
       <div className="panel-header">
-        <h2><i className="icon-nutrition"></i> Nutrition Dashboard</h2>
-        <button className="export-button">
-          <i className="icon-download"></i> Export PDF
-        </button>
+        <span>Output</span>
+        <button className="export-button">Export</button>
       </div>
 
       <div className="panel-content">

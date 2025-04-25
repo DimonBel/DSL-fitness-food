@@ -1,5 +1,6 @@
 @use './variables' as *;
 @use '../mixins/button' as *;
+@use '../mixins/box-shadow' as *;
 
 .panel-header {
     background: $bg-color-3;
@@ -11,6 +12,8 @@
 
     border-radius: $border-radius-1;
     margin: $panel-header-margin;
+
+    @include BoxShadow;
 
     span {
         color: $text-color-1;

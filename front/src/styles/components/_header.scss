@@ -1,8 +1,9 @@
 @use './variables' as *;
 @use '../mixins/button' as *;
+@use '../mixins/box-shadow' as *;
 
 header {
-    background-color: $bg-color-2;
+    background-color: $header-color;
     color: $accent-color-1;
     padding: 2rem 1.5rem;
     display: flex;
@@ -12,6 +13,8 @@ header {
     margin-inline: $panel-header-margin;
     margin-top: $panel-header-margin;
     border-radius: $border-radius-1;
+
+    @include BoxShadow;
 
     .logo {
         font-size: 1.8rem;
