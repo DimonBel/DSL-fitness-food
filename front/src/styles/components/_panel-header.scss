@@ -9,6 +9,14 @@
     justify-content: space-between;
     align-items: center;
 
+    border-radius: $border-radius-1;
+    margin: $panel-header-margin;
+
+    span {
+        color: $text-color-1;
+        font-size: 1.3rem;
+    }
+
     h2 {
         margin: 0;
         font-size: 1.5rem;
@@ -17,7 +25,7 @@
         gap: 0.5rem;
     }
 
-    .export-button {
-        @include Button($button-color-1, $button-color-hover, $button-text-color-1)
+    button {
+        @include Button ($button-color-1, $button-color-hover, $button-text-color-1);
     }
 }

@@ -1,6 +1,6 @@
 @mixin Button ($color, $hover-color, $text-color) {
     border: none;
-    background: $color;
+    background-color: $color;
     color: $text-color;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -11,6 +11,6 @@
     transition: all 0.3s ease;
 
     &:hover {
-        background: $hover-color;
+        background-color: $hover-color;
     }
 }

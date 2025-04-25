@@ -51,11 +51,11 @@ const Output = ({ outputData, isLoading }) => {
       <div className="output-container">
         <div className="panel-header">
           <span>Output</span>
+          <button className="export-button">Export</button>
         </div>
         <div className="panel-content empty-state">
           <div className="empty-message">
-            <i className="icon-food"></i>
-            <p>No data available. Run the DSL code to generate your personalized plan.</p>
+            <p>Run the DSL code to generate your personalized plan.</p>
           </div>
         </div>
       </div>

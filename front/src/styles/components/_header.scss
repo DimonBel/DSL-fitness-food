@@ -1,17 +1,20 @@
 @use './variables' as *;
+@use '../mixins/button' as *;
 
 header {
     background-color: $bg-color-2;
-    color: $text-color-1;
-    padding: 1rem 2rem;
+    color: $accent-color-1;
+    padding: 2rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    
+    margin-inline: $panel-header-margin;
+    margin-top: $panel-header-margin;
+    border-radius: $border-radius-1;
 
     .logo {
         font-size: 1.8rem;
-        font-weight: bold;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -24,7 +27,7 @@ header {
         a {
             color: $accent-color-1;
             text-decoration: none;
-            font-weight: 500;
+            font-size: 1.4rem;
             transition: color 0.2s;
 
             &:hover {
