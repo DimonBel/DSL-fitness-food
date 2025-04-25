@@ -1,0 +1,35 @@
+@use './variables' as *;
+
+header {
+    background-color: $bg-color-2;
+    color: $text-color-1;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+      
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+            color: $accent-color-1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+
+            &:hover {
+                color: $accent-color-2;
+            }
+        }
+    }
+}

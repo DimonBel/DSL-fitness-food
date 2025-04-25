@@ -1,5 +1,3 @@
-import './Output.css'; // We'll create this CSS file
-
 const Output = ({ outputData, isLoading }) => {
   // Функция для расчета процентов макронутриентов
   const calculateMacros = (mealPlan) => {

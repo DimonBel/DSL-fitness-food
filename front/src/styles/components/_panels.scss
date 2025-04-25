@@ -1,0 +1,503 @@
+@use './variables' as *;
+
+.panel-content {
+    padding: 1.5rem;
+
+    .empty-state {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+    }
+    
+    .empty-message {
+        text-align: center;
+        color: #6c757d;
+
+        i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #adb5bd;
+        }
+    }
+}
+
+// мне лень переделывать это гавно вручную
+// потом разберемся если не лень будет
+/* =============================================================== */
+
+/* Dashboard Grid */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Profile Card */
+.profile-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.profile-header {
+    margin-bottom: 1rem;
+}
+
+.profile-header h3 {
+    margin: 0;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-item.full-width {
+    grid-column: span 2;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.2rem;
+}
+
+.value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.value.highlight {
+    color: #2575fc;
+    font-weight: 600;
+}
+
+.value.warning {
+    color: #ff6b6b;
+}
+
+/* Macronutrients Card */
+.macronutrients-section {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.macronutrients-section h3 {
+    margin: 0 0 1rem 0;
+    color: #343a40;
+    font-size: 1.2rem;
+}
+
+.macros-visual {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.macros-chart {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#4e73df 0% var(--protein-percentage),
+            #1cc88a var(--protein-percentage) calc(var(--protein-percentage) + var(--carbs-percentage)),
+            #f6c23e calc(var(--protein-percentage) + var(--carbs-percentage)) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.macros-chart::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: white;
+    border-radius: 50%;
+}
+
+.macros-chart>div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%);
+    transform-origin: 50% 50%;
+}
+
+.macros-chart span {
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.macros-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.protein {
+    background: #4e73df;
+}
+
+.dot.carbs {
+    background: #1cc88a;
+}
+
+.dot.fat {
+    background: #f6c23e;
+}
+
+/* Meal Plan Card */
+.meal-plan-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    grid-column: span 2;
+}
+
+.meal-plan-card h3 {
+    margin: 0 0 1rem 0;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meals-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.meal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.meal-type {
+    margin: 0;
+    color: #495057;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.meal-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meal-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.meal-header h5 {
+    margin: 0;
+    color: #212529;
+}
+
+.calories {
+    background: #e9ecef;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.meal-macros {
+    display: flex;
+    gap: 1rem;
+}
+
+.macro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.macro-label {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+.macro-value {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Training Card */
+.training-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    grid-column: span 2;
+}
+
+.training-card h3 {
+    margin: 0 0 1rem 0;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.training-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+
+.training-day {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.day-name {
+    margin: 0;
+    color: #495057;
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.exercises {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exercise {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.exercise-header h5 {
+    margin: 0;
+    color: #212529;
+}
+
+.exercise-type {
+    background: #e9ecef;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.exercise-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.exercise-details span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Icons (using Unicode or icon font) */
+.icon-nutrition:before {
+    content: "🍎";
+}
+
+.icon-user:before {
+    content: "👤";
+}
+
+.icon-pie-chart:before {
+    content: "📊";
+}
+
+.icon-cutlery:before {
+    content: "🍽️";
+}
+
+.icon-exercise:before {
+    content: "💪";
+}
+
+.icon-food:before {
+    content: "🍏";
+}
+
+.icon-download:before {
+    content: "⬇️";
+}
+
+.icon-clock:before {
+    content: "⏱️";
+}
+
+.icon-intensity:before {
+    content: "🔥";
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .meals-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .training-days {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .meals-container {
+        grid-template-columns: 1fr;
+    }
+
+    .training-days {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .macros-visual {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.empty-macros {
+    color: #6c757d;
+    text-align: center;
+}
+
+.empty-macros p {
+    margin-bottom: 1rem;
+}
+
+.macros-visualization,
+.macros-placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.macro-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.macro-bar {
+    height: 24px;
+    border-radius: 12px;
+    transition: width 0.5s ease;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.macro-item span:last-child {
+    min-width: 40px;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* Цвета для разных типов макронутриентов */
+.protein {
+    background-color: #4e73df;
+}
+
+.carbs {
+    background-color: #1cc88a;
+}
+
+.fat {
+    background-color: #f6c23e;
+}
+
+/* Стили для пустого состояния */
+.macros-placeholder .macro-bar {
+    background-color: #e9ecef;
+}
