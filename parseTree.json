@@ -1,0 +1,76 @@
+{"program": [
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
+        {"reference": [
+            {"identifier": [{"text": "dbo"}]},
+            {"text": "."},
+            {"identifier": [{"text": "food"}]}
+        ]}
+    ]}]},
+    {"statement": [{"createStmt": [
+        {"text": "create"},
+        {"identifier": [{"text": "Person"}]},
+        {"identifier": [{"text": "person"}]},
+        {"text": "{"},
+        {"attributeList": [
+            {"attribute": [
+                {"identifier": [{"text": "ID"}]},
+                {"text": "("},
+                {"value": [{"literal": [{"text": "1"}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "BMI"}]},
+                {"text": "("},
+                {"value": [{"literal": [{"text": "\"BMI parameters\""}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Calories"}]},
+                {"text": "("},
+                {"value": [{"literal": [{"text": "\"Calories parameters\""}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Goal"}]},
+                {"text": "("},
+                {"value": [{"reference": [{"identifier": [{"text": "Maintainance"}]}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Time"}]},
+                {"text": "{"},
+                {"attributeList": [{"attribute": [
+                    {"identifier": [{"text": "Busy"}]},
+                    {"text": "("},
+                    {"value": [{"literal": [{"text": "\"10AM-5PM, 11PM-6AM\""}]}]},
+                    {"text": ")"}
+                ]}]},
+                {"text": "}"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Weights"}]},
+                {"text": "{"},
+                {"attributeList": []},
+                {"text": "}"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Diet"}]},
+                {"text": "("},
+                {"value": [{"reference": [{"identifier": [{"text": "Standard"}]}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Alergic"}]},
+                {"text": "("},
+                {"value": [{"reference": [
+                    {"identifier": [{"text": "nuts"}]},
+                    {"text": "."},
+                    {"identifier": [{"text": "all"}]}
+                ]}]},
+                {"text": ")"}
+            ]}
+        ]},
+        {"text": "}"}
+    ]}]}
+]}
