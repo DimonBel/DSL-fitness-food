@@ -4,73 +4,106 @@
         {"reference": [
             {"identifier": [{"text": "dbo"}]},
             {"text": "."},
+            {"identifier": [{"text": "sport"}]}
+        ]}
+    ]}]},
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
+        {"reference": [
+            {"identifier": [{"text": "dbo"}]},
+            {"text": "."},
             {"identifier": [{"text": "food"}]}
         ]}
     ]}]},
-    {"statement": [{"createStmt": [
-        {"text": "create"},
-        {"identifier": [{"text": "Person"}]},
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
         {"identifier": [{"text": "person"}]},
-        {"text": "{"},
-        {"attributeList": [
-            {"attribute": [
-                {"identifier": [{"text": "ID"}]},
+        {"text": "."},
+        {"identifier": [{"text": "ID"}]},
+        {"text": "="},
+        {"literal": [{"text": "1"}]}
+    ]}]},
+    {"statement": [{"generateStmt": [
+        {"text": "generate"},
+        {"identifier": [{"text": "training"}]},
+        {"text": "("},
+        {"paramList": [
+            {"param": [
+                {"identifier": [{"text": "time"}]},
                 {"text": "("},
-                {"value": [{"literal": [{"text": "1"}]}]},
+                {"value": [{"reference": [{"identifier": [{"text": "avg"}]}]}]},
                 {"text": ")"}
             ]},
-            {"attribute": [
-                {"identifier": [{"text": "BMI"}]},
+            {"text": ","},
+            {"param": [
+                {"identifier": [{"text": "amount"}]},
                 {"text": "("},
-                {"value": [{"literal": [{"text": "\"BMI parameters\""}]}]},
+                {"value": [{"reference": [{"identifier": [{"text": "avg_not_specified"}]}]}]},
                 {"text": ")"}
             ]},
-            {"attribute": [
-                {"identifier": [{"text": "Calories"}]},
+            {"text": ","},
+            {"param": [
+                {"identifier": [{"text": "type"}]},
                 {"text": "("},
-                {"value": [{"literal": [{"text": "\"Calories parameters\""}]}]},
+                {"value": [{"reference": [{"identifier": [{"text": "w_gear_not_specified"}]}]}]},
                 {"text": ")"}
             ]},
-            {"attribute": [
-                {"identifier": [{"text": "Goal"}]},
+            {"text": ","},
+            {"param": [
+                {"identifier": [{"text": "goal"}]},
                 {"text": "("},
-                {"value": [{"reference": [{"identifier": [{"text": "Maintainance"}]}]}]},
+                {"value": [{"reference": [{"identifier": [{"text": "fit"}]}]}]},
                 {"text": ")"}
             ]},
-            {"attribute": [
-                {"identifier": [{"text": "Time"}]},
-                {"text": "{"},
-                {"attributeList": [{"attribute": [
-                    {"identifier": [{"text": "Busy"}]},
-                    {"text": "("},
-                    {"value": [{"literal": [{"text": "\"10AM-5PM, 11PM-6AM\""}]}]},
-                    {"text": ")"}
-                ]}]},
-                {"text": "}"}
-            ]},
-            {"attribute": [
-                {"identifier": [{"text": "Weights"}]},
-                {"text": "{"},
-                {"attributeList": []},
-                {"text": "}"}
-            ]},
-            {"attribute": [
-                {"identifier": [{"text": "Diet"}]},
+            {"text": ","},
+            {"param": [
+                {"identifier": [{"text": "Person"}]},
                 {"text": "("},
-                {"value": [{"reference": [{"identifier": [{"text": "Standard"}]}]}]},
-                {"text": ")"}
-            ]},
-            {"attribute": [
-                {"identifier": [{"text": "Alergic"}]},
-                {"text": "("},
-                {"value": [{"reference": [
-                    {"identifier": [{"text": "nuts"}]},
-                    {"text": "."},
-                    {"identifier": [{"text": "all"}]}
-                ]}]},
+                {"value": [{"reference": [{"identifier": [{"text": "person"}]}]}]},
                 {"text": ")"}
             ]}
         ]},
-        {"text": "}"}
-    ]}]}
+        {"text": ")"}
+    ]}]},
+    {"statement": [{"outputStmt": [
+        {"text": "output"},
+        {"expression": [{"reference": [{"identifier": [{"text": "training"}]}]}]},
+        {"text": "as"},
+        {"identifier": [{"text": "description"}]},
+        {"text": "table"}
+    ]}]},
+    {"statement": [{"loopStmt": [{"whileStmt": [
+        {"text": "while"},
+        {"text": "("},
+        {"condition": [
+            {"reference": [
+                {"identifier": [{"text": "time"}]},
+                {"text": "."},
+                {"identifier": [{"text": "max"}]}
+            ]},
+            {"text": "!="},
+            {"text": "done"}
+        ]},
+        {"text": ")"},
+        {"block": [
+            {"text": "{"},
+            {"statement": [{"outputStmt": [
+                {"text": "output"},
+                {"expression": [{"reference": [
+                    {"identifier": [{"text": "rep"}]},
+                    {"text": "."},
+                    {"identifier": [{"text": "time"}]}
+                ]}]}
+            ]}]},
+            {"statement": [{"outputStmt": [
+                {"text": "output"},
+                {"expression": [{"reference": [
+                    {"identifier": [{"text": "rest"}]},
+                    {"text": "."},
+                    {"identifier": [{"text": "time"}]}
+                ]}]}
+            ]}]},
+            {"text": "}"}
+        ]}
+    ]}]}]}
 ]}

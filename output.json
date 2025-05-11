@@ -1,0 +1,15 @@
+{
+    "generate_training": {
+        "type": "training",
+        "parameters": {
+            "amount": "avg_not_specified",
+            "goal": "fit",
+            "person": "person",
+            "time": "avg",
+            "type": "w_gear_not_specified"
+        }
+    },
+    "loop": {"type": "while"},
+    "function": "create_user",
+    "create_user": {"id": 1}
+}
