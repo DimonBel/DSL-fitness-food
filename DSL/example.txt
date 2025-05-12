@@ -7,10 +7,22 @@ create user profile {
     Height(1.75)
     Allergies({"Nuts", "Gluten"})
     BusyTime({"09:00-17:00", "19:00-21:00"})
-}
 
-Exercises = {
-    Squat { Weight = 60, Sets = 3, Reps = 5 }
-    BenchPress { Weight = 45, Sets = 4, Reps = 8 }
-    Crunches { Weight = -10, Sets = 3, Reps = 12 }
+    Exercises {
+        Squat {
+            Weight(60)
+            Sets(3)
+            Reps(5)
+        }
+        BenchPress {
+            Weight(45)
+            Sets(4)
+            Reps(8)
+        }
+        Crunches {
+            Weight(10)
+            Sets(3)
+            Reps(12)
+        }
+    }
 }
