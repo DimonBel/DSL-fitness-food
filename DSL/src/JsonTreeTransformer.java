@@ -28,7 +28,7 @@ public class JsonTreeTransformer {
         JSONArray program = rawTree.optJSONArray("program");
         if (program == null) return result;
 
-        JSONObject createObject = null;
+        JSONObject createObject = new JSONObject();
         String functionName = "create_user"; // Default to create_user
 
         // First pass to detect using statement and ID
@@ -43,10 +43,23 @@ public class JsonTreeTransformer {
 
                 // Store ID for later use
                 if (reference != null && reference.contains("ID") && value != null) {
-                    if (createObject == null) {
-                        createObject = new JSONObject();
+                    // Ensure ID is stored as integer if possible
+                    if (value instanceof Double && ((Double)value).intValue() == ((Double)value).doubleValue()) {
+                        createObject.put("id", ((Double)value).intValue());
+                    } else if (value instanceof String) {
+                        try {
+                            Double doubleVal = Double.parseDouble((String)value);
+                            if (doubleVal.intValue() == doubleVal.doubleValue()) {
+                                createObject.put("id", doubleVal.intValue());
+                            } else {
+                                createObject.put("id", doubleVal);
+                            }
+                        } catch (NumberFormatException e) {
+                            createObject.put("id", value);
+                        }
+                    } else {
+                        createObject.put("id", value);
                     }
-                    createObject.put("id", value);
                 }
             }
 
@@ -56,25 +69,6 @@ public class JsonTreeTransformer {
             for (int j = 0; j < statements.length(); j++) {
                 JSONObject stmt = statements.getJSONObject(j);
 
-                if (stmt.has("usingStmt")) {
-                    JSONObject using = handleUsing(stmt.getJSONArray("usingStmt"));
-                    String reference = using.optString("reference");
-                    Object value = using.opt("value");
-
-                    // Store ID for later use
-                    if (reference != null && reference.contains("ID") && value != null) {
-                        if (createObject == null) {
-                            createObject = new JSONObject();
-                        }
-                        // Use integer if it's an integer value
-                        if (value instanceof Double && ((Double)value).intValue() == ((Double)value).doubleValue()) {
-                            createObject.put("id", ((Double)value).intValue());
-                        } else {
-                            createObject.put("id", value);
-                        }
-                    }
-                }
-
                 if (stmt.has("createStmt")) {
                     JSONArray createStmt = stmt.getJSONArray("createStmt");
 
@@ -83,23 +77,21 @@ public class JsonTreeTransformer {
                         JSONObject node = createStmt.getJSONObject(k);
                         if (node.has("identifier")) {
                             JSONArray identifiers = node.getJSONArray("identifier");
-                            if (identifiers.length() >= 2) {
-                                String entityType = identifiers.getJSONObject(1).getString("text");
-                                if (entityType.toLowerCase().contains("user")) {
+                            JSONObject identifier = identifiers.getJSONObject(0);
+                            if (identifier.has("text")) {
+                                String entityType = identifier.getString("text").toLowerCase();
+                                if (entityType.equals("user")) {
                                     functionName = "create_user";
-                                } else if (entityType.toLowerCase().contains("person")) {
+                                    break;
+                                } else if (entityType.equals("person")) {
                                     functionName = "create_person";
+                                    break;
                                 }
                             }
                         }
                     }
                 }
             }
-        }
-
-        // Initialize create object if not done in using statement
-        if (createObject == null) {
-            createObject = new JSONObject();
         }
 
         // Second pass to process all statements
@@ -123,6 +115,15 @@ public class JsonTreeTransformer {
                     // Merge attributes into existing createObject
                     JSONObject attributes = handleCreate(stmt.getJSONArray("createStmt"));
                     for (String key : attributes.keySet()) {
+                        // Skip internal processing keys
+                        if (key.equals("_entityType")) {
+                            if (attributes.getString(key).equals("user")) {
+                                functionName = "create_user";
+                            } else if (attributes.getString(key).equals("person")) {
+                                functionName = "create_person";
+                            }
+                            continue;
+                        }
                         createObject.put(key, attributes.get(key));
                     }
                 } else if (stmt.has("generateStmt")) {
@@ -151,27 +152,68 @@ public class JsonTreeTransformer {
 
     private static JSONArray handleExercisesStmt(JSONArray exercisesStmt) {
         JSONArray exercises = new JSONArray();
+        JSONObject currentExercise = null;
 
         for (int i = 0; i < exercisesStmt.length(); i++) {
             JSONObject stmt = exercisesStmt.getJSONObject(i);
 
-            // First, try to find exerciseEntry directly
             if (stmt.has("exerciseEntry")) {
                 JSONArray entries = stmt.getJSONArray("exerciseEntry");
-                processExerciseEntries(entries, exercises);
-            }
 
-            // If not found, search deeper for exerciseEntry
-            else {
-                // Look for exerciseEntry in child objects
-                for (String key : stmt.keySet()) {
-                    Object value = stmt.get(key);
-                    if (value instanceof JSONArray) {
-                        JSONArray array = (JSONArray)value;
-                        for (int j = 0; j < array.length(); j++) {
-                            if (array.getJSONObject(j).has("exerciseEntry")) {
-                                JSONArray entries = array.getJSONObject(j).getJSONArray("exerciseEntry");
-                                processExerciseEntries(entries, exercises);
+                for (int j = 0; j < entries.length(); j++) {
+                    JSONObject entry = entries.getJSONObject(j);
+
+                    // Create a new exercise when we find a name
+                    if (entry.has("text") && !entry.getString("text").equals("{") &&
+                            !entry.getString("text").equals("}")) {
+                        currentExercise = new JSONObject();
+                        currentExercise.put("name", entry.getString("text"));
+                        exercises.put(currentExercise);
+                    }
+
+                    // Add parameters to the current exercise
+                    if (entry.has("exerciseParams") && currentExercise != null) {
+                        JSONArray params = entry.getJSONArray("exerciseParams");
+
+                        for (int k = 0; k < params.length(); k++) {
+                            JSONObject param = params.getJSONObject(k);
+                            if (param.has("text")) {
+                                String text = param.getString("text");
+
+                                if (text.equals("Weight")) {
+                                    // Look ahead for the value after the parenthesis
+                                    if (k + 2 < params.length() && params.getJSONObject(k+2).has("text")) {
+                                        String valueText = params.getJSONObject(k+2).getString("text");
+                                        try {
+                                            double value = Double.parseDouble(valueText);
+                                            currentExercise.put("weight", value);
+                                        } catch (NumberFormatException e) {
+                                            currentExercise.put("weight", valueText);
+                                        }
+                                    }
+                                } else if (text.equals("Sets")) {
+                                    // Look ahead for the value after the parenthesis
+                                    if (k + 2 < params.length() && params.getJSONObject(k+2).has("text")) {
+                                        String valueText = params.getJSONObject(k+2).getString("text");
+                                        try {
+                                            double value = Double.parseDouble(valueText);
+                                            currentExercise.put("sets", value);
+                                        } catch (NumberFormatException e) {
+                                            currentExercise.put("sets", valueText);
+                                        }
+                                    }
+                                } else if (text.equals("Reps")) {
+                                    // Look ahead for the value after the parenthesis
+                                    if (k + 2 < params.length() && params.getJSONObject(k+2).has("text")) {
+                                        String valueText = params.getJSONObject(k+2).getString("text");
+                                        try {
+                                            double value = Double.parseDouble(valueText);
+                                            currentExercise.put("reps", value);
+                                        } catch (NumberFormatException e) {
+                                            currentExercise.put("reps", valueText);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -182,110 +224,18 @@ public class JsonTreeTransformer {
         return exercises;
     }
 
-    private static void processExerciseEntries(JSONArray entries, JSONArray exercises) {
-        for (int j = 0; j < entries.length(); j++) {
-            JSONObject entry = entries.getJSONObject(j);
-            JSONObject exercise = new JSONObject();
-
-            // Get exercise name (might be in different places based on the parser output)
-            if (entry.has("IDENTIFIER")) {
-                exercise.put("name", entry.getString("IDENTIFIER"));
-            } else if (entry.has("identifier")) {
-                JSONArray identifiers = entry.getJSONArray("identifier");
-                if (identifiers.length() > 0) {
-                    exercise.put("name", identifiers.getJSONObject(0).optString("text"));
-                }
-            } else {
-                // Look for text property that might contain the exercise name
-                for (String key : entry.keySet()) {
-                    if (entry.get(key) instanceof JSONObject &&
-                            ((JSONObject)entry.get(key)).has("text")) {
-                        exercise.put("name", ((JSONObject)entry.get(key)).getString("text"));
-                        break;
-                    }
-                }
-            }
-
-            // Process parameters
-            if (entry.has("exerciseParams")) {
-                extractExerciseParams(entry.getJSONArray("exerciseParams"), exercise);
-            }
-
-            // If we have a valid exercise with at least a name, add it
-            if (exercise.has("name") && !exercise.getString("name").isEmpty()) {
-                exercises.put(exercise);
-            }
-        }
-    }
-
-    private static void extractExerciseParams(JSONArray params, JSONObject exercise) {
-        for (int k = 0; k < params.length(); k++) {
-            JSONObject param = params.getJSONObject(k);
-
-            // Try to extract Weight, Sets, Reps
-            extractParamValue(param, "Weight", "weight", exercise);
-            extractParamValue(param, "Sets", "sets", exercise);
-            extractParamValue(param, "Reps", "reps", exercise);
-        }
-    }
-
-    private static void extractParamValue(JSONObject param, String srcKey, String targetKey, JSONObject exercise) {
-        // Direct property
-        if (param.has(srcKey)) {
-            try {
-                String valueStr = param.get(srcKey).toString();
-                // Try to parse as number
-                exercise.put(targetKey, Double.parseDouble(valueStr));
-            } catch (NumberFormatException e) {
-                exercise.put(targetKey, param.get(srcKey));
-            }
-            return;
-        }
-
-        // Look for NUMBER property for the value
-        if (param.has("NUMBER") && param.has("text") && param.getString("text").equals(srcKey)) {
-            try {
-                exercise.put(targetKey, Double.parseDouble(param.getString("NUMBER")));
-            } catch (NumberFormatException e) {
-                exercise.put(targetKey, param.getString("NUMBER"));
-            }
-            return;
-        }
-
-        // Search deeper
-        for (String key : param.keySet()) {
-            if (param.get(key) instanceof JSONObject) {
-                JSONObject child = param.getJSONObject(key);
-                if (child.has(srcKey)) {
-                    try {
-                        exercise.put(targetKey, Double.parseDouble(child.get(srcKey).toString()));
-                    } catch (NumberFormatException e) {
-                        exercise.put(targetKey, child.get(srcKey));
-                    }
-                    return;
-                }
-            } else if (param.get(key) instanceof JSONArray) {
-                JSONArray array = param.getJSONArray(key);
-                for (int i = 0; i < array.length(); i++) {
-                    if (array.getJSONObject(i).has(srcKey)) {
-                        try {
-                            exercise.put(targetKey, Double.parseDouble(array.getJSONObject(i).get(srcKey).toString()));
-                        } catch (NumberFormatException e) {
-                            exercise.put(targetKey, array.getJSONObject(i).get(srcKey));
-                        }
-                        return;
-                    }
-                }
-            }
-        }
-    }
-
     private static JSONObject handleCreate(JSONArray createStmt) {
         JSONObject result = new JSONObject();
+
+        // Track if we're currently parsing an attribute outside the attributeList
+        boolean inDirectAttribute = false;
+        String currentAttribute = "";
+
+        // First pass: collect attributeList items
         for (int i = 0; i < createStmt.length(); i++) {
             JSONObject node = createStmt.getJSONObject(i);
 
-            // For attributes directly from createStmt
+            // Process attributes in attributeList
             if (node.has("attributeList")) {
                 JSONArray attributes = node.getJSONArray("attributeList");
                 for (int j = 0; j < attributes.length(); j++) {
@@ -322,98 +272,145 @@ public class JsonTreeTransformer {
                 }
             }
 
-            // Special case handling for direct attributes
-            if (node.has("attribute")) {
-                JSONArray attr = node.getJSONArray("attribute");
-                String key = "";
-                if (attr.length() > 0) {
-                    if (attr.getJSONObject(0).has("identifier")) {
-                        key = formatKey(attr.getJSONObject(0).getJSONArray("identifier").getJSONObject(0).getString("text"));
-                    } else if (attr.getJSONObject(0).has("text")) {
-                        key = formatKey(attr.getJSONObject(0).getString("text"));
-                    }
-                }
+            // Process direct attributes (Weight, Height, etc.)
+            if (node.has("text")) {
+                String text = node.getString("text");
 
-                if (!key.isEmpty()) {
-                    if (key.equals("weight") || key.equals("height")) {
-                        // Try to convert to number
-                        Object value = extractValue(attr);
-                        if (value instanceof String) {
-                            try {
-                                double doubleVal = Double.parseDouble((String)value);
-                                result.put(key, doubleVal);
-                            } catch (NumberFormatException e) {
-                                result.put(key, value);
+                // Start of a direct attribute
+                if (text.equals("Weight") || text.equals("Height") ||
+                        text.equals("Allergies") || text.equals("BusyTime")) {
+                    inDirectAttribute = true;
+                    currentAttribute = formatKey(text);
+
+                    // Extract the value for this attribute
+                    if (i + 2 < createStmt.length() && createStmt.getJSONObject(i+1).has("text") &&
+                            createStmt.getJSONObject(i+1).getString("text").equals("(")) {
+
+                        // Simple numeric value (Weight, Height)
+                        if (text.equals("Weight") || text.equals("Height")) {
+                            if (i + 3 < createStmt.length() && createStmt.getJSONObject(i+2).has("text")) {
+                                String valueStr = createStmt.getJSONObject(i+2).getString("text");
+                                try {
+                                    result.put(currentAttribute, Double.parseDouble(valueStr));
+                                } catch (NumberFormatException e) {
+                                    result.put(currentAttribute, valueStr);
+                                }
                             }
-                        } else {
-                            result.put(key, value);
                         }
-                    } else {
-                        result.put(key, extractValue(attr));
+                        // Array values (Allergies, BusyTime)
+                        else if (text.equals("Allergies") || text.equals("BusyTime")) {
+                            JSONArray arrayValues = new JSONArray();
+
+                            // Extract array elements
+                            if (text.equals("Allergies")) {
+                                // Find all string values between { and }
+                                for (int j = i + 3; j < createStmt.length(); j++) {
+                                    JSONObject arrayNode = createStmt.getJSONObject(j);
+                                    if (arrayNode.has("text")) {
+                                        String arrayText = arrayNode.getString("text");
+                                        if (arrayText.equals("}")) break;
+                                        if (arrayText.startsWith("\"") && arrayText.endsWith("\"")) {
+                                            arrayValues.put(stripQuotes(arrayText));
+                                        }
+                                    }
+                                }
+                                result.put(currentAttribute, arrayValues);
+                            }
+                            else if (text.equals("BusyTime")) {
+                                // Process time ranges
+                                for (int j = i + 3; j < createStmt.length(); j++) {
+                                    JSONObject arrayNode = createStmt.getJSONObject(j);
+                                    if (arrayNode.has("text")) {
+                                        String arrayText = arrayNode.getString("text");
+                                        if (arrayText.equals("}")) break;
+                                        if (arrayText.startsWith("\"") && arrayText.endsWith("\"")) {
+                                            String timeRange = stripQuotes(arrayText);
+                                            if (timeRange.contains("-")) {
+                                                String[] times = timeRange.split("-");
+                                                if (times.length == 2) {
+                                                    JSONArray range = new JSONArray();
+                                                    range.put(times[0].trim());
+                                                    range.put(times[1].trim());
+                                                    arrayValues.put(range);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                result.put(currentAttribute, arrayValues);
+                            }
+                        }
+                    }
+                    inDirectAttribute = false;
+                }
+            }
+        }
+
+        // Second pass: Look for identifier that might determine entity type
+        for (int i = 0; i < createStmt.length(); i++) {
+            JSONObject node = createStmt.getJSONObject(i);
+
+            if (node.has("identifier")) {
+                JSONArray identifiers = node.getJSONArray("identifier");
+                for (int j = 0; j < identifiers.length(); j++) {
+                    JSONObject identifier = identifiers.getJSONObject(j);
+                    if (identifier.has("text")) {
+                        String text = identifier.getString("text");
+                        if (text.equalsIgnoreCase("user")) {
+                            result.put("_entityType", "user");
+                        } else if (text.equalsIgnoreCase("person")) {
+                            result.put("_entityType", "person");
+                        } else if (text.equalsIgnoreCase("profile")) {
+                            result.put("_entityType", "profile");
+                        }
                     }
                 }
             }
         }
+
         return result;
     }
 
     private static JSONObject handleUsing(JSONArray usingStmt) {
         JSONObject result = new JSONObject();
+        String referenceValue = "";
 
         // Extract the reference part (person.ID)
         for (int i = 0; i < usingStmt.length(); i++) {
             JSONObject node = usingStmt.getJSONObject(i);
 
-            // Handle reference (e.g., person.ID)
-            if (node.has("reference")) {
-                result.put("reference", joinIdentifiers(node.getJSONArray("reference")));
-            } else if (node.has("identifier")) {
-                result.put("reference", node.getJSONArray("identifier").getJSONObject(0).getString("text"));
-            }
-        }
-
-        // Look for literals or numbers which would be the assigned value
-        for (int i = 0; i < usingStmt.length(); i++) {
-            JSONObject node = usingStmt.getJSONObject(i);
-
-            // Check for direct literal
-            if (node.has("literal")) {
-                String valueStr = node.getJSONArray("literal").getJSONObject(0).getString("text");
-                try {
-                    // Try parsing as number first
-                    result.put("value", Double.parseDouble(valueStr));
-                } catch (NumberFormatException e) {
-                    // Otherwise store as string
-                    result.put("value", stripQuotes(valueStr));
-                }
-                return result; // Found direct literal value
-            }
-
-            // Check for NUMBER
-            if (node.has("NUMBER")) {
-                String valueStr = node.getString("NUMBER");
-                try {
-                    // Try parsing as int or double
-                    double doubleVal = Double.parseDouble(valueStr);
-                    if (doubleVal == (int)doubleVal) {
-                        result.put("value", (int)doubleVal);
+            // Build reference string from text elements
+            if (node.has("text")) {
+                String text = node.getString("text");
+                if (!text.equals("using") && !text.equals("=")) {
+                    if (text.equals(".")) {
+                        referenceValue += text;
                     } else {
-                        result.put("value", doubleVal);
+                        referenceValue += text + " ";
                     }
-                } catch (NumberFormatException e) {
-                    result.put("value", stripQuotes(valueStr));
                 }
-                return result; // Found NUMBER value
             }
 
-            // Search deeper in nested objects
-            if (node.has("value")) {
-                JSONArray valueArray = node.getJSONArray("value");
-                for (int j = 0; j < valueArray.length(); j++) {
-                    JSONObject valueNode = valueArray.getJSONObject(j);
-                    if (valueNode.has("literal")) {
-                        String valueStr = valueNode.getJSONArray("literal").getJSONObject(0).getString("text");
+            // Handle identifier nodes
+            if (node.has("identifier")) {
+                JSONArray identArray = node.getJSONArray("identifier");
+                for (int j = 0; j < identArray.length(); j++) {
+                    JSONObject identObj = identArray.getJSONObject(j);
+                    if (identObj.has("text")) {
+                        referenceValue += identObj.getString("text") + " ";
+                    }
+                }
+            }
+
+            // Capture literal values
+            if (node.has("literal")) {
+                JSONArray literalArray = node.getJSONArray("literal");
+                for (int j = 0; j < literalArray.length(); j++) {
+                    JSONObject litObj = literalArray.getJSONObject(j);
+                    if (litObj.has("text")) {
+                        String valueStr = litObj.getString("text");
                         try {
+                            // Try parsing as number
                             double doubleVal = Double.parseDouble(valueStr);
                             if (doubleVal == (int)doubleVal) {
                                 result.put("value", (int)doubleVal);
@@ -421,36 +418,22 @@ public class JsonTreeTransformer {
                                 result.put("value", doubleVal);
                             }
                         } catch (NumberFormatException e) {
+                            // Otherwise store as string
                             result.put("value", stripQuotes(valueStr));
                         }
-                        return result; // Found nested literal value
                     }
                 }
             }
         }
 
-        // Last resort: look for "=" and then a number
-        for (int i = 0; i < usingStmt.length(); i++) {
-            JSONObject node = usingStmt.getJSONObject(i);
-            if (node.has("text") && node.getString("text").equals("=")) {
-                // The value should be the next item
-                if (i + 1 < usingStmt.length()) {
-                    JSONObject valueNode = usingStmt.getJSONObject(i + 1);
-                    if (valueNode.has("text")) {
-                        String valueStr = valueNode.getString("text");
-                        try {
-                            double doubleVal = Double.parseDouble(valueStr);
-                            if (doubleVal == (int)doubleVal) {
-                                result.put("value", (int)doubleVal);
-                            } else {
-                                result.put("value", doubleVal);
-                            }
-                        } catch (NumberFormatException e) {
-                            result.put("value", stripQuotes(valueStr));
-                        }
-                    }
-                }
-            }
+        // Clean up and set the reference
+        referenceValue = referenceValue.trim();
+        if (referenceValue.contains("person . ID")) {
+            result.put("reference", "person.ID");
+        } else if (referenceValue.contains("ID")) {
+            result.put("reference", "ID");
+        } else {
+            result.put("reference", referenceValue);
         }
 
         return result;

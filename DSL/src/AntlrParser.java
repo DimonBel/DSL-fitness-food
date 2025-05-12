@@ -7,7 +7,7 @@ import java.io.IOException;
 public class AntlrParser {
         public static void main(String[] args) throws IOException {
                 String[] files = {
-                        "./DSL/example3.txt",
+                        "./DSL/example.txt",
                 };
 
                 for (String file : files) {

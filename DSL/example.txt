@@ -20,7 +20,7 @@ create user profile {
             Reps(8)
         }
         Crunches {
-            Weight(-10)
+            Weight(10)
             Sets(3)
             Reps(12)
         }
