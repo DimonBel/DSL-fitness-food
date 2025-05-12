@@ -9,7 +9,8 @@ import java.nio.file.Paths;
 
 public class JsonTreeTransformer {
 
-    public static void main(String[] args) throws IOException {
+
+    public static void writeToFile() throws IOException {
         String inputPath = "parseTree.json";
         String outputPath = "output.json";
 
@@ -22,7 +23,9 @@ public class JsonTreeTransformer {
             writer.write(result.toString(4));
             System.out.println("output.json saved");
         }
+
     }
+
 
     public static JSONObject transform(JSONObject rawTree) {
         JSONObject result = new JSONObject();

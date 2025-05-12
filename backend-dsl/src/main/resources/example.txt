@@ -3,8 +3,8 @@ using person.ID = 1
 create user profile {
     Goal("Weight Loss")
     Diet("Vegetarian")
-    Weight(70.5)
-    Height(1.75)
+    Weight(90.5)
+    Height(1.95)
     Allergies({"Nuts", "Gluten"})
     BusyTime({"09:00-17:00", "19:00-21:00"})
 }

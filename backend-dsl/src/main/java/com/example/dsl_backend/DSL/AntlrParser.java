@@ -6,8 +6,12 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static com.example.dsl_backend.DSL.JsonTreeTransformer.writeToFile;
+
 public class AntlrParser {
-        public static void main(String[] args) throws IOException {
+
+        
+        public static void parse() throws IOException {
                 String[] files = {
                         "src/main/resources/example.txt",
                 };
@@ -37,4 +41,5 @@ public class AntlrParser {
                         }
                 }
         }
+
 }

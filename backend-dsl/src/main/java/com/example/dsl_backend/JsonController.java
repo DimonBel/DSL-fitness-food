@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.example.dsl_backend.DSL.AntlrParser.parse;
+import static com.example.dsl_backend.DSL.JsonTreeTransformer.writeToFile;
 import static com.example.dsl_backend.Main.interpret;
 
 
@@ -21,8 +23,11 @@ public class JsonController {
     private static final String JSON_FILE_PATH = "../interpreter/output_test.json";
 
 
+
     @PostMapping(value = "/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getJsonData() throws IOException {
+        parse();
+        writeToFile();
         interpret();
 
         // Get the project root directory

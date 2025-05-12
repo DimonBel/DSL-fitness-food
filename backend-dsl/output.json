@@ -26,7 +26,7 @@
                 "weight": -10
             }
         ],
-        "weight": 70.5,
+        "weight": 90.5,
         "diet": "Vegetarian",
         "busyTime": [
             [
@@ -38,6 +38,6 @@
                 "21:00"
             ]
         ],
-        "height": 1.75
+        "height": 1.95
     }
 }
