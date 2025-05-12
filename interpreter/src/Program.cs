@@ -14,7 +14,7 @@ class Program
         //\DSL\DSL-fitness-food\interpreter\input_test.json
 
 
-        string inputPath = Path.Combine(projectRootInput, "DSL\\output.json");
+        string inputPath = Path.Combine(projectRootInput, "backend-dsl\\output.json");
         string outputPath = Path.Combine(projectRoot, "output_test.json");
 
         Console.WriteLine($"Reading from: {inputPath}");

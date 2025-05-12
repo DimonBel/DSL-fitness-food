@@ -1,4 +1,5 @@
 // Generated from grammar/FitnessNutrition.g4 by ANTLR 4.9.3
+package com.example.dsl_backend.DSL;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**

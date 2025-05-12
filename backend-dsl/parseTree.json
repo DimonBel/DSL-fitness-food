@@ -28,7 +28,7 @@
         ]},
         {"text": "Weight"},
         {"text": "("},
-        {"text": "81.5"},
+        {"text": "70.5"},
         {"text": ")"},
         {"text": "Height"},
         {"text": "("},
@@ -40,10 +40,6 @@
         {"text": "\"Nuts\""},
         {"text": ","},
         {"text": "\"Gluten\""},
-        {"text": ","},
-        {"text": "\"Dairy\""},
-        {"text": ","},
-        {"text": "\"Eggs\""},
         {"text": "}"},
         {"text": ")"},
         {"text": "BusyTime"},
@@ -53,28 +49,46 @@
         {"text": ","},
         {"text": "\"19:00-21:00\""},
         {"text": "}"},
-        {"text": ")"}
+        {"text": ")"},
+        {"text": "}"}
     ]}]},
     {"statement": [{"exercisesStmt": [
         {"text": "Exercises"},
-        {"text": "<missing '='>"},
+        {"text": "="},
         {"text": "{"},
+        {"exerciseEntry": [
+            {"text": "Squat"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "="},
+                {"text": "60"},
+                {"text": ","},
+                {"text": "Sets"},
+                {"text": "="},
+                {"text": "3"},
+                {"text": ","},
+                {"text": "Reps"},
+                {"text": "="},
+                {"text": "5"}
+            ]},
+            {"text": "}"}
+        ]},
         {"exerciseEntry": [
             {"text": "BenchPress"},
             {"text": "{"},
             {"exerciseParams": [
                 {"text": "Weight"},
-                {"text": "("},
+                {"text": "="},
                 {"text": "45"},
-                {"text": ")"},
+                {"text": ","},
                 {"text": "Sets"},
-                {"text": "("},
+                {"text": "="},
                 {"text": "4"},
-                {"text": ")"},
+                {"text": ","},
                 {"text": "Reps"},
-                {"text": "("},
-                {"text": "8"},
-                {"text": ")"}
+                {"text": "="},
+                {"text": "8"}
             ]},
             {"text": "}"}
         ]},
@@ -83,17 +97,16 @@
             {"text": "{"},
             {"exerciseParams": [
                 {"text": "Weight"},
-                {"text": "("},
-                {"text": "10"},
-                {"text": ")"},
+                {"text": "="},
+                {"text": "-10"},
+                {"text": ","},
                 {"text": "Sets"},
-                {"text": "("},
+                {"text": "="},
                 {"text": "3"},
-                {"text": ")"},
+                {"text": ","},
                 {"text": "Reps"},
-                {"text": "("},
-                {"text": "12"},
-                {"text": ")"}
+                {"text": "="},
+                {"text": "12"}
             ]},
             {"text": "}"}
         ]},

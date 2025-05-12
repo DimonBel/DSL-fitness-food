@@ -1,4 +1,5 @@
-// Generated from d:/uni/project_ELSD/DSL-fitness-food/DSL/grammar/FitnessNutrition.g4 by ANTLR 4.13.1
+package com.example.dsl_backend.DSL;
+// Generated from C:\Users\Duma\OneDrive\������� ����\DSL\DSL-fitness-food\DSL\grammar\FitnessNutrition.g4 by ANTLR 4.9.3
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

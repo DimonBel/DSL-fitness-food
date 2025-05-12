@@ -1,3 +1,5 @@
+package com.example.dsl_backend.DSL;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
@@ -7,7 +9,7 @@ import java.io.IOException;
 public class AntlrParser {
         public static void main(String[] args) throws IOException {
                 String[] files = {
-                        "./example.txt",
+                        "src/main/resources/example.txt",
                 };
 
                 for (String file : files) {

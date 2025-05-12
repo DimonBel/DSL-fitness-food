@@ -1,5 +1,5 @@
-// Generated from d:/uni/project_ELSD/DSL-fitness-food/DSL/grammar/FitnessNutrition.g4 by ANTLR 4.13.1
-
+// Generated from C:\Users\Duma\OneDrive\������� ����\DSL\DSL-fitness-food\DSL\grammar\FitnessNutrition.g4 by ANTLR 4.9.3
+package com.example.dsl_backend.DSL;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -9,7 +9,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-@SuppressWarnings("CheckReturnValue")
 public class FitnessNutritionBaseListener implements FitnessNutritionListener {
 	/**
 	 * {@inheritDoc}
