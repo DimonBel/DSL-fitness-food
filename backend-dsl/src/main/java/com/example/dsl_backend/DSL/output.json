@@ -1,0 +1,39 @@
+{
+    "function": "create_user",
+    "create_user": {
+        "allergies": [
+            "Nuts",
+            "Gluten",
+            "Dairy",
+            "Eggs"
+        ],
+        "goal": "Weight Loss",
+        "exercises": [
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "BenchPress",
+                "weight": 45
+            },
+            {
+                "reps": 12,
+                "sets": 3,
+                "name": "Crunches",
+                "weight": 10
+            }
+        ],
+        "weight": 81.5,
+        "diet": "Vegetarian",
+        "busyTime": [
+            [
+                "09:00",
+                "17:00"
+            ],
+            [
+                "19:00",
+                "21:00"
+            ]
+        ],
+        "height": 1.75
+    }
+}

@@ -1,0 +1,102 @@
+{"program": [
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
+        {"identifier": [{"text": "person"}]},
+        {"text": "."},
+        {"identifier": [{"text": "ID"}]},
+        {"text": "="},
+        {"literal": [{"text": "1"}]}
+    ]}]},
+    {"statement": [{"createStmt": [
+        {"text": "create"},
+        {"identifier": [{"text": "user"}]},
+        {"identifier": [{"text": "profile"}]},
+        {"text": "{"},
+        {"attributeList": [
+            {"attribute": [
+                {"identifier": [{"text": "Goal"}]},
+                {"text": "("},
+                {"value": [{"literal": [{"text": "\"Weight Loss\""}]}]},
+                {"text": ")"}
+            ]},
+            {"attribute": [
+                {"identifier": [{"text": "Diet"}]},
+                {"text": "("},
+                {"value": [{"literal": [{"text": "\"Vegetarian\""}]}]},
+                {"text": ")"}
+            ]}
+        ]},
+        {"text": "Weight"},
+        {"text": "("},
+        {"text": "81.5"},
+        {"text": ")"},
+        {"text": "Height"},
+        {"text": "("},
+        {"text": "1.75"},
+        {"text": ")"},
+        {"text": "Allergies"},
+        {"text": "("},
+        {"text": "{"},
+        {"text": "\"Nuts\""},
+        {"text": ","},
+        {"text": "\"Gluten\""},
+        {"text": ","},
+        {"text": "\"Dairy\""},
+        {"text": ","},
+        {"text": "\"Eggs\""},
+        {"text": "}"},
+        {"text": ")"},
+        {"text": "BusyTime"},
+        {"text": "("},
+        {"text": "{"},
+        {"text": "\"09:00-17:00\""},
+        {"text": ","},
+        {"text": "\"19:00-21:00\""},
+        {"text": "}"},
+        {"text": ")"}
+    ]}]},
+    {"statement": [{"exercisesStmt": [
+        {"text": "Exercises"},
+        {"text": "<missing '='>"},
+        {"text": "{"},
+        {"exerciseEntry": [
+            {"text": "BenchPress"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "("},
+                {"text": "45"},
+                {"text": ")"},
+                {"text": "Sets"},
+                {"text": "("},
+                {"text": "4"},
+                {"text": ")"},
+                {"text": "Reps"},
+                {"text": "("},
+                {"text": "8"},
+                {"text": ")"}
+            ]},
+            {"text": "}"}
+        ]},
+        {"exerciseEntry": [
+            {"text": "Crunches"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "("},
+                {"text": "10"},
+                {"text": ")"},
+                {"text": "Sets"},
+                {"text": "("},
+                {"text": "3"},
+                {"text": ")"},
+                {"text": "Reps"},
+                {"text": "("},
+                {"text": "12"},
+                {"text": ")"}
+            ]},
+            {"text": "}"}
+        ]},
+        {"text": "}"}
+    ]}]}
+]}
