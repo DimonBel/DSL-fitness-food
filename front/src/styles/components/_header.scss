@@ -1,0 +1,41 @@
+@use './variables' as *;
+@use '../mixins/button' as *;
+@use '../mixins/box-shadow' as *;
+
+header {
+    background-color: $header-color;
+    color: $accent-color-1;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-inline: $panel-header-margin;
+    margin-top: $panel-header-margin;
+    border-radius: $border-radius-1;
+
+    @include BoxShadow;
+
+    .logo {
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+      
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+            color: $accent-color-1;
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: color 0.2s;
+
+            &:hover {
+                color: $accent-color-2;
+            }
+        }
+    }
+}

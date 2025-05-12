@@ -1,0 +1,13 @@
+.main-layout {
+    display: flex;
+    height: calc(100vh - 64px);
+
+    .editor-container {
+        flex: 1;
+    }
+
+    .output-container {
+        flex: 1;
+    }
+}
+

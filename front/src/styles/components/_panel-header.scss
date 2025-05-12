@@ -1,0 +1,34 @@
+@use './variables' as *;
+@use '../mixins/button' as *;
+@use '../mixins/box-shadow' as *;
+
+.panel-header {
+    background: $bg-color-3;
+    color: $text-color-1;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: $border-radius-1;
+    margin: $panel-header-margin;
+
+    @include BoxShadow;
+
+    span {
+        color: $text-color-1;
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    button {
+        @include Button ($button-color-1, $button-color-hover, $button-text-color-1);
+    }
+}

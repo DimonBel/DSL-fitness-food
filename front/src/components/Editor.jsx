@@ -2,8 +2,7 @@ import { useState } from "react";
 
 const Editor = ({ onRun }) => {
   const [code, setCode] = useState(
-    `
-using person.ID = 1
+    `using person.ID = 1
 
 create user profile {
     Goal("Weight Loss")
@@ -18,8 +17,7 @@ Exercises = {
     Squat { Weight = 60, Sets = 3, Reps = 5 }
     BenchPress { Weight = 45, Sets = 4, Reps = 8 }
     Crunches { Weight = -10, Sets = 3, Reps = 12 }
-}
-  `
+}`
   );
 
   return (

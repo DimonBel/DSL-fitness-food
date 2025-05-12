@@ -1,0 +1,31 @@
+@use './variables' as *;
+@use '../mixins/box-shadow' as *;
+
+.panel-content {
+    background-color: $bg-color-2;
+    border-radius: $border-radius-1;
+    margin: $panel-header-margin;
+    min-height: $panel-min-height;
+    
+    @include BoxShadow;
+    
+    overflow: hidden;
+
+    .empty-state {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+    }
+    
+    .empty-message {
+        text-align: center;
+        color: #6c757d;
+
+        i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #adb5bd;
+        }
+    }
+}

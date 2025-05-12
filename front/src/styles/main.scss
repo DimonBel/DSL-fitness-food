@@ -1,0 +1,13 @@
+@use './components/header' as *;
+@use './components/panel-header' as *;
+@use './components/main-panel' as *;
+@use './components/panels' as *;
+@use './components/textarea' as *;
+@use './components/output' as *;
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+}

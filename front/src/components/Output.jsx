@@ -1,5 +1,3 @@
-import './Output.css'; // We'll create this CSS file
-
 const Output = ({ outputData, isLoading }) => {
   // Функция для расчета процентов макронутриентов
   const calculateMacros = (mealPlan) => {
@@ -53,11 +51,11 @@ const Output = ({ outputData, isLoading }) => {
       <div className="output-container">
         <div className="panel-header">
           <span>Output</span>
+          <button className="export-button">Export</button>
         </div>
         <div className="panel-content empty-state">
           <div className="empty-message">
-            <i className="icon-food"></i>
-            <p>No data available. Run the DSL code to generate your personalized plan.</p>
+            <p>Run the DSL code to generate your personalized plan.</p>
           </div>
         </div>
       </div>
@@ -67,10 +65,8 @@ const Output = ({ outputData, isLoading }) => {
   return (
     <div className="output-container">
       <div className="panel-header">
-        <h2><i className="icon-nutrition"></i> Nutrition Dashboard</h2>
-        <button className="export-button">
-          <i className="icon-download"></i> Export PDF
-        </button>
+        <span>Output</span>
+        <button className="export-button">Export</button>
       </div>
 
       <div className="panel-content">

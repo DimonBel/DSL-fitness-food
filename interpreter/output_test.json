@@ -1,6 +1,6 @@
 {
-  "id": 1,
-  "weight": 70.5,
+  "id": 0,
+  "weight": 81.5,
   "height": 1.75,
   "goal": "Weight Loss",
   "busyTime": [
@@ -16,30 +16,26 @@
   "diet": "Vegetarian",
   "allergies": [
     "Nuts",
-    "Gluten"
+    "Gluten",
+    "Dairy",
+    "Eggs"
   ],
   "exercises": [
     {
-      "name": "Squat",
-      "weight": 60,
-      "sets": 3,
-      "reps": 5
-    },
-    {
-      "name": "Bench Press",
+      "name": "BenchPress",
       "weight": 45,
       "sets": 4,
       "reps": 8
     },
     {
       "name": "Crunches",
-      "weight": -10,
+      "weight": 10,
       "sets": 3,
       "reps": 12
     }
   ],
-  "bmi": 23.020409,
-  "caloriesPerDay": 1730.7505,
+  "bmi": 26.612246,
+  "caloriesPerDay": 1878.1174,
   "MealPlan": {
     "Breakfast": [
       {
