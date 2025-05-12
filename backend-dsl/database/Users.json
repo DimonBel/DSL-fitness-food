@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "",
+      "weight": 90.5,
+      "height": 1.95,
+      "age": 0,
+      "goal": "Weight Loss",
+      "busyTime": [
+        [
+          "09:00",
+          "17:00"
+        ],
+        [
+          "19:00",
+          "21:00"
+        ]
+      ],
+      "diet": "Vegetarian",
+      "allergies": [
+        "Nuts",
+        "Gluten"
+      ],
+      "exercises": [
+        {
+          "name": "Squat",
+          "weight": 60,
+          "sets": 3,
+          "reps": 5
+        },
+        {
+          "name": "BenchPress",
+          "weight": 45,
+          "sets": 4,
+          "reps": 8
+        },
+        {
+          "name": "Crunches",
+          "weight": 0,
+          "sets": 3,
+          "reps": 12
+        }
+      ],
+      "bmi": 23.80013,
+      "caloriesPerDay": 2043.6,
+      "MealPlan": {
+        "Breakfast": [],
+        "Lunch": [],
+        "Dinner": [],
+        "Snacks": [],
+        "TotalCalories": 0,
+        "TotalProteins": 0,
+        "TotalCarbs": 0,
+        "TotalFats": 0
+      },
+      "TrainingSchedule": {
+        "Days": {
+          "Monday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Tuesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Wednesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Thursday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Friday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Saturday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Sunday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          }
+        }
+      }
+    }
+  ]
+}

@@ -2,43 +2,23 @@
   "function": "create_user",
   "create_user": {
     "id": 1,
+    "name": "Pirojok Sdobnii",
     "weight": 70.5,
     "height": 1.75,
+    "age": 30,
     "goal": "Weight Loss",
     "busyTime": [
-      [
-        "09:00",
-        "17:00"
-      ],
-      [
-        "19:00",
-        "21:00"
-      ]
+      ["09:00", "17:00"],
+      ["19:00", "21:00"]
     ],
     "diet": "Vegetarian",
-    "allergies": [
-      "Nuts",
-      "Gluten"
-    ],
+    "allergies": ["Gluten"],
     "exercises": [
-      {
-        "name": "Squat",
-        "weight": 60,
-        "sets": 3,
-        "reps": 5
-      },
-      {
-        "name": "Bench Press",
-        "weight": 45,
-        "sets": 4,
-        "reps": 8
-      },
-      {
-        "name": "Crunches",
-        "weight": -10,
-        "sets": 3,
-        "reps": 12
-      }
+		{ "name": "Squat", "weight": 60, "sets": 3, "reps": 5, "type": "Strength" },
+		{ "name": "Bench Press", "weight": 45, "sets": 4, "reps": 8, "type": "Strength" },
+		{ "name": "Crunches", "weight": -10, "sets": 3, "reps": 12, "type": "Core"}
     ]
   }
 }
+
+

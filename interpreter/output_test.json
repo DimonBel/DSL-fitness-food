@@ -1,7 +1,9 @@
 {
   "id": 0,
-  "weight": 90.5,
+  "name": "Pirojok Sdobnii",
+  "weight": 110.5,
   "height": 1.95,
+  "age": 0,
   "goal": "Weight Loss",
   "busyTime": [
     [
@@ -15,7 +17,6 @@
   ],
   "diet": "Vegetarian",
   "allergies": [
-    "Nuts",
     "Gluten"
   ],
   "exercises": [
@@ -33,74 +34,60 @@
     },
     {
       "name": "Crunches",
-      "weight": -10,
+      "weight": 0,
       "sets": 3,
       "reps": 12
     }
   ],
-  "bmi": 23.80013,
-  "caloriesPerDay": 2094.6704,
+  "bmi": 29.059828,
+  "caloriesPerDay": 2235.6,
   "MealPlan": {
-    "Breakfast": [
-      {
-        "Name": "Oatmeal",
-        "Description": "",
-        "Calories": 300,
-        "Carbs": 50,
-        "Proteins": 10,
-        "Fats": 5
-      }
-    ],
-    "Lunch": [
-      {
-        "Name": "Vegetable Stir Fry",
-        "Description": "",
-        "Calories": 400,
-        "Carbs": 60,
-        "Proteins": 15,
-        "Fats": 10
-      }
-    ],
-    "Dinner": [
-      {
-        "Name": "Lentil Soup",
-        "Description": "",
-        "Calories": 350,
-        "Carbs": 40,
-        "Proteins": 20,
-        "Fats": 8
-      }
-    ],
-    "Snacks": []
+    "Breakfast": [],
+    "Lunch": [],
+    "Dinner": [],
+    "Snacks": [],
+    "TotalCalories": 0,
+    "TotalProteins": 0,
+    "TotalCarbs": 0,
+    "TotalFats": 0
   },
   "TrainingSchedule": {
-    "Monday": [
-      {
-        "Name": "Running",
-        "Type": "Cardio",
-        "Duration": 30,
-        "Intensity": "High"
+    "Days": {
+      "Monday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Tuesday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Wednesday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Thursday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Friday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Saturday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
+      },
+      "Sunday": {
+        "Workouts": [],
+        "TotalDuration": 0,
+        "HasWorkout": false
       }
-    ],
-    "Tuesday": [],
-    "Wednesday": [
-      {
-        "Name": "Cycling",
-        "Type": "Cardio",
-        "Duration": 45,
-        "Intensity": "Medium"
-      }
-    ],
-    "Thursday": [],
-    "Friday": [
-      {
-        "Name": "Yoga",
-        "Type": "Flexibility",
-        "Duration": 60,
-        "Intensity": "Low"
-      }
-    ],
-    "Saturday": [],
-    "Sunday": []
+    }
   }
 }

@@ -1,7 +1,50 @@
 const Output = ({ outputData, isLoading }) => {
-  // Функция для расчета процентов макронутриентов
+  // // Функция для расчета процентов макронутриентов
+  // const calculateMacros = (mealPlan) => {
+  //   // Если данных нет, возвращаем нулевые значения
+  //   if (!mealPlan || Object.keys(mealPlan).length === 0) {
+  //     return {
+  //       proteinPercent: 0,
+  //       carbsPercent: 0,
+  //       fatPercent: 0,
+  //       isEmpty: true
+  //     };
+  //   }
+
+  //   let totalProteins = 0;
+  //   let totalCarbs = 0;
+  //   let totalFats = 0;
+
+  //   // Расчет суммарных значений
+  //   Object.values(mealPlan).forEach(meals => {
+  //     meals.forEach(meal => {
+  //       totalProteins += meal.Proteins || 0;
+  //       totalCarbs += meal.Carbs || 0;
+  //       totalFats += meal.Fats || 0;
+  //     });
+  //   });
+
+  //   const total = totalProteins + totalCarbs + totalFats;
+
+  //   // Если все нули, возвращаем пустые значения
+  //   if (total === 0) {
+  //     return {
+  //       proteinPercent: 0,
+  //       carbsPercent: 0,
+  //       fatPercent: 0,
+  //       isEmpty: true
+  //     };
+  //   }
+
+  //   return {
+  //     proteinPercent: Math.round((totalProteins / total) * 100),
+  //     carbsPercent: Math.round((totalCarbs / total) * 100),
+  //     fatPercent: Math.round((totalFats / total) * 100),
+  //     isEmpty: false
+  //   };
+  // };
   const calculateMacros = (mealPlan) => {
-    // Если данных нет, возвращаем нулевые значения
+    // If mealPlan is null, undefined, or empty, return zero values
     if (!mealPlan || Object.keys(mealPlan).length === 0) {
       return {
         proteinPercent: 0,
@@ -15,18 +58,20 @@ const Output = ({ outputData, isLoading }) => {
     let totalCarbs = 0;
     let totalFats = 0;
 
-    // Расчет суммарных значений
+    // Only process values that are arrays
     Object.values(mealPlan).forEach(meals => {
-      meals.forEach(meal => {
-        totalProteins += meal.Proteins || 0;
-        totalCarbs += meal.Carbs || 0;
-        totalFats += meal.Fats || 0;
-      });
+      if (Array.isArray(meals)) {
+        meals.forEach(meal => {
+          totalProteins += meal.Proteins || 0;
+          totalCarbs += meal.Carbs || 0;
+          totalFats += meal.Fats || 0;
+        });
+      }
     });
 
     const total = totalProteins + totalCarbs + totalFats;
 
-    // Если все нули, возвращаем пустые значения
+    // If total is zero, return empty values
     if (total === 0) {
       return {
         proteinPercent: 0,

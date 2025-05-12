@@ -1,0 +1,153 @@
+{
+  "users": [
+    {
+      "id": 3,
+      "weight": 68,
+      "height": 1.72,
+      "age": 30,
+      "goal": "Weight Loss",
+      "busyTime": [
+        [
+          "08:00",
+          "16:00"
+        ]
+      ],
+      "diet": "Vegetarian",
+      "allergies": [
+        "Nuts"
+      ],
+      "exercises": [
+        {
+          "name": "Running",
+          "weight": 0,
+          "sets": 1,
+          "reps": 30
+        }
+      ],
+      "bmi": 22.985397,
+      "caloriesPerDay": 1642.2002,
+      "MealPlan": {
+        "Breakfast": [],
+        "Lunch": [],
+        "Dinner": [],
+        "Snacks": []
+      },
+      "TrainingSchedule": {
+        "Days": {
+          "Monday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Tuesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Wednesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Thursday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Friday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Saturday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Sunday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          }
+        }
+      }
+    },
+    {
+      "id": 1,
+      "weight": 72,
+      "height": 1.73,
+      "age": 31,
+      "goal": "Maintenance",
+      "busyTime": [
+        [
+          "08:00",
+          "17:00"
+        ],
+        [
+          "18:00",
+          "20:00"
+        ]
+      ],
+      "diet": "Vegetarian",
+      "allergies": [
+        "Nuts",
+        "Dairy"
+      ],
+      "exercises": [
+        {
+          "name": "Swimming",
+          "weight": 0,
+          "sets": 1,
+          "reps": 20
+        }
+      ],
+      "bmi": 0,
+      "caloriesPerDay": 0,
+      "MealPlan": {
+        "Breakfast": [],
+        "Lunch": [],
+        "Dinner": [],
+        "Snacks": []
+      },
+      "TrainingSchedule": {
+        "Days": {
+          "Monday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Tuesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Wednesday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Thursday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Friday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Saturday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          },
+          "Sunday": {
+            "Workouts": [],
+            "TotalDuration": 0,
+            "HasWorkout": false
+          }
+        }
+      }
+    }
+  ]
+}

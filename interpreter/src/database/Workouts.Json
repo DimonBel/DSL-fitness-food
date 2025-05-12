@@ -1,0 +1,302 @@
+{
+  "Weight Loss": {
+    "Cardio": [
+      {
+        "Name": "Running",
+        "Type": "Cardio",
+        "Duration": 30,
+        "Intensity": "High",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 300
+      },
+      {
+        "Name": "Cycling",
+        "Type": "Cardio",
+        "Duration": 45,
+        "Intensity": "Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 350
+      },
+      {
+        "Name": "HIIT",
+        "Type": "Cardio",
+        "Duration": 20,
+        "Intensity": "Very High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 400
+      },
+      {
+        "Name": "Swimming",
+        "Type": "Cardio",
+        "Duration": 45,
+        "Intensity": "Medium-High",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 400
+      },
+      {
+        "Name": "Jump Rope",
+        "Type": "Cardio",
+        "Duration": 15,
+        "Intensity": "High",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 200
+      }
+    ],
+    "Strength": [
+      {
+        "Name": "Circuit Training",
+        "Type": "Strength",
+        "Duration": 45,
+        "Intensity": "High",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 350
+      },
+      {
+        "Name": "Kettlebell Swings",
+        "Type": "Strength",
+        "Duration": 20,
+        "Intensity": "High",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 250
+      }
+    ],
+    "Flexibility": [
+      {
+        "Name": "Yoga",
+        "Type": "Flexibility",
+        "Duration": 60,
+        "Intensity": "Low",
+        "Difficulty": "Easy-Medium",
+        "CaloriesBurned": 180
+      },
+      {
+        "Name": "Pilates",
+        "Type": "Flexibility",
+        "Duration": 45,
+        "Intensity": "Low-Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 200
+      }
+    ]
+  },
+  "Muscle Gain": {
+    "Strength": [
+      {
+        "Name": "Deadlifts",
+        "Type": "Strength",
+        "Duration": 60,
+        "Intensity": "High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 280
+      },
+      {
+        "Name": "Bench Press",
+        "Type": "Strength",
+        "Duration": 45,
+        "Intensity": "High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 220
+      },
+      {
+        "Name": "Squats",
+        "Type": "Strength",
+        "Duration": 45,
+        "Intensity": "High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 250
+      },
+      {
+        "Name": "Pull-Ups",
+        "Type": "Strength",
+        "Duration": 30,
+        "Intensity": "High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 180
+      },
+      {
+        "Name": "Overhead Press",
+        "Type": "Strength",
+        "Duration": 45,
+        "Intensity": "High",
+        "Difficulty": "Hard",
+        "CaloriesBurned": 200
+      }
+    ],
+    "Hypertrophy": [
+      {
+        "Name": "Dumbbell Curls",
+        "Type": "Hypertrophy",
+        "Duration": 30,
+        "Intensity": "Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 150
+      },
+      {
+        "Name": "Chest Flyes",
+        "Type": "Hypertrophy",
+        "Duration": 30,
+        "Intensity": "Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 160
+      }
+    ]
+  },
+  "Maintenance": {
+    "Cardio": [
+      {
+        "Name": "Brisk Walking",
+        "Type": "Cardio",
+        "Duration": 45,
+        "Intensity": "Medium",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 200
+      },
+      {
+        "Name": "Elliptical",
+        "Type": "Cardio",
+        "Duration": 30,
+        "Intensity": "Medium",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 250
+      }
+    ],
+    "Strength": [
+      {
+        "Name": "Bodyweight Circuit",
+        "Type": "Strength",
+        "Duration": 30,
+        "Intensity": "Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 220
+      },
+      {
+        "Name": "Resistance Band Workout",
+        "Type": "Strength",
+        "Duration": 30,
+        "Intensity": "Medium",
+        "Difficulty": "Medium",
+        "CaloriesBurned": 200
+      }
+    ],
+    "Flexibility": [
+      {
+        "Name": "Stretching Routine",
+        "Type": "Flexibility",
+        "Duration": 20,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 100
+      }
+    ]
+  },
+  "Beginner": {
+    "Cardio": [
+      {
+        "Name": "Walking",
+        "Type": "Cardio",
+        "Duration": 20,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 100
+      },
+      {
+        "Name": "Stationary Bike",
+        "Type": "Cardio",
+        "Duration": 20,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 120
+      }
+    ],
+    "Strength": [
+      {
+        "Name": "Wall Push-Ups",
+        "Type": "Strength",
+        "Duration": 15,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 80
+      },
+      {
+        "Name": "Chair Squats",
+        "Type": "Strength",
+        "Duration": 15,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 90
+      }
+    ],
+    "Flexibility": [
+      {
+        "Name": "Gentle Yoga",
+        "Type": "Flexibility",
+        "Duration": 30,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 120
+      }
+    ]
+  },
+  "Senior": {
+    "Cardio": [
+      {
+        "Name": "Water Aerobics",
+        "Type": "Cardio",
+        "Duration": 45,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 180
+      }
+    ],
+    "Strength": [
+      {
+        "Name": "Resistance Band Exercises",
+        "Type": "Strength",
+        "Duration": 30,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 150
+      }
+    ],
+    "Flexibility": [
+      {
+        "Name": "Chair Yoga",
+        "Type": "Flexibility",
+        "Duration": 30,
+        "Intensity": "Low",
+        "Difficulty": "Easy",
+        "CaloriesBurned": 100
+      }
+    ]
+  },
+  "Athlete": {
+    "Performance": [
+      {
+        "Name": "Plyometrics",
+        "Type": "Performance",
+        "Duration": 45,
+        "Intensity": "Very High",
+        "Difficulty": "Very Hard",
+        "CaloriesBurned": 500
+      },
+      {
+        "Name": "Sprint Intervals",
+        "Type": "Performance",
+        "Duration": 30,
+        "Intensity": "Very High",
+        "Difficulty": "Very Hard",
+        "CaloriesBurned": 400
+      }
+    ],
+    "Strength": [
+      {
+        "Name": "Olympic Lifts",
+        "Type": "Strength",
+        "Duration": 60,
+        "Intensity": "Very High",
+        "Difficulty": "Very Hard",
+        "CaloriesBurned": 450
+      }
+    ]
+  }
+}

@@ -1,11 +1,13 @@
 using person.ID = 1
 
 create user profile {
+    Name("Pirojok Sdobnii")
     Goal("Weight Loss")
     Diet("Vegetarian")
-    Weight(90.5)
+    Weight(110.5)
     Height(1.95)
-    Allergies({"Nuts", "Gluten"})
+    Age(30)
+    Allergies({"Gluten"})
     BusyTime({"09:00-17:00", "19:00-21:00"})
 }
 

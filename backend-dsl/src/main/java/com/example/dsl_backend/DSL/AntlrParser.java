@@ -10,7 +10,7 @@ import static com.example.dsl_backend.DSL.JsonTreeTransformer.writeToFile;
 
 public class AntlrParser {
 
-        
+
         public static void parse() throws IOException {
                 String[] files = {
                         "src/main/resources/example.txt",
