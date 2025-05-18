@@ -1,5 +1,7 @@
 @use './variables' as *;
 
+// код эдитор юзает inline styling !!!
+
 textarea {
     margin-inline: $panel-header-margin;
     margin-top: 10px;
