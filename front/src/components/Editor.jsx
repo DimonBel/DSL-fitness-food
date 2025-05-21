@@ -3,7 +3,6 @@ import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs";
 import "prismjs/components/prism-clike";
 import "prismjs/themes/prism.css";
-import "./e.css";
 
 const DSLEditor = ({ onRun }) => {
   const [code, setCode] = useState(`using person.ID = 1
