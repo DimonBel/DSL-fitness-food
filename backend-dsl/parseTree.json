@@ -5,7 +5,7 @@
         {"text": "."},
         {"identifier": [{"text": "ID"}]},
         {"text": "="},
-        {"literal": [{"text": "1"}]}
+        {"literal": [{"text": "2"}]}
     ]}]},
     {"statement": [{"createStmt": [
         {"text": "create"},
@@ -16,100 +16,37 @@
             {"attribute": [
                 {"identifier": [{"text": "Goal"}]},
                 {"text": "("},
-                {"value": [{"literal": [{"text": "\"Weight Loss\""}]}]},
+                {"value": [{"literal": [{"text": "\"Health Issues and Gluten Free Life\""}]}]},
                 {"text": ")"}
             ]},
             {"attribute": [
                 {"identifier": [{"text": "Diet"}]},
                 {"text": "("},
-                {"value": [{"literal": [{"text": "\"Vegetarian\""}]}]},
+                {"value": [{"literal": [{"text": "\"Ыщьуерштп\""}]}]},
                 {"text": ")"}
             ]}
         ]},
         {"text": "Weight"},
         {"text": "("},
-        {"text": "90.5"},
+        {"text": "912.5"},
         {"text": ")"},
         {"text": "Height"},
         {"text": "("},
-        {"text": "1.95"},
+        {"text": "12.75"},
         {"text": ")"},
         {"text": "Allergies"},
         {"text": "("},
         {"text": "{"},
-        {"text": "\"Nuts\""},
-        {"text": ","},
         {"text": "\"Gluten\""},
         {"text": "}"},
         {"text": ")"},
         {"text": "BusyTime"},
         {"text": "("},
         {"text": "{"},
-        {"text": "\"09:00-17:00\""},
+        {"text": "\"09:00-15:00\""},
         {"text": ","},
-        {"text": "\"19:00-21:00\""},
         {"text": "}"},
         {"text": ")"},
-        {"text": "}"}
-    ]}]},
-    {"statement": [{"exercisesStmt": [
-        {"text": "Exercises"},
-        {"text": "="},
-        {"text": "{"},
-        {"exerciseEntry": [
-            {"text": "Squat"},
-            {"text": "{"},
-            {"exerciseParams": [
-                {"text": "Weight"},
-                {"text": "="},
-                {"text": "60"},
-                {"text": ","},
-                {"text": "Sets"},
-                {"text": "="},
-                {"text": "3"},
-                {"text": ","},
-                {"text": "Reps"},
-                {"text": "="},
-                {"text": "5"}
-            ]},
-            {"text": "}"}
-        ]},
-        {"exerciseEntry": [
-            {"text": "BenchPress"},
-            {"text": "{"},
-            {"exerciseParams": [
-                {"text": "Weight"},
-                {"text": "="},
-                {"text": "45"},
-                {"text": ","},
-                {"text": "Sets"},
-                {"text": "="},
-                {"text": "4"},
-                {"text": ","},
-                {"text": "Reps"},
-                {"text": "="},
-                {"text": "8"}
-            ]},
-            {"text": "}"}
-        ]},
-        {"exerciseEntry": [
-            {"text": "Crunches"},
-            {"text": "{"},
-            {"exerciseParams": [
-                {"text": "Weight"},
-                {"text": "="},
-                {"text": "-10"},
-                {"text": ","},
-                {"text": "Sets"},
-                {"text": "="},
-                {"text": "3"},
-                {"text": ","},
-                {"text": "Reps"},
-                {"text": "="},
-                {"text": "12"}
-            ]},
-            {"text": "}"}
-        ]},
         {"text": "}"}
     ]}]}
 ]}

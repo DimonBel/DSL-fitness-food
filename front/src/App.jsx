@@ -7,9 +7,23 @@ import Output from "./components/Output";
 function App() {
   const [outputData, setOutputData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  
+  //hadle sending data to backend for saving
   const handleRun = async (code) => {
     setIsLoading(true);
     try {
+      const saveResponse = await fetch('http://127.0.0.1:8080/txt/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      if (!saveResponse.ok) {
+        throw new Error('Failed to save code to backend');
+      }
+
       const response = await fetch('http://127.0.0.1:8080/data', {
         method: 'POST',
         headers: {
