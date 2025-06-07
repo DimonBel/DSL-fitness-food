@@ -20,16 +20,26 @@ Exercises = {
 }`
   );
 
+  const handleRunClick = () => {
+    onRun(code);
+
+    const blob = new Blob([code], {type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    
+    a.href = url;
+    a.download = "editor-code.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="editor-container">
       <div className="panel-header">
         <span>DSL Editor</span>
         <button
           className="button"
-          onClick={() => {
-            onRun(code);
-          }}
-        >
+          onClick={handleRunClick}>
           Run
         </button>
       </div>
