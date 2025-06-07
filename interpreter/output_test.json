@@ -1,7 +1,7 @@
 {
   "id": 0,
   "weight": 90.5,
-  "height": 1.95,
+  "height": 1.5,
   "goal": "Weight Loss",
   "busyTime": [
     [
@@ -38,8 +38,8 @@
       "reps": 12
     }
   ],
-  "bmi": 23.80013,
-  "caloriesPerDay": 2094.6704,
+  "bmi": 40.22222,
+  "caloriesPerDay": 1878.7156,
   "MealPlan": {
     "Breakfast": [
       {

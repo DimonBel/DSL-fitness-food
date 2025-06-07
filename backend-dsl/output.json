@@ -1,14 +1,43 @@
 {
     "function": "create_user",
     "create_user": {
-        "allergies": ["Gluten"],
-        "goal": "Health Issues and Gluten Free Life",
-        "weight": 912.5,
-        "diet": "Ыщьуерштп",
-        "busyTime": [[
-            "09:00",
-            "15:00"
-        ]],
-        "height": 12.75
+        "allergies": [
+            "Nuts",
+            "Gluten"
+        ],
+        "goal": "Weight Loss",
+        "exercises": [
+            {
+                "reps": 5,
+                "sets": 3,
+                "name": "Squat",
+                "weight": 60
+            },
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "BenchPress",
+                "weight": 45
+            },
+            {
+                "reps": 12,
+                "sets": 3,
+                "name": "Crunches",
+                "weight": -10
+            }
+        ],
+        "weight": 90.5,
+        "diet": "Vegetarian",
+        "busyTime": [
+            [
+                "09:00",
+                "17:00"
+            ],
+            [
+                "19:00",
+                "21:00"
+            ]
+        ],
+        "height": 1.5
     }
 }
