@@ -10,6 +10,7 @@ public class Processor
     if (user == null)
     { Console.WriteLine("No user data to process."); return; }
     user.bmi = user.weight / (user.height * user.height);
+    float age = user.age > 0 ? user.age : 25;
     user.caloriesPerDay = (13.397f * user.weight) + (4.799f * user.height * 100) - (5.677f * 25) + 88.362f; // Age assumed as 25
     user.MealPlan = MealPlanGenerator.GenerateMealPlan(user);
     user.TrainingSchedule = TrainingScheduleGenerator.GenerateTrainingSchedule(user);

@@ -1,10 +1,6 @@
 {
     "function": "create_user",
     "create_user": {
-        "allergies": [
-            "Nuts",
-            "Gluten"
-        ],
         "goal": "Weight Loss",
         "exercises": [
             {
@@ -13,31 +9,12 @@
                 "name": "Squat",
                 "weight": 60
             },
-            {
-                "reps": 8,
-                "sets": 4,
-                "name": "BenchPress",
-                "weight": 45
-            },
-            {
-                "reps": 12,
-                "sets": 3,
-                "name": "Crunches",
-                "weight": -10
-            }
+            {"name": "Type"}
         ],
-        "weight": 90.5,
+        "name": "Pirojok Sdobnii",
+        "weight": 70.5,
         "diet": "Vegetarian",
-        "busyTime": [
-            [
-                "09:00",
-                "17:00"
-            ],
-            [
-                "19:00",
-                "21:00"
-            ]
-        ],
-        "height": 1.5
+        "age": 30,
+        "height": 1.75
     }
 }

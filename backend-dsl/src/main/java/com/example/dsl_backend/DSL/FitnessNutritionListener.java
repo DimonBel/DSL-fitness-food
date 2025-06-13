@@ -1,5 +1,5 @@
+// Generated from D:\u005Cuni\a\backend-dsl\src\main\java\com\example\dsl_backend\DSL\FitnessNutrition.g4 by ANTLR 4.9.3
 package com.example.dsl_backend.DSL;
-// Generated from C:\Users\Duma\OneDrive\������� ����\DSL\DSL-fitness-food\DSL\grammar\FitnessNutrition.g4 by ANTLR 4.9.3
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -337,4 +337,134 @@ public interface FitnessNutritionListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLiteral(FitnessNutritionParser.LiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#findOptimalTimesStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterFindOptimalTimesStmt(FitnessNutritionParser.FindOptimalTimesStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#findOptimalTimesStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitFindOptimalTimesStmt(FitnessNutritionParser.FindOptimalTimesStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#userSpec}.
+	 * @param ctx the parse tree
+	 */
+	void enterUserSpec(FitnessNutritionParser.UserSpecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#userSpec}.
+	 * @param ctx the parse tree
+	 */
+	void exitUserSpec(FitnessNutritionParser.UserSpecContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#userPropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void enterUserPropertyList(FitnessNutritionParser.UserPropertyListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#userPropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void exitUserPropertyList(FitnessNutritionParser.UserPropertyListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#userProperty}.
+	 * @param ctx the parse tree
+	 */
+	void enterUserProperty(FitnessNutritionParser.UserPropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#userProperty}.
+	 * @param ctx the parse tree
+	 */
+	void exitUserProperty(FitnessNutritionParser.UserPropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#timeRangeArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimeRangeArray(FitnessNutritionParser.TimeRangeArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#timeRangeArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimeRangeArray(FitnessNutritionParser.TimeRangeArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#timeRangePair}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimeRangePair(FitnessNutritionParser.TimeRangePairContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#timeRangePair}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimeRangePair(FitnessNutritionParser.TimeRangePairContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exerciseArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterExerciseArray(FitnessNutritionParser.ExerciseArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exerciseArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitExerciseArray(FitnessNutritionParser.ExerciseArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exerciseObject}.
+	 * @param ctx the parse tree
+	 */
+	void enterExerciseObject(FitnessNutritionParser.ExerciseObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exerciseObject}.
+	 * @param ctx the parse tree
+	 */
+	void exitExerciseObject(FitnessNutritionParser.ExerciseObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exercisePropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void enterExercisePropertyList(FitnessNutritionParser.ExercisePropertyListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exercisePropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void exitExercisePropertyList(FitnessNutritionParser.ExercisePropertyListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#exerciseProperty}.
+	 * @param ctx the parse tree
+	 */
+	void enterExerciseProperty(FitnessNutritionParser.ExercisePropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#exerciseProperty}.
+	 * @param ctx the parse tree
+	 */
+	void exitExerciseProperty(FitnessNutritionParser.ExercisePropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#createWeeklyTrainingScheduleStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreateWeeklyTrainingScheduleStmt(FitnessNutritionParser.CreateWeeklyTrainingScheduleStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#createWeeklyTrainingScheduleStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreateWeeklyTrainingScheduleStmt(FitnessNutritionParser.CreateWeeklyTrainingScheduleStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#createDailyMealPlanStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreateDailyMealPlanStmt(FitnessNutritionParser.CreateDailyMealPlanStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#createDailyMealPlanStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreateDailyMealPlanStmt(FitnessNutritionParser.CreateDailyMealPlanStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FitnessNutritionParser#stringArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringArray(FitnessNutritionParser.StringArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FitnessNutritionParser#stringArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringArray(FitnessNutritionParser.StringArrayContext ctx);
 }

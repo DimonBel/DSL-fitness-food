@@ -1,16 +1,21 @@
-using person.ID = 1
-
 create user profile {
+    Name("Pirojok Sdobnii")
+    Age(30)
     Goal("Weight Loss")
     Diet("Vegetarian")
-    Weight(90.5)
-    Height(1.50)
-    Allergies({"Nuts", "Gluten"})
-    BusyTime({"09:00-17:00", "19:00-21:00"})
+    Weight(70.5)
+    Height(1.75)
+    Allergies({"Gluten"})
+    BusyTime({
+        {"09:00", "17:00"},
+        {"19:00", "21:00"}
+    })
 }
 
 Exercises = {
-    Squat { Weight = 60, Sets = 3, Reps = 5 }
-    BenchPress { Weight = 45, Sets = 4, Reps = 8 }
-    Crunches { Weight = -10, Sets = 3, Reps = 12 }
+    Squat { Weight = 60, Sets = 3, Reps = 5, Type = "Strength" }
+    Bench_Press { Weight = 45, Sets = 4, Reps = 8, Type = "Strength" }
+    Crunches { Weight = -10, Sets = 3, Reps = 12, Type = "Core" }
 }
+
+create_user()
