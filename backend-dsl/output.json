@@ -1,20 +1,15 @@
 {
-    "function": "create_user",
-    "create_user": {
+    "function": "create_daily_meal_plan",
+    "user": {
+        "allergies": [],
         "goal": "Weight Loss",
-        "exercises": [
-            {
-                "reps": 5,
-                "sets": 3,
-                "name": "Squat",
-                "weight": 60
-            },
-            {"name": "Type"}
-        ],
+        "exercises": [],
         "name": "Pirojok Sdobnii",
         "weight": 70.5,
+        "id": 1,
         "diet": "Vegetarian",
-        "age": 30,
+        "busyTime": [],
+        "age": 25,
         "height": 1.75
     }
 }

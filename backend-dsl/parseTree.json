@@ -14,7 +14,7 @@
         {"text": ")"},
         {"text": "Age"},
         {"text": "("},
-        {"text": "30"},
+        {"text": "25"},
         {"text": ")"},
         {"text": "Goal"},
         {"text": "("},
@@ -35,23 +35,11 @@
         {"text": "Allergies"},
         {"text": "("},
         {"text": "{"},
-        {"text": "\"Gluten\""},
         {"text": "}"},
         {"text": ")"},
         {"text": "BusyTime"},
         {"text": "("},
         {"text": "{"},
-        {"text": "{"},
-        {"text": "\"09:00\""},
-        {"text": ","},
-        {"text": "\"17:00\""},
-        {"text": "}"},
-        {"text": ","},
-        {"text": "{"},
-        {"text": "\"19:00\""},
-        {"text": ","},
-        {"text": "\"21:00\""},
-        {"text": "}"},
         {"text": "}"},
         {"text": ")"},
         {"text": "}"}
@@ -60,29 +48,20 @@
         {"text": "Exercises"},
         {"text": "="},
         {"text": "{"},
-        {"exerciseEntry": [
-            {"text": "Squat"},
-            {"text": "{"},
-            {"exerciseParams": [
-                {"text": "Weight"},
-                {"text": "="},
-                {"text": "60"},
-                {"text": ","},
-                {"text": "Sets"},
-                {"text": "="},
-                {"text": "3"},
-                {"text": ","},
-                {"text": "Reps"},
-                {"text": "="},
-                {"text": "5"}
-            ]},
-            {"text": ","}
-        ]},
-        {"exerciseEntry": [
-            {"text": "Type"},
-            {"text": "="},
-            {"text": "\"Strength\""}
-        ]},
         {"text": "}"}
+    ]}]},
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
+        {"identifier": [{"text": "person"}]},
+        {"text": "."},
+        {"identifier": [{"text": "ID"}]},
+        {"text": "="},
+        {"literal": [{"text": "1"}]}
+    ]}]},
+    {"statement": [{"createDailyMealPlanStmt": [
+        {"text": "create_daily_meal_plan"},
+        {"text": "("},
+        {"userSpec": []},
+        {"text": ")"}
     ]}]}
 ]}

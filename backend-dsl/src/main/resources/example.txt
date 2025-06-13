@@ -1,21 +1,16 @@
 create user profile {
     Name("Pirojok Sdobnii")
-    Age(30)
+    Age(25)
     Goal("Weight Loss")
     Diet("Vegetarian")
     Weight(70.5)
     Height(1.75)
-    Allergies({"Gluten"})
-    BusyTime({
-        {"09:00", "17:00"},
-        {"19:00", "21:00"}
-    })
+    Allergies({})
+    BusyTime({})
 }
 
-Exercises = {
-    Squat { Weight = 60, Sets = 3, Reps = 5, Type = "Strength" }
-    Bench_Press { Weight = 45, Sets = 4, Reps = 8, Type = "Strength" }
-    Crunches { Weight = -10, Sets = 3, Reps = 12, Type = "Core" }
-}
+Exercises = { }
 
-create_user()
+using person.ID = 1
+
+create_daily_meal_plan()

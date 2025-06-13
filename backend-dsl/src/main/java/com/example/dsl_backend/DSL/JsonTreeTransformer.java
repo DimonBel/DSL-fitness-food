@@ -663,6 +663,8 @@ public class JsonTreeTransformer {
         String currentAttribute = "";
         boolean expectingValue = false;
         boolean foundOpenParen = false;
+        boolean inArrayValue = false;
+        JSONArray currentArray = new JSONArray();
 
         for (int i = 0; i < createStmt.length(); i++) {
             JSONObject node = createStmt.getJSONObject(i);
@@ -725,9 +727,22 @@ public class JsonTreeTransformer {
 
                         // Check for attribute names
                         if (isAttributeName(text)) {
+                            // Finalize previous attribute if we were in array mode
+                            if (inArrayValue && !currentAttribute.isEmpty()) {
+                                result.put(currentAttribute, currentArray);
+                                currentArray = new JSONArray();
+                                inArrayValue = false;
+                            }
+
                             currentAttribute = formatKey(text);
                             expectingValue = false;
                             foundOpenParen = false;
+
+                            // Check if this is an array-type attribute
+                            if (currentAttribute.equals("allergies") || currentAttribute.equals("busyTime")) {
+                                inArrayValue = true;
+                                currentArray = new JSONArray();
+                            }
                         }
                         // Check for entity type
                         else if (text.equalsIgnoreCase("user")) {
@@ -750,24 +765,91 @@ public class JsonTreeTransformer {
                 }
                 // Check for closing parenthesis
                 else if (text.equals(")") && foundOpenParen) {
+                    // Finalize array attributes
+                    if (inArrayValue && !currentAttribute.isEmpty()) {
+                        result.put(currentAttribute, currentArray);
+                        currentArray = new JSONArray();
+                        inArrayValue = false;
+                    }
                     expectingValue = false;
                     foundOpenParen = false;
                     currentAttribute = "";
                 }
+                // Check for opening brace for array/object values
+                else if (text.equals("{") && expectingValue && (currentAttribute.equals("allergies") || currentAttribute.equals("busyTime"))) {
+                    // Start collecting array items
+                    inArrayValue = true;
+                }
+                // Check for closing brace
+                else if (text.equals("}") && inArrayValue) {
+                    // Finalize the array
+                    if (!currentAttribute.isEmpty()) {
+                        result.put(currentAttribute, currentArray);
+                        currentArray = new JSONArray();
+                        inArrayValue = false;
+                    }
+                }
                 // Handle attribute values
-                else if (expectingValue && !currentAttribute.isEmpty() && !text.equals("(") && !text.equals(")")) {
-                    Object value = parseAttributeValue(text, currentAttribute);
-                    if (value != null) {
-                        result.put(currentAttribute, value);
+                else if (expectingValue && !currentAttribute.isEmpty() &&
+                        !text.equals("(") && !text.equals(")") &&
+                        !text.equals("{") && !text.equals("}") &&
+                        !text.equals(",")) {
+
+                    if (inArrayValue) {
+                        // Handle array values
+                        if (currentAttribute.equals("allergies")) {
+                            String cleanText = stripQuotes(text).trim();
+                            if (!cleanText.isEmpty()) {
+                                currentArray.put(cleanText);
+                            }
+                        } else if (currentAttribute.equals("busyTime")) {
+                            String cleanText = stripQuotes(text).trim();
+                            if (cleanText.contains("-")) {
+                                // Handle time ranges like "09:00-17:00"
+                                String[] times = cleanText.split("-");
+                                if (times.length == 2) {
+                                    JSONArray range = new JSONArray();
+                                    range.put(times[0].trim());
+                                    range.put(times[1].trim());
+                                    currentArray.put(range);
+                                }
+                            } else if (!cleanText.isEmpty()) {
+                                currentArray.put(cleanText);
+                            }
+                        }
+                    } else {
+                        // Handle single values
+                        Object value = parseAttributeValue(text, currentAttribute);
+                        if (value != null) {
+                            result.put(currentAttribute, value);
+                        }
                     }
                 }
                 // Check for attribute names in text nodes (fallback)
                 else if (isAttributeName(text)) {
+                    // Finalize previous attribute if we were in array mode
+                    if (inArrayValue && !currentAttribute.isEmpty()) {
+                        result.put(currentAttribute, currentArray);
+                        currentArray = new JSONArray();
+                        inArrayValue = false;
+                    }
+
                     currentAttribute = formatKey(text);
                     expectingValue = false;
                     foundOpenParen = false;
+
+                    // Check if this is an array-type attribute
+                    if (currentAttribute.equals("allergies") || currentAttribute.equals("busyTime")) {
+                        inArrayValue = true;
+                        currentArray = new JSONArray();
+                    }
                 }
             }
+        }
+
+        // Finalize any remaining array attribute
+        if (inArrayValue && !currentAttribute.isEmpty()) {
+            result.put(currentAttribute, currentArray);
         }
 
         return result;
@@ -776,11 +858,11 @@ public class JsonTreeTransformer {
     // Helper method to check if a string is an attribute name
     private static boolean isAttributeName(String text) {
         return text.equals("Goal") || text.equals("Diet") || text.equals("Weight") ||
-                text.equals("Height") ||
-                text.equals("Name") || text.equals("Age");
+                text.equals("Height") || text.equals("Name") || text.equals("Age") ||
+                text.equals("Allergies") || text.equals("BusyTime") || text.equals("Exercises");
     }
 
-    // Helper method to parse attribute values based on type
+    // Enhanced helper method to parse attribute values based on type
     private static Object parseAttributeValue(String text, String attributeName) {
         if (attributeName.equals("goal") || attributeName.equals("diet") || attributeName.equals("name")) {
             return stripQuotes(text);
@@ -800,74 +882,88 @@ public class JsonTreeTransformer {
         return stripQuotes(text);
     }
 
-    // Helper method to handle attribute text parsing
-    private static void handleAttributeText(String text, JSONObject result, String currentAttribute,
-                                            boolean expectingValue, boolean inArray, JSONArray currentArray) {
-        // Check for attribute names
-        if (text.equals("Goal")) {
-            currentAttribute = "goal";
-            expectingValue = true;
-        } else if (text.equals("Diet")) {
-            currentAttribute = "diet";
-            expectingValue = true;
-        } else if (text.equals("Weight")) {
-            currentAttribute = "weight";
-            expectingValue = true;
-        } else if (text.equals("Height")) {
-            currentAttribute = "height";
-            expectingValue = true;
-        } else if (text.equals("Allergies")) {
-            currentAttribute = "allergies";
-            expectingValue = true;
-            inArray = true;
-            currentArray = new JSONArray();
-        } else if (text.equals("BusyTime")) {
-            currentAttribute = "busyTime";
-            expectingValue = true;
-            inArray = true;
-            currentArray = new JSONArray();
-        }
-    }
+    // Enhanced extractArrayValue method
+    private static JSONArray extractArrayValue(JSONArray attr) {
+        JSONArray result = new JSONArray();
 
-    // Helper method to handle attribute values
-    private static void handleAttributeValue(String text, JSONObject result, String currentAttribute,
-                                             boolean expectingValue, boolean inArray, JSONArray currentArray) {
-        if (inArray) {
-            if (currentAttribute.equals("allergies")) {
-                // Simple string values
-                if (text.startsWith("\"") && text.endsWith("\"")) {
-                    currentArray.put(stripQuotes(text));
-                }
-            } else if (currentAttribute.equals("busyTime")) {
-                // Time range format "09:00-17:00"
-                if (text.startsWith("\"") && text.endsWith("\"")) {
-                    String timeRange = stripQuotes(text);
-                    if (timeRange.contains("-")) {
-                        String[] times = timeRange.split("-");
-                        if (times.length == 2) {
-                            JSONArray range = new JSONArray();
-                            range.put(times[0].trim());
-                            range.put(times[1].trim());
-                            currentArray.put(range);
+        for (int i = 0; i < attr.length(); i++) {
+            JSONObject node = attr.getJSONObject(i);
+            if (node.has("value")) {
+                JSONObject valObj = node.getJSONArray("value").getJSONObject(0);
+                if (valObj.has("literal")) {
+                    String raw = valObj.getJSONArray("literal").getJSONObject(0).getString("text");
+
+                    // Handle different array formats
+                    if (raw.startsWith("{") && raw.endsWith("}")) {
+                        // Handle {item1, item2, item3} format
+                        raw = raw.substring(1, raw.length() - 1).trim();
+                        if (!raw.isEmpty()) {
+                            String[] entries = raw.split(",");
+                            for (String entry : entries) {
+                                entry = stripQuotes(entry.trim());
+                                if (!entry.isEmpty()) {
+                                    if (entry.contains("-")) {
+                                        // Handle time ranges like "09:00-17:00"
+                                        String[] times = entry.split("-");
+                                        if (times.length == 2) {
+                                            JSONArray timeRange = new JSONArray();
+                                            timeRange.put(times[0].trim());
+                                            timeRange.put(times[1].trim());
+                                            result.put(timeRange);
+                                        }
+                                    } else {
+                                        result.put(entry);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        // Handle single quoted values
+                        String cleanValue = stripQuotes(raw);
+                        if (!cleanValue.isEmpty()) {
+                            if (cleanValue.contains("-")) {
+                                // Handle time ranges
+                                String[] times = cleanValue.split("-");
+                                if (times.length == 2) {
+                                    JSONArray timeRange = new JSONArray();
+                                    timeRange.put(times[0].trim());
+                                    timeRange.put(times[1].trim());
+                                    result.put(timeRange);
+                                }
+                            } else {
+                                result.put(cleanValue);
+                            }
+                        }
+                    }
+                } else if (valObj.has("array")) {
+                    // Handle explicit array structures
+                    JSONArray arrayValues = valObj.getJSONArray("array");
+                    for (int j = 0; j < arrayValues.length(); j++) {
+                        JSONObject item = arrayValues.getJSONObject(j);
+                        if (item.has("value")) {
+                            JSONObject itemVal = item.getJSONArray("value").getJSONObject(0);
+                            if (itemVal.has("literal")) {
+                                String entryText = stripQuotes(itemVal.getJSONArray("literal").getJSONObject(0).getString("text"));
+                                if (entryText.contains("-")) {
+                                    // Handle time ranges
+                                    String[] times = entryText.split("-");
+                                    if (times.length == 2) {
+                                        JSONArray timeRange = new JSONArray();
+                                        timeRange.put(times[0].trim());
+                                        timeRange.put(times[1].trim());
+                                        result.put(timeRange);
+                                    }
+                                } else {
+                                    result.put(entryText);
+                                }
+                            }
                         }
                     }
                 }
             }
-        } else {
-            // Single values
-            if (currentAttribute.equals("goal") || currentAttribute.equals("diet")) {
-                if (text.startsWith("\"") && text.endsWith("\"")) {
-                    result.put(currentAttribute, stripQuotes(text));
-                }
-            } else if (currentAttribute.equals("weight") || currentAttribute.equals("height")) {
-                try {
-                    double value = Double.parseDouble(text);
-                    result.put(currentAttribute, value);
-                } catch (NumberFormatException e) {
-                    result.put(currentAttribute, text);
-                }
-            }
         }
+
+        return result;
     }
 
     private static JSONObject handleUsing(JSONArray usingStmt) {
@@ -1065,59 +1161,13 @@ public class JsonTreeTransformer {
                 JSONObject valObj = attr.getJSONObject(i).getJSONArray("value").getJSONObject(0);
                 if (valObj.has("literal")) {
                     String text = valObj.getJSONArray("literal").getJSONObject(0).getString("text");
-                    return text.contains(",") || text.matches(".*\\{.*\\}.*");
+                    return text.startsWith("{") && text.endsWith("}") || text.contains(",");
+                } else if (valObj.has("array")) {
+                    return true;
                 }
             }
         }
         return false;
-    }
-
-    private static JSONArray extractArrayValue(JSONArray attr) {
-        JSONArray result = new JSONArray();
-        for (int i = 0; i < attr.length(); i++) {
-            JSONObject node = attr.getJSONObject(i);
-            if (node.has("value")) {
-                JSONObject valObj = node.getJSONArray("value").getJSONObject(0);
-                if (valObj.has("literal")) {
-                    String raw = stripQuotes(valObj.getJSONArray("literal").getJSONObject(0).getString("text"));
-
-                    // Handle {"09:00-17:00", "19:00-21:00"} format
-                    raw = raw.replaceAll("[{}\"]", "").trim();
-                    String[] entries = raw.split(",");
-
-                    for (String entry : entries) {
-                        entry = entry.trim();
-                        if (entry.contains("-")) {
-                            // Handle time ranges like "09:00-17:00"
-                            String[] times = entry.split("-");
-                            if (times.length == 2) {
-                                JSONArray timeRange = new JSONArray();
-                                timeRange.put(times[0].trim());
-                                timeRange.put(times[1].trim());
-                                result.put(timeRange);
-                            }
-                        } else if (!entry.isEmpty()) {
-                            // Regular array item (avoid empty entries)
-                            result.put(entry);
-                        }
-                    }
-                } else if (valObj.has("array")) {
-                    // Handle array values explicitly
-                    JSONArray arrayValues = valObj.getJSONArray("array");
-                    for (int j = 0; j < arrayValues.length(); j++) {
-                        JSONObject item = arrayValues.getJSONObject(j);
-                        if (item.has("value")) {
-                            JSONObject itemVal = item.getJSONArray("value").getJSONObject(0);
-                            if (itemVal.has("literal")) {
-                                String entryText = stripQuotes(itemVal.getJSONArray("literal").getJSONObject(0).getString("text"));
-                                result.put(entryText);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return result;
     }
 
     private static JSONArray extractExerciseList(JSONArray attr) {
