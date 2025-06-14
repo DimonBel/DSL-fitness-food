@@ -1,4 +1,12 @@
 {"program": [
+    {"statement": [{"usingStmt": [
+        {"text": "using"},
+        {"identifier": [{"text": "person"}]},
+        {"text": "."},
+        {"identifier": [{"text": "ID"}]},
+        {"text": "="},
+        {"literal": [{"text": "1"}]}
+    ]}]},
     {"statement": [{"createStmt": [
         {"text": "create"},
         {"identifier": [
@@ -7,16 +15,8 @@
         ]},
         {"identifier": [
             {"text": "{"},
-            {"text": "Name"}
+            {"text": "Goal"}
         ]},
-        {"text": "("},
-        {"text": "\"Pirojok Sdobnii\""},
-        {"text": ")"},
-        {"text": "Age"},
-        {"text": "("},
-        {"text": "25"},
-        {"text": ")"},
-        {"text": "Goal"},
         {"text": "("},
         {"text": "\"Weight Loss\""},
         {"text": ")"},
@@ -35,11 +35,17 @@
         {"text": "Allergies"},
         {"text": "("},
         {"text": "{"},
+        {"text": "\"Nuts\""},
+        {"text": ","},
+        {"text": "\"Gluten\""},
         {"text": "}"},
         {"text": ")"},
         {"text": "BusyTime"},
         {"text": "("},
         {"text": "{"},
+        {"text": "\"09:00-17:00\""},
+        {"text": ","},
+        {"text": "\"19:00-21:00\""},
         {"text": "}"},
         {"text": ")"},
         {"text": "}"}
@@ -48,20 +54,60 @@
         {"text": "Exercises"},
         {"text": "="},
         {"text": "{"},
+        {"exerciseEntry": [
+            {"text": "Squat"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "="},
+                {"text": "60"},
+                {"text": ","},
+                {"text": "Sets"},
+                {"text": "="},
+                {"text": "3"},
+                {"text": ","},
+                {"text": "Reps"},
+                {"text": "="},
+                {"text": "5"}
+            ]},
+            {"text": "}"}
+        ]},
+        {"exerciseEntry": [
+            {"text": "BenchPress"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "="},
+                {"text": "45"},
+                {"text": ","},
+                {"text": "Sets"},
+                {"text": "="},
+                {"text": "4"},
+                {"text": ","},
+                {"text": "Reps"},
+                {"text": "="},
+                {"text": "8"}
+            ]},
+            {"text": "}"}
+        ]},
+        {"exerciseEntry": [
+            {"text": "Crunches"},
+            {"text": "{"},
+            {"exerciseParams": [
+                {"text": "Weight"},
+                {"text": "="},
+                {"text": "-10"},
+                {"text": ","},
+                {"text": "Sets"},
+                {"text": "="},
+                {"text": "3"},
+                {"text": ","},
+                {"text": "Reps"},
+                {"text": "="},
+                {"text": "12"}
+            ]},
+            {"text": "}"}
+        ]},
         {"text": "}"}
-    ]}]},
-    {"statement": [{"usingStmt": [
-        {"text": "using"},
-        {"identifier": [{"text": "person"}]},
-        {"text": "."},
-        {"identifier": [{"text": "ID"}]},
-        {"text": "="},
-        {"literal": [{"text": "1"}]}
-    ]}]},
-    {"statement": [{"createDailyMealPlanStmt": [
-        {"text": "create_daily_meal_plan"},
-        {"text": "("},
-        {"userSpec": []},
-        {"text": ")"}
     ]}]}
 ]}

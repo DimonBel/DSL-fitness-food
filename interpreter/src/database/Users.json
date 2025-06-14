@@ -1,0 +1,174 @@
+[
+  {
+    "id": 1,
+    "name": "Pirojok Sdobnii",
+    "weight": 70.5,
+    "height": 1.75,
+    "age": 30,
+    "goal": "Weight Loss",
+    "busyTime": [
+      [
+        "09:00",
+        "17:00"
+      ],
+      [
+        "19:00",
+        "21:00"
+      ]
+    ],
+    "diet": "Vegetarian",
+    "allergies": [
+      "Gluten"
+    ],
+    "exercises": [
+      {
+        "name": "Squat",
+        "weight": 60,
+        "sets": 3,
+        "reps": 5
+      },
+      {
+        "name": "Bench Press",
+        "weight": 45,
+        "sets": 4,
+        "reps": 8
+      },
+      {
+        "name": "Crunches",
+        "weight": 0,
+        "sets": 3,
+        "reps": 12
+      }
+    ],
+    "bmi": 0,
+    "caloriesPerDay": 0,
+    "mealPlan": {
+      "breakfast": [],
+      "lunch": [],
+      "dinner": [],
+      "snacks": [],
+      "totalCalories": 0,
+      "totalProteins": 0,
+      "totalCarbs": 0,
+      "totalFats": 0
+    },
+    "trainingSchedule": {
+      "monday": [],
+      "tuesday": [
+        {
+          "name": "Running",
+          "type": "Cardio",
+          "duration": 35,
+          "intensity": "High",
+          "difficulty": "Medium",
+          "caloriesBurned": 300,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "wednesday": [],
+      "thursday": [
+        {
+          "name": "HIIT",
+          "type": "Cardio",
+          "duration": 25,
+          "intensity": "Very High",
+          "difficulty": "Hard",
+          "caloriesBurned": 400,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "friday": [
+        {
+          "name": "TRX Full Body",
+          "type": "Strength",
+          "duration": 35,
+          "intensity": "Medium-High",
+          "difficulty": "Medium",
+          "caloriesBurned": 280,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "saturday": [
+        {
+          "name": "Pilates",
+          "type": "Flexibility",
+          "duration": 50,
+          "intensity": "Low-Medium",
+          "difficulty": "Medium",
+          "caloriesBurned": 200,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "sunday": [
+        {
+          "name": "TRX Full Body",
+          "type": "Strength",
+          "duration": 35,
+          "intensity": "Medium-High",
+          "difficulty": "Medium",
+          "caloriesBurned": 280,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "days": {
+        "Monday": [],
+        "Tuesday": [
+          {
+            "name": "Running",
+            "type": "Cardio",
+            "duration": 35,
+            "intensity": "High",
+            "difficulty": "Medium",
+            "caloriesBurned": 300,
+            "scheduledTime": "06:00:00"
+          }
+        ],
+        "Wednesday": [],
+        "Thursday": [
+          {
+            "name": "HIIT",
+            "type": "Cardio",
+            "duration": 25,
+            "intensity": "Very High",
+            "difficulty": "Hard",
+            "caloriesBurned": 400,
+            "scheduledTime": "06:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "name": "TRX Full Body",
+            "type": "Strength",
+            "duration": 35,
+            "intensity": "Medium-High",
+            "difficulty": "Medium",
+            "caloriesBurned": 280,
+            "scheduledTime": "06:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "name": "Pilates",
+            "type": "Flexibility",
+            "duration": 50,
+            "intensity": "Low-Medium",
+            "difficulty": "Medium",
+            "caloriesBurned": 200,
+            "scheduledTime": "06:00:00"
+          }
+        ],
+        "Sunday": [
+          {
+            "name": "TRX Full Body",
+            "type": "Strength",
+            "duration": 35,
+            "intensity": "Medium-High",
+            "difficulty": "Medium",
+            "caloriesBurned": 280,
+            "scheduledTime": "06:00:00"
+          }
+        ]
+      }
+    }
+  }
+]

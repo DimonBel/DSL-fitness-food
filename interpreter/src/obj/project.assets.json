@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL\\DSL-fitness-food\\interpreter\\src\\Program.csproj",
+      "projectUniqueName": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL-fitness-food\\interpreter\\src\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL\\DSL-fitness-food\\interpreter\\src\\Program.csproj",
+      "projectPath": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL-fitness-food\\interpreter\\src\\Program.csproj",
       "packagesPath": "C:\\Users\\Duma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL\\DSL-fitness-food\\interpreter\\src\\obj\\",
+      "outputPath": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL-fitness-food\\interpreter\\src\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

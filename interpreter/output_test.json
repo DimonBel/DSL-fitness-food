@@ -1,7 +1,9 @@
 {
-  "id": 0,
+  "id": 1,
+  "name": "",
   "weight": 70.5,
   "height": 1.75,
+  "age": 0,
   "goal": "Weight Loss",
   "busyTime": [
     [
@@ -15,6 +17,7 @@
   ],
   "diet": "Vegetarian",
   "allergies": [
+    "Nuts",
     "Gluten"
   ],
   "exercises": [
@@ -32,74 +35,39 @@
     },
     {
       "name": "Crunches",
-      "weight": -10,
+      "weight": 0,
       "sets": 3,
       "reps": 12
     }
   ],
   "bmi": 23.020409,
-  "caloriesPerDay": 1730.7505,
-  "MealPlan": {
-    "Breakfast": [
-      {
-        "Name": "Oatmeal",
-        "Description": "",
-        "Calories": 300,
-        "Carbs": 50,
-        "Proteins": 10,
-        "Fats": 5
-      }
-    ],
-    "Lunch": [
-      {
-        "Name": "Vegetable Stir Fry",
-        "Description": "",
-        "Calories": 400,
-        "Carbs": 60,
-        "Proteins": 15,
-        "Fats": 10
-      }
-    ],
-    "Dinner": [
-      {
-        "Name": "Lentil Soup",
-        "Description": "",
-        "Calories": 350,
-        "Carbs": 40,
-        "Proteins": 20,
-        "Fats": 8
-      }
-    ],
-    "Snacks": []
+  "caloriesPerDay": 1443,
+  "mealPlan": {
+    "breakfast": [],
+    "lunch": [],
+    "dinner": [],
+    "snacks": [],
+    "totalCalories": 0,
+    "totalProteins": 0,
+    "totalCarbs": 0,
+    "totalFats": 0
   },
-  "TrainingSchedule": {
-    "Monday": [
-      {
-        "Name": "Running",
-        "Type": "Cardio",
-        "Duration": 30,
-        "Intensity": "High"
-      }
-    ],
-    "Tuesday": [],
-    "Wednesday": [
-      {
-        "Name": "Cycling",
-        "Type": "Cardio",
-        "Duration": 45,
-        "Intensity": "Medium"
-      }
-    ],
-    "Thursday": [],
-    "Friday": [
-      {
-        "Name": "Yoga",
-        "Type": "Flexibility",
-        "Duration": 60,
-        "Intensity": "Low"
-      }
-    ],
-    "Saturday": [],
-    "Sunday": []
+  "trainingSchedule": {
+    "monday": [],
+    "tuesday": [],
+    "wednesday": [],
+    "thursday": [],
+    "friday": [],
+    "saturday": [],
+    "sunday": [],
+    "days": {
+      "Monday": [],
+      "Tuesday": [],
+      "Wednesday": [],
+      "Thursday": [],
+      "Friday": [],
+      "Saturday": [],
+      "Sunday": []
+    }
   }
 }

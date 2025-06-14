@@ -1,10 +1,18 @@
-namespace src;
+// namespace src;
 
-public class Workout
-{
-    public string Name { get; set; } = string.Empty;
-    public string Type { get; set; } = string.Empty; // e.g., Cardio, Strength, Yoga
-    public int Duration { get; set; } // in minutes
-    // duration in exercises, sets and reps
-    public string Intensity { get; set; } = string.Empty; // e.g., Low, Medium, High
-}
+// public class Workout
+// {
+//     public string Name { get; set; } = string.Empty;
+//     public string Type { get; set; } = string.Empty;
+//     public int Duration { get; set; } // in minutes
+//     public string Intensity { get; set; } = "Medium";
+//     public string Difficulty { get; set; } = "Medium";
+// }
+
+// public class WorkoutDay
+// {
+//     public List<Workout> Workouts { get; set; } = new();
+    
+//     public int TotalDuration => Workouts.Sum(w => w.Duration);
+//     public bool HasWorkout => Workouts.Any();
+// }

@@ -1,19 +1,56 @@
-using System;
-using System.Collections.Generic;
-
 namespace src;
 
 public class Processor
 {
     public static void ProcessUser(User_Profile user)
-{
-    if (user == null)
-    { Console.WriteLine("No user data to process."); return; }
-    user.bmi = user.weight / (user.height * user.height);
-    float age = user.age > 0 ? user.age : 25;
-    user.caloriesPerDay = (13.397f * user.weight) + (4.799f * user.height * 100) - (5.677f * 25) + 88.362f; // Age assumed as 25
-    user.MealPlan = MealPlanGenerator.GenerateMealPlan(user);
-    user.TrainingSchedule = TrainingScheduleGenerator.GenerateTrainingSchedule(user);
-    Console.WriteLine($"Processed User -> ID: {user.id}, BMI: {user.bmi:F2}, Calories/day: {user.caloriesPerDay:F0}");
+    {
+        if (user == null)
+        {
+            Console.WriteLine("No user data to process.");
+            return;
+        }
+
+        // Calculate BMI
+        user.bmi = CalculateBMI(user.weight, user.height);
+
+        // Calculate daily calories (using Mifflin-St Jeor Formula)
+        user.caloriesPerDay = CalculateDailyCalories(user);
+
+        // Generate plans
+        user.MealPlan = MealPlanGenerator.GenerateMealPlan(user);
+        user.TrainingSchedule = TrainingScheduleGenerator.GenerateTrainingSchedule(user);
+
+        Console.WriteLine($"Processed User -> ID: {user.id}; BMI: {user.bmi:F2}; Calories/day: {user.caloriesPerDay:F0}");
+    }
+
+    private static float CalculateBMI(float weight, float height)
+    {
+        if (height <= 0 || weight <= 0)
+            return 0;
+        
+        return weight / (height * height);
+    }
+
+    private static float CalculateDailyCalories(User_Profile user)
+    {
+        if (user == null) return 0;
+
+        // Mifflin-St Jeor Formula
+        float bmr = 10 * user.weight + 6.25f * (user.height * 100) - 5 * user.age + 5;
+
+        // Goal factors
+        float goalFactor = user.goal.ToLower() switch
+        {
+            "weight loss" => 0.8f,
+            "fat loss" => 0.85f,
+            "maintenance" => 1.0f,
+            "muscle gain" or "gain muscles" => 1.1f,
+            "bulk" => 1.2f,
+            _ => 1.0f
+        };
+
+        return bmr * goalFactor;
+    }
+    
 }
-}
+

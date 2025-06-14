@@ -1,15 +1,44 @@
 {
-    "function": "create_daily_meal_plan",
-    "user": {
-        "allergies": [],
+    "function": "create_user",
+    "create_user": {
+        "allergies": [
+            "Nuts",
+            "Gluten"
+        ],
         "goal": "Weight Loss",
-        "exercises": [],
-        "name": "Pirojok Sdobnii",
+        "exercises": [
+            {
+                "reps": 5,
+                "sets": 3,
+                "name": "Squat",
+                "weight": 60
+            },
+            {
+                "reps": 8,
+                "sets": 4,
+                "name": "BenchPress",
+                "weight": 45
+            },
+            {
+                "reps": 12,
+                "sets": 3,
+                "name": "Crunches",
+                "weight": -10
+            }
+        ],
         "weight": 70.5,
         "id": 1,
         "diet": "Vegetarian",
-        "busyTime": [],
-        "age": 25,
+        "busyTime": [
+            [
+                "09:00",
+                "17:00"
+            ],
+            [
+                "19:00",
+                "21:00"
+            ]
+        ],
         "height": 1.75
     }
 }
