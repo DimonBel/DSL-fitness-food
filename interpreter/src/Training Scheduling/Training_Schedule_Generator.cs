@@ -11,7 +11,7 @@ public static class TrainingScheduleGenerator
     {
         LoadWorkoutsData();
         var schedule = new WeeklyTrainingSchedule();
-        
+
         if (_workoutsData == null)
         {
             Console.WriteLine("No workouts data available");
@@ -43,8 +43,8 @@ public static class TrainingScheduleGenerator
             _ => "Maintenance"
         };
 
-        return _workoutsData.TryGetValue(normalizedGoal, out var workouts) 
-            ? workouts 
+        return _workoutsData.TryGetValue(normalizedGoal, out var workouts)
+            ? workouts
             : _workoutsData.Values.FirstOrDefault() ?? new Dictionary<string, List<Workout>>();
     }
 
@@ -52,7 +52,7 @@ public static class TrainingScheduleGenerator
     {
         try
         {
-            string path = Path.Combine("database", "Workouts.json");
+            string path = Path.Combine(GetDatabasePath(), "Workouts.json");
             if (!File.Exists(path))
             {
                 Console.WriteLine("Workouts database not found at: " + path);
@@ -61,7 +61,7 @@ public static class TrainingScheduleGenerator
 
             string json = File.ReadAllText(path);
             _workoutsData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<Workout>>>>(json);
-            
+
             if (_workoutsData != null)
             {
                 Console.WriteLine($"Loaded workout data for {_workoutsData.Count} goals");
@@ -80,7 +80,7 @@ public static class TrainingScheduleGenerator
     {
         var availableDays = GetAvailableDays(user);
         int workoutDays = CalculateWorkoutDays(user.goal, user.exercises.Count);
-        
+
         if (availableDays.Count == 0)
         {
             Console.WriteLine("No available days found for workouts");
@@ -100,7 +100,7 @@ public static class TrainingScheduleGenerator
     private static List<string> GetAvailableDays(User_Profile user)
     {
         var allDays = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        
+
         // If no busy times specified, all days are available
         if (user.busyTime.Count == 0)
             return allDays;
@@ -163,7 +163,7 @@ public static class TrainingScheduleGenerator
     private static string SelectWorkoutType(string goal)
     {
         int roll = _random.Next(100);
-        
+
         return goal.ToLower() switch
         {
             var g when g.Contains("loss") => roll < 60 ? "Cardio" : roll < 85 ? "Strength" : "Flexibility",
@@ -196,7 +196,7 @@ public static class TrainingScheduleGenerator
         }
 
         var selectedWorkout = suitableWorkouts[_random.Next(suitableWorkouts.Count)];
-        
+
         // Create a copy to avoid modifying the original
         var workoutCopy = new Workout
         {
@@ -207,7 +207,7 @@ public static class TrainingScheduleGenerator
             Difficulty = selectedWorkout.Difficulty,
             CaloriesBurned = selectedWorkout.CaloriesBurned
         };
-        
+
         schedule.AddWorkout(day, workoutCopy);
         Console.WriteLine($"Added {workoutCopy.Name} ({workoutCopy.Type}) to {day}");
     }
@@ -242,7 +242,7 @@ public static class TrainingScheduleGenerator
 
         // Assign the optimal training time to all workouts
         var allDays = new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        
+
         foreach (var day in allDays)
         {
             var dayWorkouts = GetWorkoutsForDay(schedule, day);
@@ -266,5 +266,12 @@ public static class TrainingScheduleGenerator
             "sunday" => schedule.Sunday,
             _ => new List<Workout>()
         };
+    }
+
+    private static string GetDatabasePath()
+    {
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
+        return Path.Combine(projectRoot, "src", "database");
     }
 }

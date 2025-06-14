@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "S4YBHNiHPss=",
+  "dgSpecHash": "vqmU6/gB4mg=",
   "success": true,
   "projectFilePath": "C:\\Users\\Duma\\OneDrive\\Рабочий стол\\DSL-fitness-food\\interpreter\\src\\Program.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Duma\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.11\\microsoft.net.illink.tasks.8.0.11.nupkg.sha512",
+    "C:\\Users\\Duma\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.11\\microsoft.netcore.app.runtime.win-x64.8.0.11.nupkg.sha512",
+    "C:\\Users\\Duma\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.11\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.11.nupkg.sha512",
+    "C:\\Users\\Duma\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.11\\microsoft.aspnetcore.app.runtime.win-x64.8.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

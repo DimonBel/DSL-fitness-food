@@ -26,7 +26,6 @@ public class JsonController {
 
     @PostMapping(value = "/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getJsonData() throws IOException, InterruptedException {
-        //Thread.sleep(5000);
         parse();
         writeToFile();
         interpret();

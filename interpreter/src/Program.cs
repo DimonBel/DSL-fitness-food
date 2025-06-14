@@ -26,35 +26,33 @@ class Program
 
     static void Main()
     {
-        if (!Directory.Exists("database"))
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
+        string projectRootInput = Path.GetFullPath(Path.Combine(baseDirectory, "../../.."));
+        string databasePath = Path.Combine(projectRoot, "src", "database");
+
+        if (!Directory.Exists(databasePath))
         {
-            Directory.CreateDirectory("database");
+            Directory.CreateDirectory(databasePath);
         }
 
-        if (!File.Exists(Path.Combine("database", "Meals.json")))
+        if (!File.Exists(Path.Combine(databasePath, "Meals.json")))
         {
-            File.WriteAllText(Path.Combine("database", "Meals.json"), "{}");
+            File.WriteAllText(Path.Combine(databasePath, "Meals.json"), "{}");
         }
 
-        if (!File.Exists(Path.Combine("database", "Ingredients.json")))
+        if (!File.Exists(Path.Combine(databasePath, "Ingredients.json")))
         {
-            File.WriteAllText(Path.Combine("database", "Ingredients.json"), "{}");
+            File.WriteAllText(Path.Combine(databasePath, "Ingredients.json"), "{}");
         }
 
-        if (!File.Exists(Path.Combine("database", "Users.json")))
+        if (!File.Exists(Path.Combine(databasePath, "Users.json")))
         {
-            File.WriteAllText(Path.Combine("database", "Users.json"), "{\"users\": []}");
+            File.WriteAllText(Path.Combine(databasePath, "Users.json"), "{\"users\": []}");
         }
 
         try
         {
-            // string inputPath = "..\\input_test.json";
-            // string outputPath = "..\\output_test.json";
-
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
-            string projectRootInput = Path.GetFullPath(Path.Combine(baseDirectory, "../../.."));
-
             string inputPath = Path.Combine(projectRootInput, "backend-dsl\\output.json");
             string outputPath = Path.Combine(projectRoot, "output_test.json");
 

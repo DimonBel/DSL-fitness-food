@@ -9,16 +9,6 @@ public class Main {
             // Get the project root directory
             Path projectRoot = Paths.get("").toAbsolutePath();
 
-            // Navigate to the C# executable using relative path
-//            Path exePath = projectRoot
-//                    .getParent() // Go up to DSL-fitness-food
-//                    .resolve("interpreter") // Go to interpreter folder
-//                    .resolve("src")
-//                    .resolve("bin")
-//                    .resolve("Debug")
-//                    .resolve("net8.0")
-//                    .resolve("Program.exe");
-
             Path exePath = projectRoot
                     .getParent() // Go up to DSL-fitness-food
                     .resolve("interpreter") // Go to interpreter folder
