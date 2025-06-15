@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const Output = ({ outputData, isLoading }) => {
+  // export
+  const panelRef = useRef();
+
+  const exportToPDF = () => {
+    const content = document.getElementById('div-for-export');
+    html2canvas(content, {
+      scrollY: -window.scrollY,
+      windowHeight: content.scrollHeight,
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+  
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+      const imgProps = pdf.getImageProperties(imgData);
+      const imgWidth = pdfWidth;
+      const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+  
+      let position = 0;
+  
+      // Add pages if needed
+      while (position < imgHeight) {
+        const pageHeight = Math.min(pdfHeight, imgHeight - position);
+        pdf.addImage(
+          imgData,
+          'PNG',
+          0,
+          -position,
+          imgWidth,
+          imgHeight
+        );
+        position += pdfHeight;
+        if (position < imgHeight) pdf.addPage();
+      }
+  
+      pdf.save('output.pdf');
+    });
+  };
+  
+
   // Color schemes for charts
   const macroColors = {
     proteins: '#4F46E5',
@@ -341,6 +384,52 @@ const Output = ({ outputData, isLoading }) => {
     );
   };
 
+  // Function to render weekly schedule
+  const renderWeeklySchedule = (weeklySchedule) => {
+    if (!weeklySchedule || !weeklySchedule.schedule) return null;
+
+    return (
+      <div className="weekly-schedule-section">
+        <h3>📅 Weekly Workout Summary</h3>
+        
+        <div className="schedule-summary">
+          <div className="summary-item">
+            <span className="label">Total Workouts</span>
+            <span className="value">{weeklySchedule.totalWorkouts}</span>
+          </div>
+          <div className="summary-item">
+            <span className="label">Estimated Weekly Calories</span>
+            <span className="value">{weeklySchedule.estimatedWeeklyCalories} kcal</span>
+          </div>
+          <div className="summary-item">
+            <span className="label">Workout Days</span>
+            <span className="value">{weeklySchedule.workoutDays?.join(', ')}</span>
+          </div>
+        </div>
+
+        {renderTrainingSchedule(weeklySchedule.schedule)}
+      </div>
+    );
+  };
+
+  // Function to render recommendations
+  const renderRecommendations = (recommendations) => {
+    if (!recommendations || recommendations.length === 0) return null;
+
+    return (
+      <div className="recommendations-section">
+        <h3>💡 Recommendations</h3>
+        <ul className="recommendations-list">
+          {recommendations.map((rec, index) => (
+            <li key={index} className="recommendation-item">
+              {rec}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   // Function to render optimal times
   const renderOptimalTimes = (optimalTimes) => {
     if (!optimalTimes) return null;
@@ -396,8 +485,8 @@ const Output = ({ outputData, isLoading }) => {
             <span className="value">{userData.goal}</span>
           </div>
           <div className="profile-item">
-            <span className="label">Diet</span>
-            <span className="value">{userData.diet}</span>
+            <span className="label">Exercise Experience</span>
+            <span className="value">{userData.exerciseExperience} years</span>
           </div>
           {userData.allergies?.length > 0 && (
             <div className="profile-item full-width">
@@ -430,10 +519,10 @@ const Output = ({ outputData, isLoading }) => {
     <div className="output-container">
       <div className="panel-header">
         <span>Output</span>
-        <button className="export-button">Export</button>
+        <button className="export-button" onClick={exportToPDF}>Export</button>
       </div>
 
-      <div className="panel-content">
+      <div className="panel-content" ref={panelRef} id="div-for-export">
         {isLoading ? (
           <div className="loading-spinner"></div>
         ) : (
@@ -444,12 +533,18 @@ const Output = ({ outputData, isLoading }) => {
             {/* Render optimal times if available */}
             {outputData.optimalTimes && renderOptimalTimes(outputData.optimalTimes)}
             
+            {/* Render weekly schedule if available */}
+            {outputData.weeklySchedule && renderWeeklySchedule(outputData.weeklySchedule)}
+            
             {/* Render meal data - handle both old and new structures */}
             {outputData.meals && renderMealSearch(outputData)}
             {outputData.mealPlan && renderOriginalMealPlan(outputData.mealPlan)}
             
             {/* Render training schedule */}
-            {outputData.trainingSchedule && renderTrainingSchedule(outputData.trainingSchedule)}
+            {outputData.trainingSchedule && !outputData.weeklySchedule && renderTrainingSchedule(outputData.trainingSchedule)}
+            
+            {/* Render recommendations */}
+            {outputData.recommendations && renderRecommendations(outputData.recommendations)}
             
             {/* Status indicator */}
             {outputData.status && (
@@ -538,7 +633,9 @@ const Output = ({ outputData, isLoading }) => {
         .meal-plan-section,
         .meal-search-section,
         .training-section,
-        .optimal-times-section {
+        .optimal-times-section,
+        .weekly-schedule-section,
+        .recommendations-section {
           background: #f9fafb;
           border-radius: 12px;
           padding: 24px;
@@ -548,7 +645,9 @@ const Output = ({ outputData, isLoading }) => {
         .meal-plan-section h3,
         .meal-search-section h3,
         .training-section h3,
-        .optimal-times-section h3 {
+        .optimal-times-section h3,
+        .weekly-schedule-section h3,
+        .recommendations-section h3 {
           margin: 0 0 20px 0;
           color: #111827;
           font-size: 18px;
@@ -967,6 +1066,50 @@ const Output = ({ outputData, isLoading }) => {
           color: #4f46e5;
         }
 
+        /* Weekly schedule styles */
+        .schedule-summary {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 16px;
+          margin-bottom: 24px;
+        }
+
+        .summary-item {
+          background: white;
+          border-radius: 8px;
+          padding: 16px;
+          border: 1px solid #e5e7eb;
+        }
+
+        .summary-item .label {
+          display: block;
+          color: #6b7280;
+          font-size: 14px;
+          margin-bottom: 4px;
+        }
+
+        .summary-item .value {
+          color: #111827;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        /* Recommendations styles */
+        .recommendations-list {
+          padding-left: 20px;
+          margin: 0;
+        }
+
+        .recommendation-item {
+          margin-bottom: 8px;
+          color: #374151;
+          line-height: 1.5;
+        }
+
+        .recommendation-item:last-child {
+          margin-bottom: 0;
+        }
+
         @media (max-width: 768px) {
           .analytics-grid {
             grid-template-columns: 1fr;
@@ -986,6 +1129,10 @@ const Output = ({ outputData, isLoading }) => {
           
           .times-grid {
             grid-template-columns: repeat(2, 1fr);
+          }
+
+          .schedule-summary {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
