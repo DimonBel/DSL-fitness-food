@@ -1,5 +1,5 @@
+// Generated from D:\u005Cuni\a\backend-dsl\src\main\java\com\example\dsl_backend\DSL\FitnessNutrition.g4 by ANTLR 4.9.3
 package com.example.dsl_backend.DSL;
-// Generated from grammar/FitnessNutrition.g4 by ANTLR 4.9.3
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -22,6 +22,24 @@ public interface FitnessNutritionVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStatement(FitnessNutritionParser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exercisesStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExercisesStmt(FitnessNutritionParser.ExercisesStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exerciseEntry}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExerciseEntry(FitnessNutritionParser.ExerciseEntryContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exerciseParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExerciseParams(FitnessNutritionParser.ExerciseParamsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FitnessNutritionParser#createStmt}.
 	 * @param ctx the parse tree
@@ -190,4 +208,82 @@ public interface FitnessNutritionVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLiteral(FitnessNutritionParser.LiteralContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#findOptimalTimesStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFindOptimalTimesStmt(FitnessNutritionParser.FindOptimalTimesStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#userSpec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUserSpec(FitnessNutritionParser.UserSpecContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#userPropertyList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUserPropertyList(FitnessNutritionParser.UserPropertyListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#userProperty}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUserProperty(FitnessNutritionParser.UserPropertyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#timeRangeArray}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTimeRangeArray(FitnessNutritionParser.TimeRangeArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#timeRangePair}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTimeRangePair(FitnessNutritionParser.TimeRangePairContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exerciseArray}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExerciseArray(FitnessNutritionParser.ExerciseArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exerciseObject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExerciseObject(FitnessNutritionParser.ExerciseObjectContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exercisePropertyList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExercisePropertyList(FitnessNutritionParser.ExercisePropertyListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#exerciseProperty}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExerciseProperty(FitnessNutritionParser.ExercisePropertyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#createWeeklyTrainingScheduleStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreateWeeklyTrainingScheduleStmt(FitnessNutritionParser.CreateWeeklyTrainingScheduleStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#createDailyMealPlanStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreateDailyMealPlanStmt(FitnessNutritionParser.CreateDailyMealPlanStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FitnessNutritionParser#stringArray}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringArray(FitnessNutritionParser.StringArrayContext ctx);
 }

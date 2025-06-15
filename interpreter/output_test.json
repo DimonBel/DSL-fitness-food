@@ -1,9 +1,15 @@
 {
   "id": 0,
-  "weight": 90.5,
-  "height": 1.95,
-  "goal": "Weight Loss",
+  "name": "",
+  "weight": 0,
+  "height": 0,
+  "age": 0,
+  "goal": "Maintenance",
   "busyTime": [
+    [
+      "00:00",
+      "07:00"
+    ],
     [
       "09:00",
       "17:00"
@@ -13,94 +19,280 @@
       "21:00"
     ]
   ],
-  "diet": "Vegetarian",
-  "allergies": [
-    "Nuts",
-    "Gluten"
-  ],
+  "diet": "Balanced",
+  "allergies": [],
   "exercises": [
     {
-      "name": "Squat",
-      "weight": 60,
-      "sets": 3,
-      "reps": 5
-    },
-    {
-      "name": "BenchPress",
-      "weight": 45,
-      "sets": 4,
-      "reps": 8
-    },
-    {
-      "name": "Crunches",
-      "weight": -10,
-      "sets": 3,
-      "reps": 12
+      "name": "Running",
+      "weight": 0,
+      "sets": 0,
+      "reps": 0
     }
   ],
-  "bmi": 23.80013,
-  "caloriesPerDay": 2094.6704,
-  "MealPlan": {
-    "Breakfast": [
+  "bmi": 0,
+  "caloriesPerDay": 5,
+  "mealPlan": {
+    "breakfast": [
       {
-        "Name": "Oatmeal",
-        "Description": "",
-        "Calories": 300,
-        "Carbs": 50,
-        "Proteins": 10,
-        "Fats": 5
-      }
-    ],
-    "Lunch": [
+        "Name": "Scrambled Eggs with Avocado Toast",
+        "Ingredients": [
+          "Eggs",
+          "Whole Wheat Bread",
+          "Avocado",
+          "Olive Oil"
+        ],
+        "Calories": 480,
+        "Carbs": 35,
+        "Proteins": 22,
+        "Fats": 28,
+        "MealType": "General"
+      },
       {
-        "Name": "Vegetable Stir Fry",
-        "Description": "",
-        "Calories": 400,
-        "Carbs": 60,
-        "Proteins": 15,
-        "Fats": 10
-      }
-    ],
-    "Dinner": [
-      {
-        "Name": "Lentil Soup",
-        "Description": "",
+        "Name": "Greek Yogurt Parfait",
+        "Ingredients": [
+          "Yogurt",
+          "Granola",
+          "Blueberry",
+          "Honey"
+        ],
         "Calories": 350,
+        "Carbs": 45,
+        "Proteins": 18,
+        "Fats": 12,
+        "MealType": "General"
+      },
+      {
+        "Name": "Oatmeal with Nuts and Berries",
+        "Ingredients": [
+          "Oats",
+          "Almond Milk",
+          "Walnut",
+          "Strawberry",
+          "Cinnamon"
+        ],
+        "Calories": 400,
+        "Carbs": 50,
+        "Proteins": 12,
+        "Fats": 18,
+        "MealType": "General"
+      }
+    ],
+    "lunch": [
+      {
+        "Name": "Grilled Salmon with Quinoa Salad",
+        "Ingredients": [
+          "Salmon",
+          "Quinoa",
+          "Spinach",
+          "Tomato",
+          "Olive Oil"
+        ],
+        "Calories": 550,
+        "Carbs": 45,
+        "Proteins": 38,
+        "Fats": 25,
+        "MealType": "General"
+      },
+      {
+        "Name": "Turkey and Cheese Wrap",
+        "Ingredients": [
+          "Turkey",
+          "Whole Wheat Bread",
+          "Cheese",
+          "Spinach",
+          "Tomato"
+        ],
+        "Calories": 480,
         "Carbs": 40,
-        "Proteins": 20,
-        "Fats": 8
+        "Proteins": 35,
+        "Fats": 20,
+        "MealType": "General"
+      },
+      {
+        "Name": "Chicken and Brown Rice Bowl",
+        "Ingredients": [
+          "Chicken Breast",
+          "Brown Rice",
+          "Broccoli",
+          "Carrot",
+          "Soy Sauce"
+        ],
+        "Calories": 520,
+        "Carbs": 55,
+        "Proteins": 42,
+        "Fats": 12,
+        "MealType": "General"
       }
     ],
-    "Snacks": []
+    "dinner": [
+      {
+        "Name": "Chicken Stir-Fry with Brown Rice",
+        "Ingredients": [
+          "Chicken Breast",
+          "Brown Rice",
+          "Broccoli",
+          "Bell Pepper",
+          "Sesame Oil"
+        ],
+        "Calories": 520,
+        "Carbs": 50,
+        "Proteins": 42,
+        "Fats": 15,
+        "MealType": "General"
+      },
+      {
+        "Name": "Baked Cod with Roasted Vegetables",
+        "Ingredients": [
+          "Cod",
+          "Potato",
+          "Carrot",
+          "Olive Oil",
+          "Lemon"
+        ],
+        "Calories": 450,
+        "Carbs": 40,
+        "Proteins": 38,
+        "Fats": 18,
+        "MealType": "General"
+      },
+      {
+        "Name": "Lean Beef with Mashed Potatoes",
+        "Ingredients": [
+          "Ground Beef",
+          "Potato",
+          "Butter",
+          "Milk",
+          "Peas"
+        ],
+        "Calories": 580,
+        "Carbs": 45,
+        "Proteins": 48,
+        "Fats": 25,
+        "MealType": "General"
+      }
+    ],
+    "snacks": [
+      {
+        "Name": "Greek Yogurt with Nuts",
+        "Ingredients": [
+          "Yogurt",
+          "Almond",
+          "Walnut",
+          "Honey"
+        ],
+        "Calories": 320,
+        "Carbs": 20,
+        "Proteins": 18,
+        "Fats": 22,
+        "MealType": "General"
+      },
+      {
+        "Name": "Apple with Peanut Butter",
+        "Ingredients": [
+          "Apple",
+          "Peanut Butter"
+        ],
+        "Calories": 250,
+        "Carbs": 30,
+        "Proteins": 8,
+        "Fats": 12,
+        "MealType": "General"
+      },
+      {
+        "Name": "Cheese and Whole Grain Crackers",
+        "Ingredients": [
+          "Cheese",
+          "Whole Wheat Bread",
+          "Grape"
+        ],
+        "Calories": 280,
+        "Carbs": 25,
+        "Proteins": 12,
+        "Fats": 15,
+        "MealType": "General"
+      }
+    ],
+    "totalCalories": 5180,
+    "totalProteins": 333,
+    "totalCarbs": 480,
+    "totalFats": 222
   },
-  "TrainingSchedule": {
-    "Monday": [
+  "trainingSchedule": {
+    "monday": [
       {
-        "Name": "Running",
-        "Type": "Cardio",
-        "Duration": 30,
-        "Intensity": "High"
+        "name": "Resistance Band Workout",
+        "type": "Strength",
+        "duration": 30,
+        "intensity": "Medium",
+        "difficulty": "Medium",
+        "caloriesBurned": 200,
+        "scheduledTime": "07:00:00"
       }
     ],
-    "Tuesday": [],
-    "Wednesday": [
+    "tuesday": [
       {
-        "Name": "Cycling",
-        "Type": "Cardio",
-        "Duration": 45,
-        "Intensity": "Medium"
+        "name": "Elliptical",
+        "type": "Cardio",
+        "duration": 30,
+        "intensity": "Medium",
+        "difficulty": "Easy",
+        "caloriesBurned": 250,
+        "scheduledTime": "07:00:00"
       }
     ],
-    "Thursday": [],
-    "Friday": [
+    "wednesday": [],
+    "thursday": [
       {
-        "Name": "Yoga",
-        "Type": "Flexibility",
-        "Duration": 60,
-        "Intensity": "Low"
+        "name": "Brisk Walking",
+        "type": "Cardio",
+        "duration": 45,
+        "intensity": "Medium",
+        "difficulty": "Easy",
+        "caloriesBurned": 200,
+        "scheduledTime": "07:00:00"
       }
     ],
-    "Saturday": [],
-    "Sunday": []
+    "friday": [],
+    "saturday": [],
+    "sunday": [],
+    "days": {
+      "Monday": [
+        {
+          "name": "Resistance Band Workout",
+          "type": "Strength",
+          "duration": 30,
+          "intensity": "Medium",
+          "difficulty": "Medium",
+          "caloriesBurned": 200,
+          "scheduledTime": "07:00:00"
+        }
+      ],
+      "Tuesday": [
+        {
+          "name": "Elliptical",
+          "type": "Cardio",
+          "duration": 30,
+          "intensity": "Medium",
+          "difficulty": "Easy",
+          "caloriesBurned": 250,
+          "scheduledTime": "07:00:00"
+        }
+      ],
+      "Wednesday": [],
+      "Thursday": [
+        {
+          "name": "Brisk Walking",
+          "type": "Cardio",
+          "duration": 45,
+          "intensity": "Medium",
+          "difficulty": "Easy",
+          "caloriesBurned": 200,
+          "scheduledTime": "07:00:00"
+        }
+      ],
+      "Friday": [],
+      "Saturday": [],
+      "Sunday": []
+    }
   }
 }

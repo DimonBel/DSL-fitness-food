@@ -28,8 +28,7 @@ Exercises = {
           className="button"
           onClick={() => {
             onRun(code);
-          }}
-        >
+          }}>
           Run
         </button>
       </div>

@@ -1,0 +1,568 @@
+{
+  "DietTypes": {
+    "Balanced": {
+      "Breakfast": {
+        "Scrambled Eggs with Avocado Toast": {
+          "Ingredients": ["Eggs", "Whole Wheat Bread", "Avocado", "Olive Oil"],
+          "Calories": 480,
+          "Carbs": 35,
+          "Proteins": 22,
+          "Fats": 28
+        },
+        "Greek Yogurt Parfait": {
+          "Ingredients": ["Yogurt", "Granola", "Blueberry", "Honey"],
+          "Calories": 350,
+          "Carbs": 45,
+          "Proteins": 18,
+          "Fats": 12
+        },
+        "Oatmeal with Nuts and Berries": {
+          "Ingredients": ["Oats", "Almond Milk", "Walnut", "Strawberry", "Cinnamon"],
+          "Calories": 400,
+          "Carbs": 50,
+          "Proteins": 12,
+          "Fats": 18
+        }
+      },
+      "Lunch": {
+        "Grilled Salmon with Quinoa Salad": {
+          "Ingredients": ["Salmon", "Quinoa", "Spinach", "Tomato", "Olive Oil"],
+          "Calories": 550,
+          "Carbs": 45,
+          "Proteins": 38,
+          "Fats": 25
+        },
+        "Turkey and Cheese Wrap": {
+          "Ingredients": ["Turkey", "Whole Wheat Bread", "Cheese", "Spinach", "Tomato"],
+          "Calories": 480,
+          "Carbs": 40,
+          "Proteins": 35,
+          "Fats": 20
+        },
+        "Chicken and Brown Rice Bowl": {
+          "Ingredients": ["Chicken Breast", "Brown Rice", "Broccoli", "Carrot", "Soy Sauce"],
+          "Calories": 520,
+          "Carbs": 55,
+          "Proteins": 42,
+          "Fats": 12
+        }
+      },
+      "Dinner": {
+        "Chicken Stir-Fry with Brown Rice": {
+          "Ingredients": ["Chicken Breast", "Brown Rice", "Broccoli", "Bell Pepper", "Sesame Oil"],
+          "Calories": 520,
+          "Carbs": 50,
+          "Proteins": 42,
+          "Fats": 15
+        },
+        "Baked Cod with Roasted Vegetables": {
+          "Ingredients": ["Cod", "Potato", "Carrot", "Olive Oil", "Lemon"],
+          "Calories": 450,
+          "Carbs": 40,
+          "Proteins": 38,
+          "Fats": 18
+        },
+        "Lean Beef with Mashed Potatoes": {
+          "Ingredients": ["Ground Beef", "Potato", "Butter", "Milk", "Peas"],
+          "Calories": 580,
+          "Carbs": 45,
+          "Proteins": 48,
+          "Fats": 25
+        }
+      },
+      "Snacks": {
+        "Greek Yogurt with Nuts": {
+          "Ingredients": ["Yogurt", "Almond", "Walnut", "Honey"],
+          "Calories": 320,
+          "Carbs": 20,
+          "Proteins": 18,
+          "Fats": 22
+        },
+        "Apple with Peanut Butter": {
+          "Ingredients": ["Apple", "Peanut Butter"],
+          "Calories": 250,
+          "Carbs": 30,
+          "Proteins": 8,
+          "Fats": 12
+        },
+        "Cheese and Whole Grain Crackers": {
+          "Ingredients": ["Cheese", "Whole Wheat Bread", "Grape"],
+          "Calories": 280,
+          "Carbs": 25,
+          "Proteins": 12,
+          "Fats": 15
+        }
+      }
+    },
+    "Vegetarian": {
+      "Breakfast": {
+        "Protein Oatmeal": {
+          "Ingredients": ["Oats", "Almond Milk", "Peanut Butter", "Chia Seeds", "Banana"],
+          "Calories": 420,
+          "Carbs": 55,
+          "Proteins": 18,
+          "Fats": 16
+        },
+        "Avocado Toast with Eggs": {
+          "Ingredients": ["Eggs", "Whole Wheat Bread", "Avocado", "Tomato"],
+          "Calories": 380,
+          "Carbs": 35,
+          "Proteins": 15,
+          "Fats": 20
+        },
+        "Smoothie Bowl": {
+          "Ingredients": ["Yogurt", "Banana", "Blueberry", "Chia Seeds", "Almond"],
+          "Calories": 350,
+          "Carbs": 45,
+          "Proteins": 14,
+          "Fats": 15
+        }
+      },
+      "Lunch": {
+        "Chickpea Buddha Bowl": {
+          "Ingredients": ["Chickpeas", "Quinoa", "Avocado", "Sweet Potato", "Tahini"],
+          "Calories": 580,
+          "Carbs": 65,
+          "Proteins": 22,
+          "Fats": 28
+        },
+        "Spinach and Feta Quesadilla": {
+          "Ingredients": ["Whole Wheat Bread", "Spinach", "Feta Cheese", "Bell Pepper"],
+          "Calories": 450,
+          "Carbs": 50,
+          "Proteins": 18,
+          "Fats": 20
+        },
+        "Mushroom Risotto": {
+          "Ingredients": ["Mushroom", "Arborio Rice", "Parmesan", "White Wine", "Butter"],
+          "Calories": 520,
+          "Carbs": 60,
+          "Proteins": 15,
+          "Fats": 22
+        }
+      },
+      "Dinner": {
+        "Lentil Curry with Basmati Rice": {
+          "Ingredients": ["Lentils", "Coconut Milk", "Tomato", "Onion", "Basmati Rice"],
+          "Calories": 510,
+          "Carbs": 70,
+          "Proteins": 24,
+          "Fats": 15
+        },
+        "Stuffed Bell Peppers": {
+          "Ingredients": ["Bell Pepper", "Quinoa", "Black Beans", "Cheese", "Tomato"],
+          "Calories": 480,
+          "Carbs": 55,
+          "Proteins": 20,
+          "Fats": 18
+        },
+        "Eggplant Parmesan": {
+          "Ingredients": ["Eggplant", "Tomato", "Mozzarella", "Parmesan", "Basil"],
+          "Calories": 550,
+          "Carbs": 45,
+          "Proteins": 25,
+          "Fats": 30
+        }
+      },
+      "Snacks": {
+        "Cottage Cheese with Berries": {
+          "Ingredients": ["Cottage Cheese", "Strawberry", "Blueberry", "Almond"],
+          "Calories": 280,
+          "Carbs": 20,
+          "Proteins": 24,
+          "Fats": 12
+        },
+        "Hummus with Veggies": {
+          "Ingredients": ["Chickpeas", "Tahini", "Olive Oil", "Carrot", "Cucumber"],
+          "Calories": 250,
+          "Carbs": 22,
+          "Proteins": 10,
+          "Fats": 15
+        },
+        "Trail Mix": {
+          "Ingredients": ["Almond", "Cashew", "Walnut", "Dried Mango", "Dark Chocolate"],
+          "Calories": 300,
+          "Carbs": 25,
+          "Proteins": 10,
+          "Fats": 20
+        }
+      }
+    },
+    "High-Protein": {
+      "Breakfast": {
+        "Egg White Omelette with Turkey": {
+          "Ingredients": ["Eggs", "Turkey Breast", "Spinach", "Cheese"],
+          "Calories": 380,
+          "Carbs": 8,
+          "Proteins": 48,
+          "Fats": 18
+        },
+        "Protein Pancakes": {
+          "Ingredients": ["Oats", "Eggs", "Cottage Cheese", "Banana", "Peanut Butter"],
+          "Calories": 420,
+          "Carbs": 35,
+          "Proteins": 40,
+          "Fats": 15
+        },
+        "Smoked Salmon Bagel": {
+          "Ingredients": ["Salmon", "Whole Wheat Bread", "Cream Cheese", "Cucumber"],
+          "Calories": 450,
+          "Carbs": 30,
+          "Proteins": 35,
+          "Fats": 20
+        }
+      },
+      "Lunch": {
+        "Beef and Broccoli with Rice": {
+          "Ingredients": ["Lean Beef", "Brown Rice", "Broccoli", "Soy Sauce"],
+          "Calories": 620,
+          "Carbs": 45,
+          "Proteins": 58,
+          "Fats": 22
+        },
+        "Grilled Chicken Caesar Salad": {
+          "Ingredients": ["Chicken Breast", "Romaine", "Parmesan", "Olive Oil", "Whole Wheat Croutons"],
+          "Calories": 550,
+          "Carbs": 20,
+          "Proteins": 52,
+          "Fats": 30
+        },
+        "Tuna Salad Wrap": {
+          "Ingredients": ["Tuna", "Whole Wheat Bread", "Greek Yogurt", "Celery", "Lemon"],
+          "Calories": 480,
+          "Carbs": 35,
+          "Proteins": 45,
+          "Fats": 18
+        }
+      },
+      "Dinner": {
+        "Grilled Tuna Steak with Sweet Potato": {
+          "Ingredients": ["Tuna", "Sweet Potato", "Asparagus", "Olive Oil"],
+          "Calories": 540,
+          "Carbs": 40,
+          "Proteins": 52,
+          "Fats": 20
+        },
+        "Turkey Meatballs with Spaghetti": {
+          "Ingredients": ["Turkey", "Whole Wheat Pasta", "Tomato", "Parmesan", "Basil"],
+          "Calories": 580,
+          "Carbs": 50,
+          "Proteins": 55,
+          "Fats": 22
+        },
+        "Baked Chicken with Quinoa": {
+          "Ingredients": ["Chicken Breast", "Quinoa", "Broccoli", "Olive Oil"],
+          "Calories": 520,
+          "Carbs": 45,
+          "Proteins": 50,
+          "Fats": 18
+        }
+      },
+      "Snacks": {
+        "Protein Shake with Peanut Butter": {
+          "Ingredients": ["Whey Protein", "Almond Milk", "Peanut Butter", "Banana"],
+          "Calories": 350,
+          "Carbs": 25,
+          "Proteins": 35,
+          "Fats": 12
+        },
+        "Hard-Boiled Eggs with Cheese": {
+          "Ingredients": ["Eggs", "Cheese", "Black Pepper"],
+          "Calories": 280,
+          "Carbs": 2,
+          "Proteins": 25,
+          "Fats": 18
+        },
+        "Greek Yogurt with Almonds": {
+          "Ingredients": ["Yogurt", "Almond", "Cinnamon"],
+          "Calories": 300,
+          "Carbs": 15,
+          "Proteins": 28,
+          "Fats": 15
+        }
+      }
+    },
+    "Keto": {
+      "Breakfast": {
+        "Avocado and Eggs": {
+          "Ingredients": ["Eggs", "Avocado", "Bacon", "Cheese"],
+          "Calories": 520,
+          "Carbs": 8,
+          "Proteins": 24,
+          "Fats": 42
+        },
+        "Keto Pancakes": {
+          "Ingredients": ["Almond Flour", "Eggs", "Cream Cheese", "Butter"],
+          "Calories": 480,
+          "Carbs": 6,
+          "Proteins": 18,
+          "Fats": 42
+        },
+        "Bulletproof Coffee": {
+          "Ingredients": ["Coffee", "Butter", "Coconut Oil"],
+          "Calories": 350,
+          "Carbs": 0,
+          "Proteins": 0,
+          "Fats": 38
+        }
+      },
+      "Lunch": {
+        "Salmon with Cauliflower Rice": {
+          "Ingredients": ["Salmon", "Cauliflower", "Butter", "Lemon"],
+          "Calories": 580,
+          "Carbs": 12,
+          "Proteins": 36,
+          "Fats": 44
+        },
+        "Bacon and Egg Salad": {
+          "Ingredients": ["Bacon", "Eggs", "Avocado", "Spinach", "Olive Oil"],
+          "Calories": 600,
+          "Carbs": 8,
+          "Proteins": 25,
+          "Fats": 52
+        },
+        "Cheeseburger Lettuce Wraps": {
+          "Ingredients": ["Ground Beef", "Cheese", "Bacon", "Lettuce", "Mayonnaise"],
+          "Calories": 650,
+          "Carbs": 6,
+          "Proteins": 40,
+          "Fats": 52
+        }
+      },
+      "Dinner": {
+        "Steak with Mushrooms": {
+          "Ingredients": ["Beef", "Mushroom", "Butter", "Garlic"],
+          "Calories": 650,
+          "Carbs": 10,
+          "Proteins": 48,
+          "Fats": 48
+        },
+        "Garlic Butter Shrimp": {
+          "Ingredients": ["Shrimp", "Butter", "Garlic", "Lemon"],
+          "Calories": 550,
+          "Carbs": 5,
+          "Proteins": 38,
+          "Fats": 42
+        },
+        "Chicken Thighs with Asparagus": {
+          "Ingredients": ["Chicken", "Asparagus", "Butter", "Parmesan"],
+          "Calories": 580,
+          "Carbs": 8,
+          "Proteins": 45,
+          "Fats": 42
+        }
+      },
+      "Snacks": {
+        "Cheese and Nuts": {
+          "Ingredients": ["Cheddar Cheese", "Walnut", "Pecan"],
+          "Calories": 400,
+          "Carbs": 6,
+          "Proteins": 14,
+          "Fats": 38
+        },
+        "Avocado with Bacon": {
+          "Ingredients": ["Avocado", "Bacon", "Lime"],
+          "Calories": 350,
+          "Carbs": 8,
+          "Proteins": 10,
+          "Fats": 32
+        },
+        "Keto Fat Bombs": {
+          "Ingredients": ["Coconut Oil", "Peanut Butter", "Cocoa Powder"],
+          "Calories": 300,
+          "Carbs": 4,
+          "Proteins": 6,
+          "Fats": 30
+        }
+      }
+    },
+    "Mediterranean": {
+      "Breakfast": {
+        "Greek Yogurt with Honey and Nuts": {
+          "Ingredients": ["Yogurt", "Honey", "Walnut", "Oats"],
+          "Calories": 380,
+          "Carbs": 35,
+          "Proteins": 18,
+          "Fats": 20
+        },
+        "Feta and Olive Omelette": {
+          "Ingredients": ["Eggs", "Feta Cheese", "Olives", "Tomato"],
+          "Calories": 350,
+          "Carbs": 10,
+          "Proteins": 22,
+          "Fats": 25
+        },
+        "Whole Grain Toast with Tahini": {
+          "Ingredients": ["Whole Wheat Bread", "Tahini", "Honey", "Walnut"],
+          "Calories": 320,
+          "Carbs": 35,
+          "Proteins": 10,
+          "Fats": 18
+        }
+      },
+      "Lunch": {
+        "Grilled Chicken Salad": {
+          "Ingredients": ["Chicken", "Olive Oil", "Feta Cheese", "Cucumber", "Tomato"],
+          "Calories": 480,
+          "Carbs": 15,
+          "Proteins": 38,
+          "Fats": 32
+        },
+        "Greek Lentil Soup": {
+          "Ingredients": ["Lentils", "Tomato", "Onion", "Garlic", "Olive Oil"],
+          "Calories": 420,
+          "Carbs": 45,
+          "Proteins": 22,
+          "Fats": 18
+        },
+        "Stuffed Grape Leaves": {
+          "Ingredients": ["Rice", "Lemon", "Olive Oil", "Dill", "Ground Lamb"],
+          "Calories": 450,
+          "Carbs": 35,
+          "Proteins": 20,
+          "Fats": 25
+        }
+      },
+      "Dinner": {
+        "Baked Cod with Vegetables": {
+          "Ingredients": ["Cod", "Bell Pepper", "Zucchini", "Olive Oil", "Lemon"],
+          "Calories": 420,
+          "Carbs": 20,
+          "Proteins": 40,
+          "Fats": 22
+        },
+        "Moussaka": {
+          "Ingredients": ["Eggplant", "Ground Lamb", "Tomato", "Parmesan", "Cinnamon"],
+          "Calories": 550,
+          "Carbs": 25,
+          "Proteins": 35,
+          "Fats": 35
+        },
+        "Grilled Octopus": {
+          "Ingredients": ["Octopus", "Olive Oil", "Lemon", "Oregano", "Potato"],
+          "Calories": 480,
+          "Carbs": 20,
+          "Proteins": 45,
+          "Fats": 25
+        }
+      },
+      "Snacks": {
+        "Hummus with Veggies": {
+          "Ingredients": ["Chickpeas", "Tahini", "Olive Oil", "Carrot", "Cucumber"],
+          "Calories": 320,
+          "Carbs": 25,
+          "Proteins": 12,
+          "Fats": 20
+        },
+        "Olive and Cheese Plate": {
+          "Ingredients": ["Feta Cheese", "Olives", "Whole Wheat Bread", "Tomato"],
+          "Calories": 280,
+          "Carbs": 15,
+          "Proteins": 12,
+          "Fats": 20
+        },
+        "Yogurt with Figs": {
+          "Ingredients": ["Yogurt", "Figs", "Honey", "Walnut"],
+          "Calories": 250,
+          "Carbs": 30,
+          "Proteins": 10,
+          "Fats": 12
+        }
+      }
+    },
+    "Vegan": {
+      "Breakfast": {
+        "Tofu Scramble": {
+          "Ingredients": ["Tofu", "Turmeric", "Bell Pepper", "Avocado", "Whole Wheat Toast"],
+          "Calories": 380,
+          "Carbs": 30,
+          "Proteins": 22,
+          "Fats": 20
+        },
+        "Chia Pudding": {
+          "Ingredients": ["Chia Seeds", "Almond Milk", "Maple Syrup", "Blueberry"],
+          "Calories": 350,
+          "Carbs": 40,
+          "Proteins": 10,
+          "Fats": 18
+        },
+        "Smoothie Bowl": {
+          "Ingredients": ["Banana", "Almond Milk", "Peanut Butter", "Chia Seeds", "Granola"],
+          "Calories": 420,
+          "Carbs": 50,
+          "Proteins": 12,
+          "Fats": 20
+        }
+      },
+      "Lunch": {
+        "Quinoa and Black Bean Bowl": {
+          "Ingredients": ["Quinoa", "Black Beans", "Avocado", "Corn", "Lime"],
+          "Calories": 520,
+          "Carbs": 65,
+          "Proteins": 24,
+          "Fats": 18
+        },
+        "Vegan Buddha Bowl": {
+          "Ingredients": ["Sweet Potato", "Chickpeas", "Kale", "Tahini", "Quinoa"],
+          "Calories": 550,
+          "Carbs": 70,
+          "Proteins": 20,
+          "Fats": 20
+        },
+        "Lentil Soup": {
+          "Ingredients": ["Lentils", "Carrot", "Celery", "Tomato", "Onion"],
+          "Calories": 450,
+          "Carbs": 60,
+          "Proteins": 22,
+          "Fats": 12
+        }
+      },
+      "Dinner": {
+        "Chickpea Curry": {
+          "Ingredients": ["Chickpeas", "Coconut Milk", "Tomato", "Spinach", "Basmati Rice"],
+          "Calories": 560,
+          "Carbs": 75,
+          "Proteins": 22,
+          "Fats": 20
+        },
+        "Vegan Lasagna": {
+          "Ingredients": ["Lasagna Noodles", "Tofu", "Tomato", "Spinach", "Nutritional Yeast"],
+          "Calories": 480,
+          "Carbs": 60,
+          "Proteins": 25,
+          "Fats": 18
+        },
+        "Stuffed Portobello Mushrooms": {
+          "Ingredients": ["Mushroom", "Quinoa", "Spinach", "Walnut", "Olive Oil"],
+          "Calories": 420,
+          "Carbs": 35,
+          "Proteins": 18,
+          "Fats": 25
+        }
+      },
+      "Snacks": {
+        "Edamame with Sea Salt": {
+          "Ingredients": ["Soybeans", "Sea Salt"],
+          "Calories": 180,
+          "Carbs": 15,
+          "Proteins": 16,
+          "Fats": 8
+        },
+        "Avocado Toast": {
+          "Ingredients": ["Whole Wheat Bread", "Avocado", "Lemon", "Chili Flakes"],
+          "Calories": 250,
+          "Carbs": 25,
+          "Proteins": 6,
+          "Fats": 15
+        },
+        "Roasted Chickpeas": {
+          "Ingredients": ["Chickpeas", "Olive Oil", "Paprika", "Garlic Powder"],
+          "Calories": 200,
+          "Carbs": 25,
+          "Proteins": 10,
+          "Fats": 8
+        }
+      }
+    }
+  }
+}
