@@ -20,4 +20,4 @@ EXPOSE 5173
 ENV PORT=5173
 
 # Start the app and bind to all interfaces
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD ["npm", "run", "dev"]
