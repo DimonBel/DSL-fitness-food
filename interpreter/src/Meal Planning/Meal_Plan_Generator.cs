@@ -7,22 +7,8 @@ public static class MealPlanGenerator
 {
     private static Dictionary<string, Dictionary<string, Dictionary<string, Dictionary<string, Meal>>>>? _mealsData;
 
-    private static string GetDatabasePath()
-    {
-        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
-        return Path.Combine(projectRoot, "src", "database");
-    }
-
     public static MealPlan GenerateMealPlan(User_Profile user)
     {
-        string path = Path.Combine(GetDatabasePath(), "Meals.json");
-        if (!File.Exists(path))
-        {
-            Console.WriteLine("Meals database not found at: " + path);
-            return new MealPlan();
-        }
-
         LoadMealsData();
         var mealPlan = new MealPlan();
 
@@ -39,74 +25,40 @@ public static class MealPlanGenerator
             return mealPlan;
         }
 
-        var dietKey = dietTypes.Keys.FirstOrDefault(k =>
+        var dietKey = dietTypes.Keys.FirstOrDefault(k => 
             k.Equals(user.diet, StringComparison.OrdinalIgnoreCase));
-
+        
         if (string.IsNullOrEmpty(dietKey))
         {
             Console.WriteLine($"Error: No meals found for diet '{user.diet}'");
             return mealPlan;
         }
 
-        // Get all meals for the diet
+        // Get all meals for the diet, filtered by allergies
         var dietMeals = dietTypes[dietKey];
+        
+        // Filter meals by allergies and assign to meal plan
+        mealPlan.Breakfast = FilterMeals(dietMeals["Breakfast"], user.allergies);
+        mealPlan.Lunch = FilterMeals(dietMeals["Lunch"], user.allergies);
+        mealPlan.Dinner = FilterMeals(dietMeals["Dinner"], user.allergies);
+        mealPlan.Snacks = FilterMeals(dietMeals["Snacks"], user.allergies);
 
-        // Get ALL meals (including those with allergies) and categorize them
-        mealPlan.Breakfast = GetAllMealsWithAllergyInfo(dietMeals["Breakfast"], user.allergies);
-        mealPlan.Lunch = GetAllMealsWithAllergyInfo(dietMeals["Lunch"], user.allergies);
-        mealPlan.Dinner = GetAllMealsWithAllergyInfo(dietMeals["Dinner"], user.allergies);
-        mealPlan.Snacks = GetAllMealsWithAllergyInfo(dietMeals["Snacks"], user.allergies);
-
-        if (mealPlan.Breakfast.Count == 0 &&
-            mealPlan.Lunch.Count == 0 &&
-            mealPlan.Dinner.Count == 0 &&
+        if (mealPlan.Breakfast.Count == 0 && 
+            mealPlan.Lunch.Count == 0 && 
+            mealPlan.Dinner.Count == 0 && 
             mealPlan.Snacks.Count == 0)
         {
-            Console.WriteLine("Warning: No meals found for the specified diet");
+            Console.WriteLine("Warning: No meals available after filtering for allergies");
         }
 
         return mealPlan;
     }
 
-    private static List<Meal> GetAllMealsWithAllergyInfo(Dictionary<string, Meal> meals, List<string> allergies)
-    {
-        var result = new List<Meal>();
-
-        foreach (var mealPair in meals)
-        {
-            var meal = new Meal
-            {
-                Name = mealPair.Key,
-                Ingredients = mealPair.Value.Ingredients,
-                Calories = mealPair.Value.Calories,
-                Carbs = mealPair.Value.Carbs,
-                Proteins = mealPair.Value.Proteins,
-                Fats = mealPair.Value.Fats
-            };
-
-            // Check if meal contains allergens
-            bool hasAllergens = allergies.Any(allergy =>
-                meal.Ingredients.Any(ingredient =>
-                    ingredient.Contains(allergy, StringComparison.OrdinalIgnoreCase)));
-
-            // Add a note to the meal name if it contains allergens
-            if (hasAllergens)
-            {
-                meal.Name += " ⚠️ (Contains allergens)";
-            }
-
-            result.Add(meal);
-        }
-
-        return result;
-    }
-
-    // Alternative method: Get only safe meals (original behavior)
     private static List<Meal> FilterMeals(Dictionary<string, Meal> meals, List<string> allergies)
     {
         return meals.Values
-            .Where(meal => !allergies.Any(allergy =>
-                meal.Ingredients.Any(ingredient =>
+            .Where(meal => !allergies.Any(allergy => 
+                meal.Ingredients.Any(ingredient => 
                     ingredient.Contains(allergy, StringComparison.OrdinalIgnoreCase))))
             .ToList();
     }
@@ -115,7 +67,7 @@ public static class MealPlanGenerator
     {
         try
         {
-            string path = Path.Combine(GetDatabasePath(), "Meals.json");
+            string path = Path.Combine("database", "Meals.json");
             if (!File.Exists(path))
             {
                 Console.WriteLine($"Error: Meals.json not found at {path}");
@@ -137,6 +89,37 @@ public static class MealPlanGenerator
         }
     }
 
+    public static void PrintMealPlan(MealPlan mealPlan)
+    {
+        Console.WriteLine("=== Meal Plan ===");
+        PrintMeals("Breakfast", mealPlan.Breakfast);
+        PrintMeals("Lunch", mealPlan.Lunch);
+        PrintMeals("Dinner", mealPlan.Dinner);
+        PrintMeals("Snacks", mealPlan.Snacks);
+        
+        Console.WriteLine($"\nTotal Calories: {mealPlan.TotalCalories}");
+        Console.WriteLine($"Total Proteins: {mealPlan.TotalProteins}g");
+        Console.WriteLine($"Total Carbs: {mealPlan.TotalCarbs}g");
+        Console.WriteLine($"Total Fats: {mealPlan.TotalFats}g");
+    }
+
+    private static void PrintMeals(string mealType, List<Meal> meals)
+    {
+        Console.WriteLine($"\n{mealType}:");
+        if (!meals.Any())
+        {
+            Console.WriteLine("No meals selected");
+            return;
+        }
+        
+        foreach (var meal in meals)
+        {
+            Console.WriteLine($"- {meal.Name} ({meal.Calories} kcal)");
+            Console.WriteLine($"  Ingredients: {string.Join(", ", meal.Ingredients)}");
+            Console.WriteLine($"  Macros: P{meal.Proteins}g C{meal.Carbs}g F{meal.Fats}g");
+        }
+        Console.WriteLine($"Total: {meals.Sum(m => m.Calories)} calories");
+    }
     public static List<Meal> FindMealsByIngredient(string ingredient, string? dietType = null, string? mealType = null)
     {
         LoadMealsData();
@@ -148,7 +131,7 @@ public static class MealPlanGenerator
             return foundMeals;
         }
 
-        var dietsToSearch = dietType != null
+        var dietsToSearch = dietType != null 
             ? _mealsData["DietTypes"].Where(d => d.Key.Equals(dietType, StringComparison.OrdinalIgnoreCase))
             : _mealsData["DietTypes"].AsEnumerable();
 
@@ -162,7 +145,7 @@ public static class MealPlanGenerator
             {
                 foreach (var meal in mealCategory.Value)
                 {
-                    if (meal.Value.Ingredients.Any(i =>
+                    if (meal.Value.Ingredients.Any(i => 
                         i.Contains(ingredient, StringComparison.OrdinalIgnoreCase)))
                     {
                         foundMeals.Add(new Meal

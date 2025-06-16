@@ -13,8 +13,11 @@ public class Main {
                     .getParent() // Go up to DSL-fitness-food
                     .resolve("interpreter") // Go to interpreter folder
                     .resolve("src")
-                    .resolve("publish")
+                    .resolve("bin")
+                    .resolve("Release")
+                    .resolve("net8.0")
                     .resolve("Program.exe");
+
 
             System.out.println("Attempting to run: " + exePath);
 

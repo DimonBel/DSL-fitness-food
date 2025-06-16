@@ -20,7 +20,7 @@ import static com.example.dsl_backend.Main.interpret;
 public class JsonController {
 
     // Relative path from project root
-    private static final String JSON_FILE_PATH = "../interpreter/output_test.json";
+    private static final String JSON_FILE_PATH = "../interpreter/interpreter/output_test.json";
 
 
 
