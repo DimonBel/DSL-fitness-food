@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: 123123
       POSTGRES_DB: fitness_db
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -29,14 +29,13 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123123
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      CSHARP_EXE_PATH: /app/interpreter/Program
-      OUTPUT_FILE_PATH: /app/interpreter/output_test.json # Correct environment variable placement
+      PARSER_INPUT_FILE: /app/data/example.txt  # Add this
     depends_on:
       postgres:
         condition: service_healthy
     volumes:
       - ./backend-dsl:/app
-      - ./interpreter/bin/Release/net8.0/linux-x64/publish:/app/interpreter
+      - ./data:/app/data  # Mount data directory
 
   frontend:
     build: 
@@ -46,8 +45,11 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=production
+      - VITE_API_URL=http://localhost:8080
     ports:
       - "5173:5173"
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:
