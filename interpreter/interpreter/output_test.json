@@ -1,0 +1,184 @@
+{
+  "id": 0,
+  "name": "",
+  "weight": 0,
+  "height": 0,
+  "age": 0,
+  "goal": "Maintenance",
+  "busyTime": [
+    [
+      "00:00",
+      "07:00"
+    ],
+    [
+      "09:00",
+      "17:00"
+    ],
+    [
+      "19:00",
+      "21:00"
+    ]
+  ],
+  "diet": "Balanced",
+  "allergies": [],
+  "exercises": [
+    {
+      "name": "Running",
+      "weight": 0,
+      "sets": 0,
+      "reps": 0
+    }
+  ],
+  "bmi": 0,
+  "caloriesPerDay": 5,
+  "mealPlan": {
+    "breakfast": [
+      {
+        "Name": "Scrambled Eggs with Avocado Toast",
+        "Ingredients": [
+          "Eggs",
+          "Whole Wheat Bread",
+          "Avocado",
+          "Olive Oil"
+        ],
+        "Calories": 480,
+        "Carbs": 35,
+        "Proteins": 22,
+        "Fats": 28,
+        "MealType": "General"
+      }
+    ],
+    "lunch": [
+      {
+        "Name": "Grilled Salmon with Quinoa Salad",
+        "Ingredients": [
+          "Salmon",
+          "Quinoa",
+          "Spinach",
+          "Tomato",
+          "Olive Oil"
+        ],
+        "Calories": 550,
+        "Carbs": 45,
+        "Proteins": 38,
+        "Fats": 25,
+        "MealType": "General"
+      }
+    ],
+    "dinner": [
+      {
+        "Name": "Chicken Stir-Fry with Brown Rice",
+        "Ingredients": [
+          "Chicken Breast",
+          "Brown Rice",
+          "Broccoli",
+          "Bell Pepper",
+          "Sesame Oil"
+        ],
+        "Calories": 520,
+        "Carbs": 50,
+        "Proteins": 42,
+        "Fats": 15,
+        "MealType": "General"
+      }
+    ],
+    "snacks": [
+      {
+        "Name": "Greek Yogurt with Nuts",
+        "Ingredients": [
+          "Yogurt",
+          "Almond",
+          "Walnut",
+          "Honey"
+        ],
+        "Calories": 320,
+        "Carbs": 20,
+        "Proteins": 18,
+        "Fats": 22,
+        "MealType": "General"
+      }
+    ],
+    "totalCalories": 1870,
+    "totalProteins": 120,
+    "totalCarbs": 150,
+    "totalFats": 90
+  },
+  "trainingSchedule": {
+    "monday": [],
+    "tuesday": [],
+    "wednesday": [],
+    "thursday": [],
+    "friday": [
+      {
+        "name": "Stretching Routine",
+        "type": "Flexibility",
+        "duration": 20,
+        "intensity": "Low",
+        "difficulty": "Easy",
+        "caloriesBurned": 100,
+        "scheduledTime": "07:00:00"
+      }
+    ],
+    "saturday": [
+      {
+        "name": "Bodyweight Circuit",
+        "type": "Strength",
+        "duration": 30,
+        "intensity": "Medium",
+        "difficulty": "Medium",
+        "caloriesBurned": 220,
+        "scheduledTime": "07:00:00"
+      }
+    ],
+    "sunday": [
+      {
+        "name": "Resistance Band Workout",
+        "type": "Strength",
+        "duration": 30,
+        "intensity": "Medium",
+        "difficulty": "Medium",
+        "caloriesBurned": 200,
+        "scheduledTime": "07:00:00"
+      }
+    ],
+    "days": {
+      "Monday": [],
+      "Tuesday": [],
+      "Wednesday": [],
+      "Thursday": [],
+      "Friday": [
+        {
+          "name": "Stretching Routine",
+          "type": "Flexibility",
+          "duration": 20,
+          "intensity": "Low",
+          "difficulty": "Easy",
+          "caloriesBurned": 100,
+          "scheduledTime": "07:00:00"
+        }
+      ],
+      "Saturday": [
+        {
+          "name": "Bodyweight Circuit",
+          "type": "Strength",
+          "duration": 30,
+          "intensity": "Medium",
+          "difficulty": "Medium",
+          "caloriesBurned": 220,
+          "scheduledTime": "07:00:00"
+        }
+      ],
+      "Sunday": [
+        {
+          "name": "Resistance Band Workout",
+          "type": "Strength",
+          "duration": 30,
+          "intensity": "Medium",
+          "difficulty": "Medium",
+          "caloriesBurned": 200,
+          "scheduledTime": "07:00:00"
+        }
+      ]
+    }
+  }
+}

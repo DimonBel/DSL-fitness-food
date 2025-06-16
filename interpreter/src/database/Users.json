@@ -1,177 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Pirojok Sdobnii",
-    "weight": 70.5,
-    "height": 1.75,
-    "age": 30,
-    "goal": "Weight Loss",
-    "busyTime": [
-      [
-        "09:00",
-        "17:00"
-      ],
-      [
-        "19:00",
-        "21:00"
-      ]
-    ],
-    "diet": "Vegetarian",
-    "allergies": [
-      "Gluten"
-    ],
-    "exercises": [
-      {
-        "name": "Squat",
-        "weight": 60,
-        "sets": 3,
-        "reps": 5
-      },
-      {
-        "name": "Bench Press",
-        "weight": 45,
-        "sets": 4,
-        "reps": 8
-      },
-      {
-        "name": "Crunches",
-        "weight": 0,
-        "sets": 3,
-        "reps": 12
-      }
-    ],
-    "bmi": 0,
-    "caloriesPerDay": 0,
-    "mealPlan": {
-      "breakfast": [],
-      "lunch": [],
-      "dinner": [],
-      "snacks": [],
-      "totalCalories": 0,
-      "totalProteins": 0,
-      "totalCarbs": 0,
-      "totalFats": 0
-    },
-    "trainingSchedule": {
-      "monday": [],
-      "tuesday": [
-        {
-          "name": "Running",
-          "type": "Cardio",
-          "duration": 35,
-          "intensity": "High",
-          "difficulty": "Medium",
-          "caloriesBurned": 300,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "wednesday": [],
-      "thursday": [
-        {
-          "name": "HIIT",
-          "type": "Cardio",
-          "duration": 25,
-          "intensity": "Very High",
-          "difficulty": "Hard",
-          "caloriesBurned": 400,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "friday": [
-        {
-          "name": "TRX Full Body",
-          "type": "Strength",
-          "duration": 35,
-          "intensity": "Medium-High",
-          "difficulty": "Medium",
-          "caloriesBurned": 280,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "saturday": [
-        {
-          "name": "Pilates",
-          "type": "Flexibility",
-          "duration": 50,
-          "intensity": "Low-Medium",
-          "difficulty": "Medium",
-          "caloriesBurned": 200,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "sunday": [
-        {
-          "name": "TRX Full Body",
-          "type": "Strength",
-          "duration": 35,
-          "intensity": "Medium-High",
-          "difficulty": "Medium",
-          "caloriesBurned": 280,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "days": {
-        "Monday": [],
-        "Tuesday": [
-          {
-            "name": "Running",
-            "type": "Cardio",
-            "duration": 35,
-            "intensity": "High",
-            "difficulty": "Medium",
-            "caloriesBurned": 300,
-            "scheduledTime": "06:00:00"
-          }
-        ],
-        "Wednesday": [],
-        "Thursday": [
-          {
-            "name": "HIIT",
-            "type": "Cardio",
-            "duration": 25,
-            "intensity": "Very High",
-            "difficulty": "Hard",
-            "caloriesBurned": 400,
-            "scheduledTime": "06:00:00"
-          }
-        ],
-        "Friday": [
-          {
-            "name": "TRX Full Body",
-            "type": "Strength",
-            "duration": 35,
-            "intensity": "Medium-High",
-            "difficulty": "Medium",
-            "caloriesBurned": 280,
-            "scheduledTime": "06:00:00"
-          }
-        ],
-        "Saturday": [
-          {
-            "name": "Pilates",
-            "type": "Flexibility",
-            "duration": 50,
-            "intensity": "Low-Medium",
-            "difficulty": "Medium",
-            "caloriesBurned": 200,
-            "scheduledTime": "06:00:00"
-          }
-        ],
-        "Sunday": [
-          {
-            "name": "TRX Full Body",
-            "type": "Strength",
-            "duration": 35,
-            "intensity": "Medium-High",
-            "difficulty": "Medium",
-            "caloriesBurned": 280,
-            "scheduledTime": "06:00:00"
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": 0,
     "name": "Pirojok Sdobnii",
     "weight": 70.5,
@@ -230,35 +58,6 @@
           "Proteins": 18,
           "Fats": 16,
           "MealType": "General"
-        },
-        {
-          "Name": "Avocado Toast with Eggs",
-          "Ingredients": [
-            "Eggs",
-            "Whole Wheat Bread",
-            "Avocado",
-            "Tomato"
-          ],
-          "Calories": 380,
-          "Carbs": 35,
-          "Proteins": 15,
-          "Fats": 20,
-          "MealType": "General"
-        },
-        {
-          "Name": "Smoothie Bowl",
-          "Ingredients": [
-            "Yogurt",
-            "Banana",
-            "Blueberry",
-            "Chia Seeds",
-            "Almond"
-          ],
-          "Calories": 350,
-          "Carbs": 45,
-          "Proteins": 14,
-          "Fats": 15,
-          "MealType": "General"
         }
       ],
       "lunch": [
@@ -275,35 +74,6 @@
           "Carbs": 65,
           "Proteins": 22,
           "Fats": 28,
-          "MealType": "General"
-        },
-        {
-          "Name": "Spinach and Feta Quesadilla",
-          "Ingredients": [
-            "Whole Wheat Bread",
-            "Spinach",
-            "Feta Cheese",
-            "Bell Pepper"
-          ],
-          "Calories": 450,
-          "Carbs": 50,
-          "Proteins": 18,
-          "Fats": 20,
-          "MealType": "General"
-        },
-        {
-          "Name": "Mushroom Risotto",
-          "Ingredients": [
-            "Mushroom",
-            "Arborio Rice",
-            "Parmesan",
-            "White Wine",
-            "Butter"
-          ],
-          "Calories": 520,
-          "Carbs": 60,
-          "Proteins": 15,
-          "Fats": 22,
           "MealType": "General"
         }
       ],
@@ -322,36 +92,6 @@
           "Proteins": 24,
           "Fats": 15,
           "MealType": "General"
-        },
-        {
-          "Name": "Stuffed Bell Peppers",
-          "Ingredients": [
-            "Bell Pepper",
-            "Quinoa",
-            "Black Beans",
-            "Cheese",
-            "Tomato"
-          ],
-          "Calories": 480,
-          "Carbs": 55,
-          "Proteins": 20,
-          "Fats": 18,
-          "MealType": "General"
-        },
-        {
-          "Name": "Eggplant Parmesan",
-          "Ingredients": [
-            "Eggplant",
-            "Tomato",
-            "Mozzarella",
-            "Parmesan",
-            "Basil"
-          ],
-          "Calories": 550,
-          "Carbs": 45,
-          "Proteins": 25,
-          "Fats": 30,
-          "MealType": "General"
         }
       ],
       "snacks": [
@@ -368,65 +108,55 @@
           "Proteins": 24,
           "Fats": 12,
           "MealType": "General"
-        },
-        {
-          "Name": "Hummus with Veggies",
-          "Ingredients": [
-            "Chickpeas",
-            "Tahini",
-            "Olive Oil",
-            "Carrot",
-            "Cucumber"
-          ],
-          "Calories": 250,
-          "Carbs": 22,
-          "Proteins": 10,
-          "Fats": 15,
-          "MealType": "General"
-        },
-        {
-          "Name": "Trail Mix",
-          "Ingredients": [
-            "Almond",
-            "Cashew",
-            "Walnut",
-            "Dried Mango",
-            "Dark Chocolate"
-          ],
-          "Calories": 300,
-          "Carbs": 25,
-          "Proteins": 10,
-          "Fats": 20,
-          "MealType": "General"
         }
       ],
-      "totalCalories": 5070,
-      "totalProteins": 215,
-      "totalCarbs": 547,
-      "totalFats": 231
+      "totalCalories": 1790,
+      "totalProteins": 88,
+      "totalCarbs": 210,
+      "totalFats": 71
     },
     "trainingSchedule": {
       "monday": [
         {
-          "name": "HIIT",
+          "name": "Running",
           "type": "Cardio",
-          "duration": 25,
-          "intensity": "Very High",
-          "difficulty": "Hard",
+          "duration": 35,
+          "intensity": "High",
+          "difficulty": "Medium",
+          "caloriesBurned": 300,
+          "scheduledTime": "06:00:00"
+        }
+      ],
+      "tuesday": [
+        {
+          "name": "Swimming",
+          "type": "Cardio",
+          "duration": 50,
+          "intensity": "Medium-High",
+          "difficulty": "Medium",
           "caloriesBurned": 400,
           "scheduledTime": "06:00:00"
         }
       ],
-      "tuesday": [],
-      "wednesday": [],
+      "wednesday": [
+        {
+          "name": "Cycling",
+          "type": "Cardio",
+          "duration": 50,
+          "intensity": "Medium",
+          "difficulty": "Medium",
+          "caloriesBurned": 350,
+          "scheduledTime": "06:00:00"
+        }
+      ],
       "thursday": [
         {
-          "name": "Jump Rope",
-          "type": "Cardio",
-          "duration": 20,
+          "name": "Kettlebell Swings",
+          "type": "Strength",
+          "duration": 25,
           "intensity": "High",
           "difficulty": "Medium",
-          "caloriesBurned": 200,
+          "caloriesBurned": 250,
           "scheduledTime": "06:00:00"
         }
       ],
@@ -441,50 +171,50 @@
           "scheduledTime": "06:00:00"
         }
       ],
-      "saturday": [
-        {
-          "name": "Rowing Machine",
-          "type": "Cardio",
-          "duration": 35,
-          "intensity": "High",
-          "difficulty": "Medium",
-          "caloriesBurned": 350,
-          "scheduledTime": "06:00:00"
-        }
-      ],
-      "sunday": [
-        {
-          "name": "Swimming",
-          "type": "Cardio",
-          "duration": 50,
-          "intensity": "Medium-High",
-          "difficulty": "Medium",
-          "caloriesBurned": 400,
-          "scheduledTime": "06:00:00"
-        }
-      ],
+      "saturday": [],
+      "sunday": [],
       "days": {
         "Monday": [
           {
-            "name": "HIIT",
+            "name": "Running",
             "type": "Cardio",
-            "duration": 25,
-            "intensity": "Very High",
-            "difficulty": "Hard",
+            "duration": 35,
+            "intensity": "High",
+            "difficulty": "Medium",
+            "caloriesBurned": 300,
+            "scheduledTime": "06:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "name": "Swimming",
+            "type": "Cardio",
+            "duration": 50,
+            "intensity": "Medium-High",
+            "difficulty": "Medium",
             "caloriesBurned": 400,
             "scheduledTime": "06:00:00"
           }
         ],
-        "Tuesday": [],
-        "Wednesday": [],
+        "Wednesday": [
+          {
+            "name": "Cycling",
+            "type": "Cardio",
+            "duration": 50,
+            "intensity": "Medium",
+            "difficulty": "Medium",
+            "caloriesBurned": 350,
+            "scheduledTime": "06:00:00"
+          }
+        ],
         "Thursday": [
           {
-            "name": "Jump Rope",
-            "type": "Cardio",
-            "duration": 20,
+            "name": "Kettlebell Swings",
+            "type": "Strength",
+            "duration": 25,
             "intensity": "High",
             "difficulty": "Medium",
-            "caloriesBurned": 200,
+            "caloriesBurned": 250,
             "scheduledTime": "06:00:00"
           }
         ],
@@ -499,28 +229,8 @@
             "scheduledTime": "06:00:00"
           }
         ],
-        "Saturday": [
-          {
-            "name": "Rowing Machine",
-            "type": "Cardio",
-            "duration": 35,
-            "intensity": "High",
-            "difficulty": "Medium",
-            "caloriesBurned": 350,
-            "scheduledTime": "06:00:00"
-          }
-        ],
-        "Sunday": [
-          {
-            "name": "Swimming",
-            "type": "Cardio",
-            "duration": 50,
-            "intensity": "Medium-High",
-            "difficulty": "Medium",
-            "caloriesBurned": 400,
-            "scheduledTime": "06:00:00"
-          }
-        ]
+        "Saturday": [],
+        "Sunday": []
       }
     }
   }

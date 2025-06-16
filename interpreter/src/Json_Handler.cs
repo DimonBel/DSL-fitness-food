@@ -1,26 +1,14 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace src;
 
 public class JsonHandler
 {
-    private static string GetDatabasePath()
-    {
-        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
-        return Path.Combine(projectRoot, "src", "database");
-    }
-
     public static void SaveUser(string filePath, User_Profile user)
     {
         try
         {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
+            var options = new JsonSerializerOptions { WriteIndented = true };
             string json = JsonSerializer.Serialize(user, options);
             File.WriteAllText(filePath, json);
         }
@@ -34,25 +22,20 @@ public class JsonHandler
     {
         try
         {
-            string path = Path.Combine(GetDatabasePath(), "Users.json");
-            List<User_Profile> users = GetAllUsersFromDatabase();
-
-            // Check if user exists
-            if (users.Any(u => u.id == newUser.id))
+            string path = Path.Combine("database", "Users.json");
+            var json = File.ReadAllText(path);
+            var usersData = JsonSerializer.Deserialize<Dictionary<string, List<User_Profile>>>(json);
+            
+            usersData ??= new Dictionary<string, List<User_Profile>>();
+            usersData["users"] ??= new List<User_Profile>();
+            
+            if (!usersData["users"].Any(u => u.id == newUser.id))
             {
-                Console.WriteLine($"User with ID {newUser.id} already exists.");
-                return;
+                usersData["users"].Add(newUser);
+                File.WriteAllText(path, 
+                    JsonSerializer.Serialize(usersData, 
+                    new JsonSerializerOptions { WriteIndented = true }));
             }
-
-            users.Add(newUser);
-
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
-            File.WriteAllText(path, JsonSerializer.Serialize(users, options));
         }
         catch (Exception ex)
         {
@@ -64,8 +47,11 @@ public class JsonHandler
     {
         try
         {
-            var users = GetAllUsersFromDatabase();
-            return users.FirstOrDefault(u => u.id == userId);
+            string path = Path.Combine("database", "Users.json");
+            var json = File.ReadAllText(path);
+            var usersData = JsonSerializer.Deserialize<Dictionary<string, List<User_Profile>>>(json);
+            
+            return usersData?["users"]?.FirstOrDefault(u => u.id == userId);
         }
         catch (Exception ex)
         {
@@ -78,53 +64,26 @@ public class JsonHandler
     {
         try
         {
-            string path = Path.Combine(GetDatabasePath(), "Users.json");
-            var users = GetAllUsersFromDatabase();
+            string path = Path.Combine("database", "Users.json");
+            var json = File.ReadAllText(path);
+            var usersData = JsonSerializer.Deserialize<Dictionary<string, List<User_Profile>>>(json);
+            
+            if (usersData == null || !usersData.ContainsKey("users"))
+                return;
 
-            int index = users.FindIndex(u => u.id == updatedUser.id);
+            var userList = usersData["users"];
+            int index = userList.FindIndex(u => u.id == updatedUser.id);
             if (index >= 0)
             {
-                users[index] = updatedUser;
-
-                var options = new JsonSerializerOptions
-                {
-                    WriteIndented = true,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                };
-
-                File.WriteAllText(path, JsonSerializer.Serialize(users, options));
+                userList[index] = updatedUser;
+                File.WriteAllText(path, 
+                    JsonSerializer.Serialize(usersData, 
+                    new JsonSerializerOptions { WriteIndented = true }));
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error updating user in database: {ex.Message}");
-        }
-    }
-
-    private static List<User_Profile> GetAllUsersFromDatabase()
-    {
-        try
-        {
-            string path = Path.Combine(GetDatabasePath(), "Users.json");
-            if (!File.Exists(path))
-            {
-                return new List<User_Profile>();
-            }
-
-            var json = File.ReadAllText(path);
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                Converters = { new TimeSpanTupleConverter() }
-            };
-
-            return JsonSerializer.Deserialize<List<User_Profile>>(json, options)
-                   ?? new List<User_Profile>();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error reading users database: {ex.Message}");
-            return new List<User_Profile>();
         }
     }
 }

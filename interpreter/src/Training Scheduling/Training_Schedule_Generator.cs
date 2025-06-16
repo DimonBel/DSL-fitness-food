@@ -11,22 +11,12 @@ public static class TrainingScheduleGenerator
     {
         LoadWorkoutsData();
         var schedule = new WeeklyTrainingSchedule();
-
-        if (_workoutsData == null)
-        {
-            Console.WriteLine("No workouts data available");
+        
+        if (_workoutsData == null || user.exercises.Count == 0)
             return schedule;
-        }
 
         var goalWorkouts = GetGoalSpecificWorkouts(user.goal);
-        if (!goalWorkouts.Any())
-        {
-            Console.WriteLine($"No workouts found for goal: {user.goal}");
-            return schedule;
-        }
-
         DistributeWorkouts(schedule, goalWorkouts, user);
-        AssignWorkoutTimes(schedule, user);
 
         return schedule;
     }
@@ -43,29 +33,24 @@ public static class TrainingScheduleGenerator
             _ => "Maintenance"
         };
 
-        return _workoutsData.TryGetValue(normalizedGoal, out var workouts)
-            ? workouts
-            : _workoutsData.Values.FirstOrDefault() ?? new Dictionary<string, List<Workout>>();
+        return _workoutsData.TryGetValue(normalizedGoal, out var workouts) 
+            ? workouts 
+            : _workoutsData["Maintenance"];
     }
 
     private static void LoadWorkoutsData()
     {
         try
         {
-            string path = Path.Combine(GetDatabasePath(), "Workouts.json");
+            string path = Path.Combine("database", "Workouts.json");
             if (!File.Exists(path))
             {
-                Console.WriteLine("Workouts database not found at: " + path);
+                Console.WriteLine("Workouts database not found");
                 return;
             }
 
             string json = File.ReadAllText(path);
             _workoutsData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<Workout>>>>(json);
-
-            if (_workoutsData != null)
-            {
-                Console.WriteLine($"Loaded workout data for {_workoutsData.Count} goals");
-            }
         }
         catch (Exception ex)
         {
@@ -80,15 +65,8 @@ public static class TrainingScheduleGenerator
     {
         var availableDays = GetAvailableDays(user);
         int workoutDays = CalculateWorkoutDays(user.goal, user.exercises.Count);
-
-        if (availableDays.Count == 0)
-        {
-            Console.WriteLine("No available days found for workouts");
-            return;
-        }
-
+        
         var selectedDays = SelectRandomDays(availableDays, workoutDays);
-        Console.WriteLine($"Selected {selectedDays.Count} workout days: {string.Join(", ", selectedDays)}");
 
         foreach (var day in selectedDays)
         {
@@ -100,38 +78,36 @@ public static class TrainingScheduleGenerator
     private static List<string> GetAvailableDays(User_Profile user)
     {
         var allDays = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-        // If no busy times specified, all days are available
-        if (user.busyTime.Count == 0)
-            return allDays;
-
-        // Filter days where user has at least 1 hour of continuous free time
-        return allDays.Where(day => HasMinimumFreeTime(user, day, TimeSpan.FromHours(1))).ToList();
+        
+        // Filter days where user has at least 2 hours of continuous free time
+        return allDays.Where(day => HasMinimumFreeTime(user, day, TimeSpan.FromHours(2))).ToList();
     }
 
     private static bool HasMinimumFreeTime(User_Profile user, string day, TimeSpan requiredTime)
     {
+        // Get all busy intervals for the day (currently user.busyTime doesn't track days)
+        // For now, we'll assume all busy times could apply to any day
+        // In a real implementation, you'd want to track busy times per day
+        
         if (user.busyTime.Count == 0)
             return true;
 
         // Sort busy intervals by start time
         var busyIntervals = user.busyTime.OrderBy(i => i.start).ToList();
 
-        // Check free time at start of day
-        if (busyIntervals[0].start >= requiredTime)
-            return true;
-
-        // Check free time between busy intervals
-        for (int i = 0; i < busyIntervals.Count - 1; i++)
+        // Check free time between busy intervals and day boundaries
+        TimeSpan previousEnd = TimeSpan.Zero;
+        foreach (var interval in busyIntervals)
         {
-            TimeSpan freeTime = busyIntervals[i + 1].start - busyIntervals[i].end;
+            TimeSpan freeTime = interval.start - previousEnd;
             if (freeTime >= requiredTime)
                 return true;
+
+            previousEnd = interval.end;
         }
 
-        // Check free time at end of day
-        var lastInterval = busyIntervals.Last();
-        if (TimeSpan.FromHours(24) - lastInterval.end >= requiredTime)
+        // Check after last busy interval
+        if (TimeSpan.FromHours(24) - previousEnd >= requiredTime)
             return true;
 
         return false;
@@ -139,16 +115,12 @@ public static class TrainingScheduleGenerator
 
     private static int CalculateWorkoutDays(string goal, int exerciseExperience)
     {
-        int baseDays = goal.ToLower() switch
+        return goal.ToLower() switch
         {
-            var g when g.Contains("loss") => 4,
-            var g when g.Contains("gain") || g.Contains("muscle") => 5,
+            var g when g.Contains("loss") => Math.Min(5, 3 + exerciseExperience / 2),
+            var g when g.Contains("gain") || g.Contains("muscle") => Math.Min(6, 3 + exerciseExperience),
             _ => 3 // Maintenance
         };
-
-        // Adjust based on experience (more exercises = more experience)
-        int experienceBonus = Math.Min(2, exerciseExperience / 3);
-        return Math.Min(6, baseDays + experienceBonus); // Max 6 days per week
     }
 
     private static List<string> SelectRandomDays(List<string> availableDays, int requiredDays)
@@ -156,19 +128,18 @@ public static class TrainingScheduleGenerator
         if (availableDays.Count <= requiredDays)
             return availableDays;
 
-        // Ensure we don't schedule consecutive days for beginners
         return availableDays.OrderBy(d => _random.Next()).Take(requiredDays).ToList();
     }
 
     private static string SelectWorkoutType(string goal)
     {
         int roll = _random.Next(100);
-
+        
         return goal.ToLower() switch
         {
-            var g when g.Contains("loss") => roll < 60 ? "Cardio" : roll < 85 ? "Strength" : "Flexibility",
-            var g when g.Contains("gain") || g.Contains("muscle") => roll < 65 ? "Strength" : roll < 85 ? "Cardio" : "Flexibility",
-            _ => roll < 40 ? "Cardio" : roll < 70 ? "Strength" : "Flexibility" // Maintenance
+            var g when g.Contains("loss") => roll < 70 ? "Cardio" : roll < 90 ? "Strength" : "Flexibility",
+            var g when g.Contains("gain") || g.Contains("muscle") => roll < 70 ? "Strength" : roll < 90 ? "Cardio" : "Flexibility",
+            _ => roll < 40 ? "Cardio" : roll < 80 ? "Strength" : "Flexibility" // Maintenance
         };
     }
 
@@ -179,99 +150,39 @@ public static class TrainingScheduleGenerator
         string workoutType,
         User_Profile user)
     {
-        if (!goalWorkouts.TryGetValue(workoutType, out var workouts) || !workouts.Any())
-        {
-            Console.WriteLine($"No {workoutType} workouts available for {user.goal}");
+        if (!goalWorkouts.TryGetValue(workoutType, out var workouts))
             return;
-        }
 
         var suitableWorkouts = workouts
             .Where(w => IsWorkoutSuitable(w, user))
             .ToList();
 
-        if (!suitableWorkouts.Any())
-        {
-            // If no suitable workouts, use any available workout
-            suitableWorkouts = workouts;
-        }
+        if (suitableWorkouts.Count == 0)
+            return;
 
         var selectedWorkout = suitableWorkouts[_random.Next(suitableWorkouts.Count)];
-
-        // Create a copy to avoid modifying the original
-        var workoutCopy = new Workout
-        {
-            Name = selectedWorkout.Name,
-            Type = selectedWorkout.Type,
-            Duration = AdjustWorkoutDuration(selectedWorkout.Duration, user.exercises.Count),
-            Intensity = selectedWorkout.Intensity,
-            Difficulty = selectedWorkout.Difficulty,
-            CaloriesBurned = selectedWorkout.CaloriesBurned
-        };
-
-        schedule.AddWorkout(day, workoutCopy);
-        Console.WriteLine($"Added {workoutCopy.Name} ({workoutCopy.Type}) to {day}");
+        selectedWorkout.Duration = AdjustWorkoutDuration(selectedWorkout.Duration, user.exercises.Count);
+        
+        schedule.AddWorkout(day, selectedWorkout);
     }
 
     private static int AdjustWorkoutDuration(int baseDuration, int exerciseExperience)
     {
-        // Beginners get shorter workouts, experienced users get longer
-        int adjustment = (exerciseExperience / 2) * 5; // Add 5 minutes per 2 exercises known
-        return Math.Max(15, Math.Min(90, baseDuration + adjustment)); // Between 15-90 minutes
+        return baseDuration + (exerciseExperience / 2) * 5; // Add 5 minutes per 2 exercises known
     }
 
     private static bool IsWorkoutSuitable(Workout workout, User_Profile user)
     {
-        // Check difficulty based on user's exercise experience
+        // Placeholder for equipment check - would need to be implemented based on user profile
+        bool hasEquipment = true;
+        
         bool difficultyOK = user.exercises.Count switch
         {
-            < 2 => workout.Difficulty != "Hard" && workout.Difficulty != "Very Hard",
-            < 4 => workout.Difficulty != "Very Hard",
+            < 3 => workout.Difficulty != "Hard",
+            < 5 => workout.Difficulty != "Very Hard",
             _ => true
         };
 
-        // Check duration isn't too long for beginners
-        bool durationOK = user.exercises.Count < 3 ? workout.Duration <= 45 : true;
-
-        return difficultyOK && durationOK;
-    }
-
-    private static void AssignWorkoutTimes(WeeklyTrainingSchedule schedule, User_Profile user)
-    {
-        var optimalTimes = TimeSlotFinder.FindOptimalTimes(user);
-        var trainingTime = optimalTimes.TryGetValue("Training", out var time) ? time : new TimeSpan(7, 0, 0);
-
-        // Assign the optimal training time to all workouts
-        var allDays = new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-        foreach (var day in allDays)
-        {
-            var dayWorkouts = GetWorkoutsForDay(schedule, day);
-            foreach (var workout in dayWorkouts)
-            {
-                workout.ScheduledTime = trainingTime;
-            }
-        }
-    }
-
-    private static List<Workout> GetWorkoutsForDay(WeeklyTrainingSchedule schedule, string day)
-    {
-        return day.ToLower() switch
-        {
-            "monday" => schedule.Monday,
-            "tuesday" => schedule.Tuesday,
-            "wednesday" => schedule.Wednesday,
-            "thursday" => schedule.Thursday,
-            "friday" => schedule.Friday,
-            "saturday" => schedule.Saturday,
-            "sunday" => schedule.Sunday,
-            _ => new List<Workout>()
-        };
-    }
-
-    private static string GetDatabasePath()
-    {
-        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "../.."));
-        return Path.Combine(projectRoot, "src", "database");
+        return hasEquipment && difficultyOK;
     }
 }

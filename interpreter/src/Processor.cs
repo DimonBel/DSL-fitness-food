@@ -37,6 +37,16 @@ public class Processor
 
         // Mifflin-St Jeor Formula
         float bmr = 10 * user.weight + 6.25f * (user.height * 100) - 5 * user.age + 5;
+        
+        // More precise activity factor based on workout duration
+        float activityFactor = user.TrainingSchedule.Days.Values
+            .Sum(day => day.Workouts.Sum(w => w.Duration)) switch
+        {
+            < 60 => 1.2f,    // Sedentary
+            < 150 => 1.375f,  // Lightly active
+            < 300 => 1.55f,   // Moderately active
+            _ => 1.725f       // Very active
+        };
 
         // Goal factors
         float goalFactor = user.goal.ToLower() switch
@@ -49,7 +59,7 @@ public class Processor
             _ => 1.0f
         };
 
-        return bmr * goalFactor;
+        return bmr * activityFactor * goalFactor;
     }
     
 }
